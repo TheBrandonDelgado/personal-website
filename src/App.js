@@ -1,6 +1,5 @@
 import './App.css';
 import avatar from './assets/Avatar.jpg';
-import footerImage from './assets/Techno-Individual-Landscape.png';
 import WorkExperience from './components/workExperience';
 import Projects from './components/projects';
 import Links from './components/links';
