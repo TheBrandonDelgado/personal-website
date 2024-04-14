@@ -5,6 +5,20 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 function WorkExperience() {
     const experience = [
         {
+            years: "2024 - present",
+            title: "Web Developer",
+            company: "JAN3",
+            descriptions: [
+                "Build and update the Ghost frontend for both JAN3 and AQUA websites."
+            ],
+            technologies: [
+                "Ghost •",
+                "Handlebars.js •",
+                "NestJS •",
+                "CSS"
+            ]
+        },
+        {
             years: "2020 - present",
             title: "Front End Engineer",
             company: "Freelance",

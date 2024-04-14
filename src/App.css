@@ -17,13 +17,15 @@ h1 {
 
 h2 {
   color: #888888;
+  /* color: white; */
   margin: 0;
   font-weight: normal;
   font-size: 20px;
 }
 
 h3 {
-  color: #626262;
+  color: #888888;
+  /* color: white; */
   margin: 0;
   font-weight: normal;
   font-size: 14px;
@@ -32,7 +34,7 @@ h3 {
 .avatar {
   border-radius: 50%;
   height: 85px;
-  margin: 20px 20px 20px 0;
+  margin: 0px 20px 0px 0;
 }
 
 .bio {
@@ -42,15 +44,32 @@ h3 {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  flex-wrap: wrap;
+  /* background-color: #2a2a2a; */
+  border-radius: 23px;
+  padding: 25px 0;
 }
 
-.about, .work-experience, .projects, .links {
+.about, .work-experience, .projects {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   max-width: 500px;
   width: 100%;
   margin-top: 25px;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.links > div {
+  min-width: 400px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .heading {
