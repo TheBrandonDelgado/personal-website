@@ -8,6 +8,7 @@ function WorkExperience() {
             years: "2024 - present",
             title: "Web Developer",
             company: "JAN3",
+            link: "https://jan3.com",
             descriptions: [
                 "Build and update the Ghost frontend for both JAN3 and AQUA websites."
             ],
