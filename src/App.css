@@ -67,7 +67,7 @@ h3 {
 }
 
 .links > div {
-  min-width: 400px;
+  min-width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
