@@ -1,8 +1,8 @@
 import './App.css';
 import avatar from './assets/Avatar.jpg';
 import WorkExperience from './components/workExperience';
-import Projects from './components/projects';
 import Links from './components/links';
+import Portfolio from './components/Portfolio';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <div className="name-tag">
           <h1>Brandon Delgado</h1>
           <h2>Software Engineer</h2>
-          <h3>Techno-Optimist</h3>
+          <h3>Techno-Objectivist</h3>
         </div>
         <div className="links">
           <Links />
@@ -22,9 +22,9 @@ function App() {
         <h4 className="heading">About</h4>
         <p className="about-body">I'm certified in Front End Engineering with frameworks and tools like React, Redux, JavaScript and TypeScript. I'm currently working on becoming certified in Full Stack Engineering with frameworks like Express.js and Node.js so that I can independently build apps from start to finish. I freelance and work full-time. Always building.</p>
       </div>
-      <div className="projects">
-        <h4 className="heading">Projects</h4>
-        <Projects />
+      <div className="portfolio">
+        <h4 className="heading">Portfolio</h4>
+        <Portfolio />
       </div>
       <div className="work-experience">
         <h4 className="heading">Work Experience</h4>

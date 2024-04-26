@@ -31,6 +31,12 @@ h3 {
   font-size: 14px;
 }
 
+h5 {
+  font-size: 20px;
+  color: black;
+  padding-right: 5px;
+}
+
 .avatar {
   border-radius: 50%;
   height: 85px;
@@ -74,7 +80,7 @@ h3 {
 
 .heading {
   color: white;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .about-body {
@@ -107,7 +113,7 @@ h3 {
   text-decoration: none;
 }
 
-.title-company:hover, .social-link:hover {
+a.title-company:hover, .social-link:hover {
   text-decoration: underline;
 }
 
@@ -153,10 +159,153 @@ h3 {
   pointer-events: none;
 }
 
-@media only screen and (max-width: 472px) {
+.portfolio {
+  width: 100%;
+  text-align: center;
+}
+
+.portfolio:hover {
+  min-height: 600px;
+  transition: min-height 0.5s ease;
+}
+
+.portfolio-cards {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.portfolio-card {
+  color: white;
+  text-align: center;
+  padding: 30px 10px 10px 10px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 200px;
+  z-index: 2;
+  transition: flex-grow 0.5s ease;
+}
+
+.portfolio-card:hover {
+  flex-grow: 2;
+}
+
+a.project-title {
+  text-decoration: none;
+}
+
+a.project-title:hover {
+  text-decoration: underline;
+}
+
+.project-title > h5 {
+  color: white;
+  font-size: 15px;
+}
+
+.portfolio-card > a > img {
+  max-width: 100%;
+}
+
+.project-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.project-description {
+  color: #888888;
+  width: 400px;
+  margin: auto;
+  text-align: center;
+  position: absolute;
+  top: -50%;
+  transition: top 0.5s ease, opacity 1s ease, position 1s ease;
+  z-index: -1;
+  opacity: 0;
+}
+
+.project-description.visible {
+  display: block;
+  position: relative;
+  top: 0;
+  opacity: 1;
+}
+
+.portfolio-technologies {
+  justify-content: space-evenly;
+  color: #626262;
+  width: 60%;
+  margin: auto;
+  padding-top: 30px;
+  display: flex;
+  position: absolute;
+  top: -50%;
+  transition: top 0.5s ease, opacity 1s ease, position 1s ease;
+  z-index: -1;
+  opacity: 0;
+}
+
+.portfolio-technologies.visible {
+  display: flex;
+  position: relative;
+  top: 0;
+  opacity: 1;
+}
+
+.portfolio-technologies > div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.portfolio-tech {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.bouncing-icon {
+  animation: bounce-left-right 2s infinite; /* Adjust timing as needed */
+}
+
+@media (min-width: 1500px) {
+  .portfolio {
+    max-width: 1500px;
+  }
+}
+
+@media (max-width: 991.98px) { 
+  /* Styles for tablets */
+  .portfolio {
+    max-width: 100%;
+  }
+
+  .portfolio-cards {
+    flex-direction: column;
+  }
+
+  .portfolio-card {
+    max-height: 100vh;
+  }
+
+  .project-description, .portfolio-technologies {
+    position: relative;
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Styles for phones */
+  .portfolio-technologies {
+    width: 100%;
+  }
+
   .App {
     width: 100%;
   }
+
   .about, .work-experience, .projects, .links {
     max-width: 80%;
   }
@@ -174,5 +323,14 @@ h3 {
 
   .heading {
     margin: 0 auto;
+  }
+}
+
+@keyframes bounce-left-right {
+  0%, 100% {
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(10px); /* Adjust the distance as needed */
   }
 }

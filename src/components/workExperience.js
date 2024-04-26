@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 function WorkExperience() {
+    const [ activeIndex, setActiveIndex ] = useState(null);
+    const [ anchorHover, setAnchorHover ] = useState(false);
+
     const experience = [
         {
             years: "2024 - present",
@@ -10,6 +13,7 @@ function WorkExperience() {
             company: "JAN3",
             link: "https://jan3.com",
             descriptions: [
+                "Engineer data visualization solutions using Chart.js and JSON APIs.",
                 "Build and update the Ghost frontend for both JAN3 and AQUA websites."
             ],
             technologies: [
@@ -78,14 +82,14 @@ function WorkExperience() {
     return (
         <div style={{color: "white"}}>
             {
-                experience.map(job => (
-                    <div className="job-container">
+                experience.map((job, index) => (
+                    <div className="job-container" onMouseEnter={() => setActiveIndex(index)}>
                         <p className="years">{job.years}</p>
                         <div className="information">
                             {
                                 job.link ?
-                                <a className="title-company" href={job.link} target="_blank" rel="noreferrer">
-                                    {job.title} - {job.company} <FontAwesomeIcon className="link-arrow" icon={faArrowRight} size="sm" />
+                                <a className="title-company" href={job.link} target="_blank" rel="noreferrer" onMouseEnter={() => setAnchorHover(true)} onMouseLeave={() => setAnchorHover(false)}>
+                                    {job.title} - {job.company} <FontAwesomeIcon className={`link-arrow ${activeIndex === index && anchorHover && "bouncing-icon"}`} icon={faArrowRight} size="sm" />
                                 </a> :
                                 <p className="title-company">{job.title} - {job.company}</p>
                             }
