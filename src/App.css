@@ -162,6 +162,7 @@ a.title-company:hover, .social-link:hover {
 .portfolio {
   width: 100%;
   text-align: center;
+  margin-top: 3%;
 }
 
 .portfolio:hover {
@@ -216,19 +217,18 @@ a.project-title:hover {
 
 .project-description {
   color: #888888;
-  width: 400px;
+  max-width: 400px;
   margin: auto;
   text-align: center;
-  position: absolute;
+  position: relative;
   top: -50%;
-  transition: top 0.5s ease, opacity 1s ease, position 1s ease;
+  transition: top 0.5s ease, opacity 0.5s ease, position 0.5s ease;
   z-index: -1;
   opacity: 0;
 }
 
 .project-description.visible {
   display: block;
-  position: relative;
   top: 0;
   opacity: 1;
 }
@@ -240,16 +240,16 @@ a.project-title:hover {
   margin: auto;
   padding-top: 30px;
   display: flex;
-  position: absolute;
+  position: relative;
   top: -50%;
-  transition: top 0.5s ease, opacity 1s ease, position 1s ease;
+  transition: top 0.5s ease, opacity 0.5s ease, position 0.5s ease;
   z-index: -1;
   opacity: 0;
+  margin-bottom: -100px;
 }
 
 .portfolio-technologies.visible {
   display: flex;
-  position: relative;
   top: 0;
   opacity: 1;
 }
