@@ -295,6 +295,10 @@ a.project-title:hover {
     top: 0;
     opacity: 1;
   }
+
+  .portfolio-technologies {
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: 576px) {
