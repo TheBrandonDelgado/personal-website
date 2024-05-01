@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import bitcoinDashboard from '../assets/bitcoin-dashboard.png';
-import redditClient from '../assets/reddit-clone.png';
+import jan3 from '../assets/jan3.png';
 import euroPac from '../assets/euro-pacific-capital.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faJs, faPhp, faHtml5, faWordpress } from '@fortawesome/free-brands-svg-icons';
-import { faChartLine, faServer, faShop, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faServer, faArrowRight, faCode } from '@fortawesome/free-solid-svg-icons';
 
 const portfolio = [
     {
@@ -13,7 +13,7 @@ const portfolio = [
         company: "Personal Project",
         image: bitcoinDashboard,
         link: "https://bitcoin.brandon-delgado.com",
-        description: "The price of Bitcoin contrasted with the Fear and Greed Index.",
+        description: "Personal Project",
         technologies: [
             {
                 name: "React",
@@ -34,28 +34,27 @@ const portfolio = [
         ]
     },
     {
-        year: "2023",
-        title: "Reddit Client",
-        company: "Personal Project",
-        image: redditClient,
-        link: "https://reddit-project.brandon-delgado.com",
-        description: "Minimal Reddit client",
+        year: "2024",
+        company: "JAN3",
+        image: jan3,
+        link: "https://jan3.com",
+        description: "Contracted Full Stack Engineer",
         technologies: [
             {
-                name: "React",
-                icon: faReact
+                name: "Chart.js",
+                icon: faChartLine
             },
             {
-                name: "Redux",
-                icon: faShop
+                name: "Handlebars.js",
+                icon: faCode
             },
             {
-                name: "JavaScript",
-                icon: faJs
-            },
-            {
-                name: "API",
+                name: "NestJS",
                 icon: faServer
+            },
+            {
+                name: "TypeScript",
+                icon: faCode
             }
         ]
     },
@@ -64,7 +63,7 @@ const portfolio = [
         company: "Euro Pacific Asset Managment",
         image: euroPac,
         link: "https://europac.com",
-        description: "Built to client design specifications.",
+        description: "Contracted Front End Engineer",
         technologies: [
             {
                 name: "JavaScript",

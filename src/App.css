@@ -125,6 +125,7 @@ a.title-company:hover, .social-link:hover {
 .technologies {
   margin: 0;
   display: flex;
+  justify-content: space-between;
 }
 
 .tech {

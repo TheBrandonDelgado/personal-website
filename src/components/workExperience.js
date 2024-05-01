@@ -14,30 +14,31 @@ function WorkExperience() {
             link: "https://jan3.com",
             descriptions: [
                 "Engineer data visualization solutions using Chart.js and JSON APIs.",
-                "Build and update the Ghost frontend for both JAN3 and AQUA websites."
+                "Build and update the Ghost frontend for both JAN3 and AQUA websites.",
+                "Build API endpoints in a NestJS backend using TypeScript."
             ],
             technologies: [
-                "Ghost •",
-                "Handlebars.js •",
-                "NestJS •",
-                "CSS"
+                "Chart.js",
+                "Handlebars.js",
+                "NestJS",
+                "TypeScript"
             ]
         },
         {
             years: "2020 - present",
-            title: "Front End Engineer",
+            title: "Full Stack Engineer",
             company: "Freelance",
             descriptions: [
-                "Built 20+ websites and web applications for 8 individual clients using React, Redux, JavaScript, TypeScript, Python, and Django REST.", 
+                "Built 20+ websites and web applications for 8 individual clients using React, Redux, JavaScript, TypeScript, Express, NestJS, Python, and Django REST.", 
                 "Managed development overflow for 3 marketing agencies with work spanning 25 clients.", 
                 "Crafted optimal SEO strategies and worked with Google Search Console to bring website listings to the top of Google Search.",
                 "Developed custom plugins and themes for WordPress using PHP and JavaScript.",
                 "Constructed CI/CD pipelines using Digital Ocean and Runcloud allowing for continuous deployment of websites while iterating quickly on projects."
             ],
             technologies: [
-                "React •",
-                "Redux •",
-                "TypeScript •",
+                "React",
+                "Redux",
+                "TypeScript",
                 "JavaScript"
             ]
         },
@@ -54,9 +55,9 @@ function WorkExperience() {
                 "Standardized accessibility guidelines across client verticals."
             ],
             technologies: [
-                "JavaScript •",
-                "HTML •",
-                "CSS •",
+                "JavaScript",
+                "HTML",
+                "CSS",
                 "Wordpress"
             ]
         },
@@ -71,9 +72,9 @@ function WorkExperience() {
                 "Managed and analyzed engagement and donation data using Google Tag Manager and Google Analytics for 30+ clients."
             ],
             technologies: [
-                "JavaScript •",
-                "HTML •",
-                "CSS •",
+                "JavaScript",
+                "HTML",
+                "CSS",
                 "WordPress"
             ]
         }

@@ -20,7 +20,7 @@ function App() {
       </header>
       <div className="about">
         <h4 className="heading">About</h4>
-        <p className="about-body">I'm certified in Front End Engineering with frameworks and tools like React, Redux, JavaScript and TypeScript. I'm currently working on becoming certified in Full Stack Engineering with frameworks like Express.js and Node.js so that I can independently build apps from start to finish. I freelance and work full-time. Always building.</p>
+        <p className="about-body">I'm a Full Stack Engineer with expertise and certifications in frameworks and tools like React, Redux, Express, NestJS, Chart.js, HTML, CSS, JavaScript, and TypeScript. I freelance and work full-time. Always building.</p>
       </div>
       <div className="portfolio">
         <h4 className="heading">Portfolio</h4>
