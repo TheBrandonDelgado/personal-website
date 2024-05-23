@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import bitcoinDashboard from '../assets/bitcoin-dashboard.png';
 import jan3 from '../assets/jan3.png';
-import euroPac from '../assets/euro-pacific-capital.png';
+import tesla from '../assets/tesla.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact, faJs, faPhp, faHtml5, faWordpress } from '@fortawesome/free-brands-svg-icons';
+import { faReact, faJs, faHtml5, faCss3 } from '@fortawesome/free-brands-svg-icons';
 import { faChartLine, faServer, faArrowRight, faCode } from '@fortawesome/free-solid-svg-icons';
 
 const portfolio = [
@@ -59,27 +59,28 @@ const portfolio = [
         ]
     },
     {
-        year: "2023",
-        company: "Euro Pacific Asset Managment",
-        image: euroPac,
-        link: "https://europac.com",
-        description: "Contracted Front End Engineer",
+        year: "2024",
+        title: "Tesla Clone",
+        company: "Personal Project",
+        image: tesla,
+        link: "https://tesla.brandon-delgado.com",
+        description: "Personal Project",
         technologies: [
+            {
+                name: "React",
+                icon: faReact
+            },
             {
                 name: "JavaScript",
                 icon: faJs
-            },
-            {
-                name: "PHP",
-                icon: faPhp
             },
             {
                 name: "HTML5",
                 icon: faHtml5
             },
             {
-                name: "WordPress",
-                icon: faWordpress
+                name: "CSS",
+                icon: faCss3
             }
         ]
     }
