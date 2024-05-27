@@ -15,7 +15,8 @@ function WorkExperience() {
             descriptions: [
                 "Engineer data visualization solutions using Chart.js and JSON APIs.",
                 "Build and update the Ghost frontend for both JAN3 and AQUA websites.",
-                "Build API endpoints in a NestJS backend using TypeScript."
+                "Build API endpoints in a NestJS backend using TypeScript.",
+                "Construct custom modules in a NestJS backend that add new functionality like instant translations of site content."
             ],
             technologies: [
                 "Chart.js",
