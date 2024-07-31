@@ -9,6 +9,19 @@ function WorkExperience() {
     const experience = [
         {
             years: "2024 - present",
+            title: "Senior Full Stack Software Engineer",
+            company: "Sazmining",
+            link: "https://www.sazmining.com",
+            descriptions: [],
+            technologies: [
+                "JavaScript",
+                "TypeScript",
+                "ExpressJS",
+                "MedusaJS"
+            ]
+        },
+        {
+            years: "2024 - present",
             title: "Web Developer",
             company: "JAN3",
             link: "https://jan3.com",
@@ -26,7 +39,7 @@ function WorkExperience() {
             ]
         },
         {
-            years: "2020 - present",
+            years: "2020 - 2024",
             title: "Full Stack Engineer",
             company: "Freelance",
             descriptions: [
