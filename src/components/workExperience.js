@@ -12,7 +12,10 @@ function WorkExperience() {
             title: "Senior Full Stack Software Engineer",
             company: "Sazmining",
             link: "https://www.sazmining.com",
-            descriptions: [],
+            descriptions: [
+                'Automate accounting by building a QuickBooks integration using Nodes.js and ExpressJS to communicate between the third-party and the Medusa e-commerce web app.',
+                'Mentor junior developers and conduct code reviews.'
+            ],
             technologies: [
                 "JavaScript",
                 "TypeScript",
@@ -36,24 +39,6 @@ function WorkExperience() {
                 "Handlebars.js",
                 "NestJS",
                 "TypeScript"
-            ]
-        },
-        {
-            years: "2020 - 2024",
-            title: "Full Stack Engineer",
-            company: "Freelance",
-            descriptions: [
-                "Built 20+ websites and web applications for 8 individual clients using React, Redux, JavaScript, TypeScript, Express, NestJS, Python, and Django REST.", 
-                "Managed development overflow for 3 marketing agencies with work spanning 25 clients.", 
-                "Crafted optimal SEO strategies and worked with Google Search Console to bring website listings to the top of Google Search.",
-                "Developed custom plugins and themes for WordPress using PHP and JavaScript.",
-                "Constructed CI/CD pipelines using Digital Ocean and Runcloud allowing for continuous deployment of websites while iterating quickly on projects."
-            ],
-            technologies: [
-                "React",
-                "Redux",
-                "TypeScript",
-                "JavaScript"
             ]
         },
         {
@@ -91,7 +76,25 @@ function WorkExperience() {
                 "CSS",
                 "WordPress"
             ]
-        }
+        },
+        {
+            years: "2020 - 2022",
+            title: "Full Stack Engineer",
+            company: "Freelance",
+            descriptions: [
+                "Built 20+ websites and web applications for 8 individual clients using React, Redux, JavaScript, TypeScript, Express, NestJS, Python, and Django REST.", 
+                "Managed development overflow for 3 marketing agencies with work spanning 25 clients.", 
+                "Crafted optimal SEO strategies and worked with Google Search Console to bring website listings to the top of Google Search.",
+                "Developed custom plugins and themes for WordPress using PHP and JavaScript.",
+                "Constructed CI/CD pipelines using Digital Ocean and Runcloud allowing for continuous deployment of websites while iterating quickly on projects."
+            ],
+            technologies: [
+                "React",
+                "Redux",
+                "TypeScript",
+                "JavaScript"
+            ]
+        },
     ];
 
     return (
