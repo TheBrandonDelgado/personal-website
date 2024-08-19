@@ -13,8 +13,9 @@ function WorkExperience() {
             company: "Sazmining",
             link: "https://www.sazmining.com",
             descriptions: [
-                'Automate accounting by building a QuickBooks integration using Nodes.js and ExpressJS to communicate between the third-party and the Medusa e-commerce web app.',
-                'Mentor junior developers and conduct code reviews.'
+                'Automate accounting by building a QuickBooks microservice using NodeJS and ExpressJS to communicate between the third-party and e-commerce web app.',
+                'Mentor junior developers and conduct code reviews.',
+                'Build modules and plugins in TypeScript and NodeJS for the open source e-commerce web app Medusa.'
             ],
             technologies: [
                 "JavaScript",
