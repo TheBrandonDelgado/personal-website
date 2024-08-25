@@ -15,7 +15,9 @@ function WorkExperience() {
             descriptions: [
                 'Automate accounting by building a QuickBooks microservice using NodeJS and ExpressJS to communicate between the third-party and e-commerce web app.',
                 'Mentor junior developers and conduct code reviews.',
-                'Build modules and plugins in TypeScript and NodeJS for the open source e-commerce web app Medusa.'
+                'Build modules and plugins in TypeScript and NodeJS for the open source e-commerce web app Medusa.',
+                'Construct databases and APIs in Supabase.',
+                'Architect internal CRUD tools in Refine, React, and Tailwind CSS.'
             ],
             technologies: [
                 "JavaScript",
