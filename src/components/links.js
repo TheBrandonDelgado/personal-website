@@ -18,12 +18,6 @@ function Links() {
             icon: faGithub
         },
         {
-            name: "X",
-            username: "@BrandonDelgad0",
-            link: "https://twitter.com/BrandonDelgad0",
-            icon: faXTwitter
-        }, 
-        {
             name: "Email",
             username: "TheBrandonDelgado@gmail.com",
             link: "mailto:thebrandondelgado@gmail.com?subject=Website%20Inquiry",
