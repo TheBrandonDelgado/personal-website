@@ -11,7 +11,7 @@ function App() {
         <img src={avatar} className="avatar" alt="AI Generated Brandon Delagdo"></img>
         <div className="name-tag">
           <h1>Brandon Delgado</h1>
-          <h2>Software Engineer</h2>
+          <h2>Full-Stack Software Engineer</h2>
           <h3>Techno-Objectivist</h3>
         </div>
         <div className="links">
