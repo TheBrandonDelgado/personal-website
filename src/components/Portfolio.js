@@ -9,10 +9,10 @@ import { faChartLine, faServer, faArrowRight, faCode } from '@fortawesome/free-s
 const portfolio = [
     {
         year: "2024",
-        title: "Bitcoin Dashboard",
+        title: "Tesla Clone",
         company: "Personal Project",
-        image: bitcoinDashboard,
-        link: "https://bitcoin.brandon-delgado.com",
+        image: tesla,
+        link: "https://tesla.brandon-delgado.com",
         description: "Personal Project",
         technologies: [
             {
@@ -24,12 +24,12 @@ const portfolio = [
                 icon: faJs
             },
             {
-                name: "Chart.js",
-                icon: faChartLine
+                name: "HTML5",
+                icon: faHtml5
             },
             {
-                name: "API",
-                icon: faServer
+                name: "CSS",
+                icon: faCss3
             }
         ]
     },
@@ -60,10 +60,10 @@ const portfolio = [
     },
     {
         year: "2024",
-        title: "Tesla Clone",
+        title: "Bitcoin Dashboard",
         company: "Personal Project",
-        image: tesla,
-        link: "https://tesla.brandon-delgado.com",
+        image: bitcoinDashboard,
+        link: "https://bitcoin.brandon-delgado.com",
         description: "Personal Project",
         technologies: [
             {
@@ -75,12 +75,12 @@ const portfolio = [
                 icon: faJs
             },
             {
-                name: "HTML5",
-                icon: faHtml5
+                name: "Chart.js",
+                icon: faChartLine
             },
             {
-                name: "CSS",
-                icon: faCss3
+                name: "API",
+                icon: faServer
             }
         ]
     }
