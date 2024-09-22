@@ -20,10 +20,10 @@ function App() {
       </header>
       <div className="about">
         <h4 className="heading">About</h4>
-        <p className="about-body">I'm a Full Stack Engineer with expertise and certifications in frameworks and tools like React, Redux, Express, NestJS, Chart.js, HTML, CSS, JavaScript, and TypeScript. Always building.</p>
+        <p className="about-body">I'm a Full Stack Engineer with expertise and certifications in frameworks and tools like React, Redux, Node.js, Express, MedusaJS, Supabase, Chart.js, HTML, Tailwind CSS, JavaScript, and TypeScript. Always building.</p>
       </div>
       <div className="portfolio">
-        <h4 className="heading">Portfolio</h4>
+        <h4 className="heading">Proof of Work</h4>
         <Portfolio />
       </div>
       <div className="work-experience">

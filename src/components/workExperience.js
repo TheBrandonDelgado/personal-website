@@ -13,17 +13,17 @@ function WorkExperience() {
             company: "Sazmining",
             link: "https://www.sazmining.com",
             descriptions: [
-                'Automate accounting by building a QuickBooks microservice using NodeJS and ExpressJS to communicate between the third-party and e-commerce web app.',
+                'Automate accounting by building a QuickBooks microservice using NodeJS, ExpressJS, and Redis to communicate between the third-party and e-commerce web app.',
                 'Mentor junior developers and conduct code reviews.',
                 'Build modules and plugins in TypeScript and NodeJS for the open source e-commerce web app Medusa.',
                 'Construct databases and APIs in Supabase.',
                 'Architect internal CRUD tools in Refine, React, and Tailwind CSS.'
             ],
             technologies: [
-                "JavaScript",
+                "React",
                 "TypeScript",
-                "ExpressJS",
-                "MedusaJS"
+                "Node.js",
+                "Tailwind CSS"
             ]
         },
         {
