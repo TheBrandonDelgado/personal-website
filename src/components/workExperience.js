@@ -27,15 +27,15 @@ function WorkExperience() {
             ]
         },
         {
-            years: "2024 - present",
+            years: "2024",
             title: "Web Developer",
             company: "JAN3",
             link: "https://jan3.com",
             descriptions: [
-                "Engineer data visualization solutions using Chart.js and JSON APIs.",
-                "Build and update the Ghost frontend for both JAN3 and AQUA websites.",
-                "Build API endpoints in a NestJS backend using TypeScript.",
-                "Construct custom modules in a NestJS backend that add new functionality like instant translations of site content."
+                "Engineered data visualization solutions using Chart.js and JSON APIs.",
+                "Built and updated the Ghost frontend for both JAN3 and AQUA websites.",
+                "Built API endpoints in a NestJS backend using TypeScript.",
+                "Constructed custom modules in a NestJS backend that add new functionality like instant translations of site content."
             ],
             technologies: [
                 "Chart.js",
@@ -85,7 +85,7 @@ function WorkExperience() {
             title: "Full Stack Engineer",
             company: "Freelance",
             descriptions: [
-                "Built 20+ websites and web applications for 8 individual clients using React, Redux, JavaScript, TypeScript, Express, NestJS, Python, and Django REST.", 
+                "Built 20+ websites and web applications for 8 individual clients using React, Redux, JavaScript, TypeScript, Express, and NestJS.", 
                 "Managed development overflow for 3 marketing agencies with work spanning 25 clients.", 
                 "Crafted optimal SEO strategies and worked with Google Search Console to bring website listings to the top of Google Search.",
                 "Developed custom plugins and themes for WordPress using PHP and JavaScript.",
