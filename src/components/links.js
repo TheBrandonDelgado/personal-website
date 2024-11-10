@@ -22,6 +22,12 @@ function Links() {
             username: "TheBrandonDelgado@gmail.com",
             link: "mailto:thebrandondelgado@gmail.com?subject=Website%20Inquiry",
             icon: faEnvelope
+        },
+        {
+            name: "X",
+            username: "@BrandonDelgad0",
+            link: "https://x.com/BrandonDelgad0",
+            icon: faXTwitter
         }
     ];
 
