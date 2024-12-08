@@ -18,7 +18,7 @@ function WorkExperience() {
                 'Automate accounting workflows by building a QuickBooks microservice with Node.js and Express.js, facilitating communication between the third-party API and the e-commerce web application.',
                 'Mentor junior developers and conduct code reviews, fostering growth and maintaining high coding standards across the team.',
                 'Develop and maintain modules and plugins in TypeScript and Node.js for the open-source e-commerce platform Medusa.',
-                'Construct scalable databases and APIs using Supabase to efficiently manage application data.',
+                'Construct scalable databases, edge functions, and APIs using Supabase to efficiently manage application data.',
                 'Architect internal CRUD tools with Refine, React, and Tailwind CSS to streamline operational workflows for the company.',
                 'Manage Redis persistence strategies, balancing in-memory speed with data durability to ensure high-performance application demands.'
             ],
