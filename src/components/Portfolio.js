@@ -1,12 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import bitcoinDashboard from '../assets/bitcoin-dashboard.png';
+import sazStore from '../assets/saz-store.png';
 import jan3 from '../assets/jan3.png';
 import tesla from '../assets/tesla.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faJs, faHtml5, faCss3 } from '@fortawesome/free-brands-svg-icons';
-import { faChartLine, faServer, faArrowRight, faCode } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faServer, faArrowRight, faCode, faStore } from '@fortawesome/free-solid-svg-icons';
 
 const portfolio = [
+    {
+        year: "2024",
+        title: "Sazmining Store",
+        company: "Sazmining",
+        image: sazStore,
+        link: "https://store.sazmining.com",
+        description: "Senior Full Stack Engineer",
+        technologies: [
+            {
+                name: "React",
+                icon: faReact
+            },
+            {
+                name: "TypeScript",
+                icon: faCode
+            },
+            {
+                name: "Medusa",
+                icon: faStore
+            },
+            {
+                name: "Next.js",
+                icon: faCode
+            }
+        ]
+    },
     {
         year: "2024",
         title: "Tesla Clone",
@@ -55,32 +81,6 @@ const portfolio = [
             {
                 name: "TypeScript",
                 icon: faCode
-            }
-        ]
-    },
-    {
-        year: "2024",
-        title: "Bitcoin Dashboard",
-        company: "Personal Project",
-        image: bitcoinDashboard,
-        link: "https://bitcoin.brandon-delgado.com",
-        description: "Personal Project",
-        technologies: [
-            {
-                name: "React",
-                icon: faReact
-            },
-            {
-                name: "JavaScript",
-                icon: faJs
-            },
-            {
-                name: "Chart.js",
-                icon: faChartLine
-            },
-            {
-                name: "API",
-                icon: faServer
             }
         ]
     }
