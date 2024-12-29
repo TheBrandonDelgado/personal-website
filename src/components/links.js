@@ -1,36 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope} from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons'
+import { social } from '../data/data';
 
 function Links() {
-    const social = [
-        {
-            name: "LinkedIn",
-            username: "Brandon Delgado",
-            link: "https://www.linkedin.com/in/thebrandondelgado/",
-            icon: faLinkedin
-        },
-        {
-            name: "GitHub",
-            username: "TheBrandonDelgado",
-            link: "https://github.com/TheBrandonDelgado",
-            icon: faGithub
-        },
-        {
-            name: "Email",
-            username: "TheBrandonDelgado@gmail.com",
-            link: "mailto:thebrandondelgado@gmail.com?subject=Website%20Inquiry",
-            icon: faEnvelope
-        },
-        {
-            name: "X",
-            username: "@BrandonDelgad0",
-            link: "https://x.com/BrandonDelgad0",
-            icon: faXTwitter
-        }
-    ];
-
     return (
         <div style={{color: "white"}}>
             {
