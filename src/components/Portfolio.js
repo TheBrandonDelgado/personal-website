@@ -60,7 +60,7 @@ function Portfolio() {
                                 project.technologies.map(technology => (
                                     <div className="flex flex-col items-center gap-2">
                                         <FontAwesomeIcon icon={technology.icon} size="xl" />
-                                        <p className="portfolio-tech">{technology.name}</p>
+                                        <p className="portfolio-tech text-xs md:text-base">{technology.name}</p>
                                     </div>
                                 ))
                             }
