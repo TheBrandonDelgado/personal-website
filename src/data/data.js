@@ -112,7 +112,7 @@ export const portfolio = [
                 icon: faChartLine,
             },
             {
-                name: "Handlebars.js",
+                name: "Ghost",
                 icon: faCode,
             },
             {
