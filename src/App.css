@@ -1,31 +1,25 @@
 .App {
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Inter';
+  font-family: "Inter";
   flex-direction: column;
   width: 100%;
 }
 
 h1 {
-  color: white;
   margin: 0;
   font-weight: normal;
   font-size: 24px;
 }
 
 h2 {
-  color: #888888;
-  /* color: white; */
   margin: 0;
   font-weight: normal;
   font-size: 20px;
 }
 
 h3 {
-  color: #888888;
-  /* color: white; */
   margin: 0;
   font-weight: normal;
   font-size: 14px;
@@ -33,14 +27,12 @@ h3 {
 
 h5 {
   font-size: 20px;
-  color: black;
   padding-right: 5px;
 }
 
 .avatar {
   border-radius: 50%;
   height: 85px;
-  margin: 0px 20px 0px 0;
 }
 
 .bio {
@@ -77,12 +69,7 @@ h5 {
 }
 
 .heading {
-  color: white;
   margin: 0 auto;
-}
-
-.about-body {
-  color: #888888;
 }
 
 .job-container {
@@ -98,7 +85,6 @@ h5 {
 .years, .name {
   min-width: 150px;
   margin: 5px 0;
-  color: #888888;
 }
 
 .information {
@@ -107,7 +93,6 @@ h5 {
 
 .title-company, .social-link {
   margin: 0;
-  color: white;
   text-decoration: none;
 }
 
@@ -117,7 +102,6 @@ a.title-company:hover, .social-link:hover {
 
 .description {
   margin: 10px 0 0 0;
-  color: #888888;
 }
 
 .technologies {
@@ -127,7 +111,6 @@ a.title-company:hover, .social-link:hover {
 }
 
 .tech {
-  color: #626262;
   margin: 10px 5px 0px 0px;
 }
 
@@ -148,7 +131,7 @@ a.title-company:hover, .social-link:hover {
 }
 
 .image-container::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -186,7 +169,6 @@ a.project-title:hover {
 }
 
 .project-title > h5 {
-  color: white;
   font-size: 15px;
 }
 
@@ -198,11 +180,9 @@ a.project-title:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
 }
 
 .project-description {
-  color: #888888;
   max-width: 400px;
   text-align: center;
   position: relative;
@@ -211,7 +191,6 @@ a.project-title:hover {
 
 .portfolio-technologies {
   justify-content: space-evenly;
-  color: #626262;
   display: flex;
   position: relative;
   transition: top 0.5s ease, opacity 0.5s ease, position 0.5s ease;
@@ -258,7 +237,7 @@ a.project-title:hover {
   }
 }
 
-@media (max-width: 1024px) { 
+@media (max-width: 1024px) {
   /* Styles for tablets */
   .portfolio {
     max-width: 100%;
@@ -311,9 +290,9 @@ a.project-title:hover {
 
 @keyframes bounce-left-right {
   0%, 100% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
   50% {
-      transform: translateX(10px);
+    transform: translateX(10px);
   }
 }

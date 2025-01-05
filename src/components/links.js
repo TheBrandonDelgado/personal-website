@@ -4,7 +4,7 @@ import { social } from '../data/data';
 
 function Links() {
     return (
-        <div style={{color: "white"}}>
+        <div className="text-white">
             {
                 social.map(link => (
                     <a className="social-link" href={link.link} target="_blank" rel="noreferrer">

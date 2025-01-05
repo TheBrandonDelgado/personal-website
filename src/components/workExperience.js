@@ -7,11 +7,11 @@ function WorkExperience() {
     const [ anchorHover, setAnchorHover ] = useState(false);
 
     return (
-        <div style={{color: "white"}}>
+        <div>
             {
                 experience.map((job, index) => (
                     <div className="job-container" onMouseEnter={() => setActiveIndex(index)}>
-                        <p className="years">{job.years}</p>
+                        <p className="years text-stone-400">{job.years}</p>
                         <div className="information">
                             {
                                 job.link ?
@@ -22,13 +22,13 @@ function WorkExperience() {
                             }
                             {
                                 job.descriptions.map(description => (
-                                    <p className="description">{description}</p>
+                                    <p className="description text-stone-400">{description}</p>
                                 ))
                             }
                             <div className="technologies">
                                 {
                                     job.technologies.map(technology => (
-                                        <p className="tech">{technology}</p>
+                                        <p className="tech text-stone-200">{technology}</p>
                                     ))
                                 }
                             </div>
