@@ -1,9 +1,5 @@
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import {
-    faGithub,
-    faLinkedin,
-    faXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import sazStore from "../assets/saz-store.png";
 import jan3 from "../assets/jan3.png";
 import tesla from "../assets/tesla.png";
