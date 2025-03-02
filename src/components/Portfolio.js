@@ -11,13 +11,13 @@ function Portfolio() {
             {
                 portfolio.map((project, index) => (
                     <div 
-                        className={`portfolio-card min-w-[80%] flex-shrink-0 flex flex-col gap-4 border-[1px] border-stone-400 rounded-lg p-4 align-center transition-all duration-500 justify-between 
+                        className={`portfolio-card min-w-[80%] flex-shrink-0 flex flex-col gap-4 border-[1px] border-stone-400 rounded-lg p-4 align-center transition-all duration-1500 justify-between 
                             lg:justify-start lg:border-0 lg:min-w-0 lg:w-1/3 
                             ${activeIndex === index ? 
-                                'lg:flex-grow-[2] justify-between lg:border-[1px]' 
+                                'lg:flex-grow-[1.2] justify-between lg:border-[1px]' 
                                 : activeIndex !== null ? 
-                                    'lg:flex-grow-[0.5] lg:border-0 lg:justify-start' : 
-                                    'lg:flex-grow justify-between lg:gap-0'
+                                    'lg:flex-grow-[0.8] lg:border-0 lg:justify-start' : 
+                                    'lg:flex-grow-[1] justify-between lg:gap-0'
                             }`
                         } 
                         onMouseEnter={() => setActiveIndex(index)} 
@@ -41,7 +41,7 @@ function Portfolio() {
                             />
                         </a>
                         <p 
-                            className={`project-description mx-auto absolute overflow-hidden transition-all duration-500 text-stone-400
+                            className={`project-description mx-auto absolute overflow-hidden transition-all duration-1500 text-stone-400
                                 ${activeIndex === index ? 
                                     'lg:h-auto lg:relative lg:opacity-100' : 
                                     'lg:opacity-0 lg:h-0'
@@ -49,7 +49,7 @@ function Portfolio() {
                             }
                             >{project.description}</p>
                         <div 
-                            className={`portfolio-technologies flex space-between absolute overflow-hidden transition-all duration-500 text-stone-400
+                            className={`portfolio-technologies flex flex-wrap justify-around gap-1 absolute overflow-hidden transition-all duration-1500 text-stone-400 w-full px-2
                                 ${activeIndex === index ? 
                                     'lg:h-auto lg:relative lg:opacity-100' : 
                                     'lg:opacity-0 lg:h-0'
@@ -58,9 +58,9 @@ function Portfolio() {
                         >
                             {
                                 project.technologies.map(technology => (
-                                    <div className="flex flex-col items-center gap-2">
-                                        <FontAwesomeIcon icon={technology.icon} size="xl" />
-                                        <p className="portfolio-tech text-xs md:text-base">{technology.name}</p>
+                                    <div className="flex flex-col items-center justify-center gap-2 p-2 flex-1 min-w-[70px]">
+                                        <FontAwesomeIcon icon={technology.icon} size="xl" className="mb-1" />
+                                        <p className="portfolio-tech text-xs md:text-sm text-center">{technology.name}</p>
                                     </div>
                                 ))
                             }
