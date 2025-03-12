@@ -141,7 +141,7 @@ export const experience = [
             "Integrate third-party GraphQL APIs into the core product, boosting data flexibility and optimizing performance for external services.",
             "Automate accounting workflows with a QuickBooks microservice (Node.js/Express.js), linking third-party APIs to the e-commerce web app for seamless financial operations.",
             "Automate precision billing using Supabase edge functions, custom algorithms, and third-party payment processors, ensuring accurate and efficient revenue collection.",
-            "Mentor junior developers and lead code reviews, driving team growth and upholding high coding standards.",
+            "Mentor junior developers, lead code reviews, and conduct interviews for engineering hires, driving team growth and ensuring high coding standards across recruitment and development.",
             "Build and maintain TypeScript/Node.js modules and plugins for Medusa, an open-source e-commerce platform.",
             "Design scalable databases, edge functions, and APIs with Supabase to streamline application data management.",
             "Architect internal CRUD tools using Refine, React, and Tailwind CSS, enhancing operational efficiency.",
