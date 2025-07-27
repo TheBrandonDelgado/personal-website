@@ -138,6 +138,7 @@ export const experience = [
         link: "https://www.sazmining.com",
         descriptions: [
             "Early hire at Sazmining, a fast-growing tech startup, shaping core architecture and product strategy from inception through scaled development; temporarily served as the sole engineer, owning all engineering responsibilities during a critical growth phase.",
+            "Play a pivotal role in advancing Sazmining's flagship Bitcoin Mining as a Service (BMaaS) platform, the primary customer-facing product that delivers seamless, renewable energy-powered Bitcoin mining directly to users' wallets.",
             "Integrate third-party GraphQL APIs into the core product, boosting data flexibility and optimizing performance for external services.",
             "Automate accounting workflows with a QuickBooks microservice (Node.js/Express.js), linking third-party APIs to the e-commerce web app for seamless financial operations.",
             "Automate precision billing using Supabase edge functions, custom algorithms, and third-party payment processors, ensuring accurate and efficient revenue collection.",
@@ -146,6 +147,7 @@ export const experience = [
             "Design scalable databases, edge functions, and APIs with Supabase to streamline application data management.",
             "Architect internal CRUD tools using Refine, React, and Tailwind CSS, enhancing operational efficiency.",
             "Optimize Redis persistence strategies, balancing in-memory performance with data durability for demanding applications.",
+            "Built a referral program powered by Joltz’s GraphQL API, driving user acquisition and engagement through seamless integration with the core platform.",
         ],
         technologies: [
             "TypeScript",
