@@ -1,75 +1,85 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { portfolio } from '../data/data';
-import { useState } from 'react';
-function Portfolio() {
-    const [ activeIndex, setActiveIndex ] = useState(null);
-    const [ anchorHover, setAnchorHover ] = useState(false);
+import { useState, memo } from 'react';
+
+const Portfolio = memo(function Portfolio() {
+    const [activeIndex, setActiveIndex] = useState(null);
 
     return (
-        <div className='portfolio-cards overflow-x-auto flex gap-4 p-4 lg:gap-0'>
-            {
-                portfolio.map((project, index) => (
-                    <div 
-                        className={`portfolio-card min-w-[80%] flex-shrink-0 flex flex-col gap-4 border-[1px] border-stone-400 rounded-lg p-4 align-center transition-all duration-1500 justify-between 
-                            lg:justify-start lg:border-0 lg:min-w-0 lg:w-1/3 
-                            ${activeIndex === index ? 
-                                'lg:flex-grow-[1.2] justify-between lg:border-[1px]' 
-                                : activeIndex !== null ? 
-                                    'lg:flex-grow-[0.8] lg:border-0 lg:justify-start' : 
-                                    'lg:flex-grow-[1] justify-between lg:gap-0'
-                            }`
-                        } 
-                        onMouseEnter={() => setActiveIndex(index)} 
-                        onMouseLeave={() => setActiveIndex(null)}
-                    >
-                        <a href={project.link} target="_blank" rel="noreferrer">
-                            <img src={project.image} alt={project.title ? project.title : project.company}></img>
-                        </a>
-                        <a className={`project-title ${activeIndex === index ? 'lg:mt-0' : 'lg:mt-4'} text-white`} 
-                            href={project.link} 
-                            target="_blank" 
-                            rel="noreferrer" 
-                            onMouseEnter={() => setAnchorHover(true)} 
-                            onMouseLeave={() => setAnchorHover(false)}
-                        >
-                            <h5>{project.title ? project.title : project.company}</h5>
-                            <FontAwesomeIcon 
-                                className={`link-arrow ${activeIndex === index && anchorHover && "bouncing-icon"} text-white`} 
-                                icon={faArrowRight} 
-                                size="sm" 
-                            />
-                        </a>
-                        <p 
-                            className={`project-description mx-auto absolute overflow-hidden transition-all duration-1500 text-stone-400
-                                ${activeIndex === index ? 
-                                    'lg:h-auto lg:relative lg:opacity-100' : 
-                                    'lg:opacity-0 lg:h-0'
-                                }`
-                            }
-                            >{project.description}</p>
-                        <div 
-                            className={`portfolio-technologies flex flex-wrap justify-around gap-1 absolute overflow-hidden transition-all duration-1500 text-stone-400 w-full px-2
-                                ${activeIndex === index ? 
-                                    'lg:h-auto lg:relative lg:opacity-100' : 
-                                    'lg:opacity-0 lg:h-0'
-                                }`
-                            }
-                        >
-                            {
-                                project.technologies.map(technology => (
-                                    <div className="flex flex-col items-center justify-center gap-2 p-2 flex-1 min-w-[70px]">
-                                        <FontAwesomeIcon icon={technology.icon} size="xl" className="mb-1" />
-                                        <p className="portfolio-tech text-xs md:text-sm text-center">{technology.name}</p>
-                                    </div>
-                                ))
-                            }
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
+            {portfolio.map((project, index) => (
+                <div 
+                    key={index}
+                    className={`bg-bg-secondary rounded-3xl border border-border overflow-hidden transition-all duration-300 relative h-full flex flex-col hover:-translate-y-2 hover:shadow-glow-golden-lg hover:border-space-primary ${
+                        activeIndex === index ? '-translate-y-2 shadow-glow-golden-lg border-space-primary' : ''
+                    }`}
+                    onMouseEnter={() => setActiveIndex(index)}
+                    onMouseLeave={() => setActiveIndex(null)}
+                >
+                    {/* Image Container */}
+                    <div className="relative h-48 overflow-hidden">
+                        <img 
+                            src={project.image} 
+                            alt={project.title || project.company}
+                            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 hover:opacity-100">
+                            <a 
+                                href={project.link} 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="flex items-center gap-2 text-white font-semibold px-6 py-3 bg-gradient-primary rounded-full transition-transform duration-200 hover:scale-105"
+                            >
+                                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                                <span>View Project</span>
+                            </a>
                         </div>
                     </div>
-                ))
-            }
+                    
+                    {/* Card Content */}
+                    <div className="p-6 flex-1 flex flex-col gap-4">
+                        {/* Header */}
+                        <div className="flex justify-between items-start gap-4">
+                            <h3 className="text-xl font-bold text-text-primary leading-tight">
+                                {project.title || project.company}
+                            </h3>
+                            <span className="text-sm text-space-primary bg-bg-tertiary px-3 py-1 rounded-full font-semibold whitespace-nowrap border border-border">
+                                {project.year}
+                            </span>
+                        </div>
+                        
+                        <p className="text-sm text-text-muted font-medium">{project.company}</p>
+                        <p className="text-sm text-text-secondary leading-relaxed flex-1">{project.description}</p>
+                        
+                        {/* Technologies */}
+                        <div className="flex flex-wrap gap-3 my-2">
+                            {project.technologies.map((tech, techIndex) => (
+                                <div key={techIndex} className="flex items-center gap-2 px-3 py-2 bg-bg-tertiary rounded-full border border-border transition-all duration-200 hover:bg-gradient-golden hover:text-white hover:-translate-y-0.5 hover:shadow-glow-golden">
+                                    <FontAwesomeIcon 
+                                        icon={tech.icon} 
+                                        className="text-sm text-space-primary transition-colors duration-200 group-hover:text-white"
+                                    />
+                                    <span className="text-xs font-medium">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        {/* Action Button */}
+                        <a 
+                            href={project.link} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-primary text-white font-semibold rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-glow-golden-lg mt-auto"
+                        >
+                            <span>View Project</span>
+                            <FontAwesomeIcon icon={faArrowRight} />
+                        </a>
+                    </div>
+                </div>
+            ))}
         </div>
     );
-}
+});
 
 export default Portfolio;
