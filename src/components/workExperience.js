@@ -11,14 +11,14 @@ const WorkExperience = memo(function WorkExperience() {
             {experience.map((job, index) => (
                 <div 
                     key={index}
-                    className={`flex gap-8 mb-12 relative transition-all duration-300 hover:translate-x-2 ${
+                    className={`flex gap-0 md:gap-8 mb-12 relative transition-all duration-300 hover:translate-x-2 ${
                         activeIndex === index ? 'translate-x-2' : ''
                     }`}
                     onMouseEnter={() => setActiveIndex(index)}
                     onMouseLeave={() => setActiveIndex(null)}
                 >
                     {/* Timeline Marker */}
-                    <div className="relative flex flex-col items-center flex-shrink-0">
+                    <div className="relative hidden md:flex flex-col items-center flex-shrink-0">
                         <div className={`w-4 h-4 rounded-full border-3 border-bg-primary shadow-glow-golden transition-all duration-300 z-10 relative ${
                             activeIndex === index ? 'scale-125 shadow-glow-golden-lg' : ''
                         }`}
@@ -40,12 +40,40 @@ const WorkExperience = memo(function WorkExperience() {
                         }`}></div>
                         
                         {/* Header */}
-                        <div className="flex justify-between items-start gap-8 mb-6">
-                            <div className="flex-1">
+                        <div className="mb-6">
+                            {/* Desktop Layout */}
+                            <div className="hidden md:flex justify-between items-start gap-8">
+                                <div className="flex-1">
+                                    <h3 className="text-2xl font-bold text-text-primary mb-2 leading-tight">
+                                        {job.title}
+                                    </h3>
+                                    <div>
+                                        {job.link ? (
+                                            <a 
+                                                href={job.link} 
+                                                target="_blank" 
+                                                rel="noreferrer"
+                                                className="text-space-primary font-semibold text-lg inline-flex items-center gap-2 transition-all duration-200 hover:text-space-secondary hover:translate-x-1"
+                                            >
+                                                {job.company}
+                                                <FontAwesomeIcon icon={faExternalLinkAlt} className="text-sm transition-transform duration-200 group-hover:translate-x-0.5" />
+                                            </a>
+                                        ) : (
+                                            <span className="text-text-secondary font-semibold text-lg">{job.company}</span>
+                                        )}
+                                    </div>
+                                </div>
+                                <span className="text-space-primary bg-bg-tertiary px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap border border-border">
+                                    {job.years}
+                                </span>
+                            </div>
+                            
+                            {/* Mobile Layout */}
+                            <div className="md:hidden">
                                 <h3 className="text-2xl font-bold text-text-primary mb-2 leading-tight">
                                     {job.title}
                                 </h3>
-                                <div>
+                                <div className="mb-3">
                                     {job.link ? (
                                         <a 
                                             href={job.link} 
@@ -60,10 +88,10 @@ const WorkExperience = memo(function WorkExperience() {
                                         <span className="text-text-secondary font-semibold text-lg">{job.company}</span>
                                     )}
                                 </div>
+                                <span className="text-space-primary bg-bg-tertiary px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap border border-border">
+                                    {job.years}
+                                </span>
                             </div>
-                            <span className="text-space-primary bg-bg-tertiary px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap border border-border">
-                                {job.years}
-                            </span>
                         </div>
                         
                         {/* Descriptions */}
