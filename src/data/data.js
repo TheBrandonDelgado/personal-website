@@ -4,7 +4,7 @@ import {
     faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import sazStore from "../assets/saz-store.png";
+import saz from "../assets/Sazmining.png";
 import jan3 from "../assets/jan3.png";
 import tesla from "../assets/tesla.png";
 import {
@@ -44,11 +44,11 @@ export const social = [
 
 export const portfolio = [
     {
-        year: "2024",
-        title: "Sazmining Store",
+        year: "2024 - Present",
+        title: "Sazmining",
         company: "Sazmining",
-        image: sazStore,
-        link: "https://store.sazmining.com",
+        image: saz,
+        link: "https://app.sazmining.com",
         description: "Senior Full Stack Engineer",
         technologies: [
             {
