@@ -112,8 +112,7 @@ function App() {
                 Senior Full Stack Software Engineer
               </h2>
               <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
-                Passionate about building innovative solutions that solve real-world problems. 
-                Crafting elegant, high-performance applications with modern web technologies.
+                Building products that people love
               </p>
               <div className="mt-4">
                 <Links />
@@ -177,8 +176,8 @@ function App() {
                     Growth Through Technology
                   </h3>
                   <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-                    I believe in the power of technology to solve complex problems and create meaningful impact. 
-                    Every line of code is an opportunity to build something that matters, every system a chance to make a difference.
+                    I've seen firsthand how technology can solve real problems and create meaningful impact. 
+                    Every line of code I write is an opportunity to build something that matters, every system a chance to make someone's life better.
                   </p>
                 </div>
                 
@@ -187,7 +186,7 @@ function App() {
                     <div className="text-4xl mb-4">🧠</div>
                     <h4 className="text-xl font-bold text-space-primary mb-3">Problem Solving</h4>
                     <p className="text-text-secondary">
-                      Technology is the application of reason to solve problems and advance human flourishing.
+                      I approach every challenge with reason and logic, building solutions that advance human potential and solve real-world problems.
                     </p>
                   </div>
                   
@@ -195,7 +194,7 @@ function App() {
                     <div className="text-4xl mb-4">🚀</div>
                     <h4 className="text-xl font-bold text-space-secondary mb-3">Continuous Growth</h4>
                     <p className="text-text-secondary">
-                      Every breakthrough in technology represents an opportunity to learn, improve, and deliver better results.
+                      Every project teaches me something new. I'm constantly learning, improving, and pushing myself to deliver better results.
                     </p>
                   </div>
                   
@@ -203,7 +202,7 @@ function App() {
                     <div className="text-4xl mb-4">⚡</div>
                     <h4 className="text-xl font-bold text-space-tertiary mb-3">Innovation</h4>
                     <p className="text-text-secondary">
-                      The future belongs to those who embrace new technologies and build solutions that make a real impact.
+                      I embrace new technologies and build solutions that make a real impact, from Bitcoin mining platforms to automated financial systems.
                     </p>
                   </div>
                 </div>
