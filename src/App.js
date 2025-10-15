@@ -137,13 +137,10 @@ function App() {
             <div className="bg-bg-secondary p-8 lg:p-12 rounded-3xl border border-border relative overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-primary">
               <div className="max-w-4xl space-y-6">
                 <p className="text-lg leading-relaxed text-white">
-                  I'm a Senior Full Stack Software Engineer with a passion for building elegant, high-performance applications with modern web technologies.
+                  I’m a Senior Full Stack Software Engineer who thrives on creating products that users can fall in love with. 
                 </p>
                 <p className="text-lg leading-relaxed text-text-secondary">
-                  My expertise spans React ecosystems, TypeScript, Node.js backends, and cloud infrastructure 
-                  with Supabase. I've led technical projects that optimize data operations and deliver scalable 
-                  solutions across e-commerce, fintech, and marketing sectors—always with a focus on clean code, 
-                  and continuous learning.
+                  At Sazmining, I pioneered the industry’s first Bitcoin Mining as a Service platform integrated with the OCEAN decentralized mining pool, delivering real-time transparency and non-custodial payouts using TypeScript, Supabase, and React. I design scalable systems, automate financial workflows with Node.js microservices, and lead teams to elevate engineering standards while mentoring others. I’m driven by a vision to build products that not only solve problems but also spark joy and advance human potential.
                 </p>
                 {/* <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-gradient-to-r from-space-primary/10 to-space-secondary/10 p-6 rounded-2xl border border-space-primary/20">
