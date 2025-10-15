@@ -4,9 +4,6 @@ import WorkExperience from './components/workExperience';
 import Links from './components/links';
 import Portfolio from './components/Portfolio';
 import { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -234,48 +231,6 @@ function App() {
               Experience
             </h2>
             <WorkExperience />
-          </section>
-
-          {/* Contact Section */}
-          <section className="mb-16 animate-fade-in-up">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4">
-              <span className={`text-sm font-semibold text-space-primary px-4 py-2 rounded-full border-2 border-space-primary shadow-glow-golden relative overflow-hidden group hover:before:left-0 before:absolute before:inset-0 before:bg-gradient-primary before:opacity-10 before:-left-full before:transition-all before:duration-500 ${
-                isDarkMode ? 'bg-gradient-space' : 'bg-gradient-to-r from-gray-100 to-gray-200'
-              }`}>
-                05
-              </span>
-              Let's Connect
-            </h2>
-            <div className="bg-bg-secondary p-8 lg:p-12 rounded-3xl border border-border relative overflow-hidden text-center before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-primary">
-              <div>
-                <h3 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-                  Let's Build the Future
-                </h3>
-                <p className="text-lg text-text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
-                  I'm passionate about collaborating on innovative projects and solving complex technical challenges. 
-                  Whether you're building the next breakthrough application or need expertise in modern web technologies, 
-                  let's create something amazing together.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                  <a 
-                    href="mailto:thebrandondelgado@gmail.com" 
-                    className="flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-primary text-white font-semibold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-golden-lg"
-                  >
-                    <FontAwesomeIcon icon={faEnvelope} />
-                    Send Email
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/in/thebrandondelgado/" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex items-center gap-3 px-8 py-4 rounded-full bg-transparent text-text-primary font-semibold text-lg border-2 border-border transition-all duration-300 hover:bg-bg-tertiary hover:border-space-primary hover:-translate-y-1 hover:shadow-glow-golden"
-                  >
-                    <FontAwesomeIcon icon={faLinkedin} />
-                    LinkedIn
-                  </a>
-                </div>
-              </div>
-            </div>
           </section>
         </main>
       </div>
