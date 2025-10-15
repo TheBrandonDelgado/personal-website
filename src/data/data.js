@@ -6,13 +6,7 @@ import {
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import saz from "../assets/Sazmining.png";
 import jan3 from "../assets/jan3.png";
-import tesla from "../assets/tesla.png";
-import {
-    faCss3,
-    faHtml5,
-    faJs,
-    faReact,
-} from "@fortawesome/free-brands-svg-icons";
+import { faReact } from "@fortawesome/free-brands-svg-icons";
 import {
     faChartLine,
     faCode,
@@ -70,32 +64,6 @@ export const portfolio = [
             {
                 name: "Redis",
                 icon: faNetworkWired,
-            },
-        ],
-    },
-    {
-        year: "2024",
-        title: "Tesla Clone",
-        company: "Personal Project",
-        image: tesla,
-        link: "https://tesla.brandon-delgado.com",
-        description: "Personal Project",
-        technologies: [
-            {
-                name: "React",
-                icon: faReact,
-            },
-            {
-                name: "JavaScript",
-                icon: faJs,
-            },
-            {
-                name: "HTML5",
-                icon: faHtml5,
-            },
-            {
-                name: "CSS",
-                icon: faCss3,
             },
         ],
     },

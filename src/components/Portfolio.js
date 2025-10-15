@@ -7,7 +7,7 @@ const Portfolio = memo(function Portfolio() {
     const [activeIndex, setActiveIndex] = useState(null);
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             {portfolio.map((project, index) => (
                 <div 
                     key={index}
@@ -22,7 +22,7 @@ const Portfolio = memo(function Portfolio() {
                         <img 
                             src={project.image} 
                             alt={project.title || project.company}
-                            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                            className="w-full h-full object-top object-cover transition-transform duration-300 hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 hover:opacity-100">
                             <a 
