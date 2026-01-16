@@ -156,57 +156,6 @@ function App() {
             </div>
           </section>
 
-          {/* Philosophy Section */}
-          <section className="mb-24 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-            <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4">
-              <span className={`text-sm font-semibold text-space-primary px-4 py-2 rounded-full border-2 border-space-primary shadow-glow-golden relative overflow-hidden group hover:before:left-0 before:absolute before:inset-0 before:bg-gradient-primary before:opacity-10 before:-left-full before:transition-all before:duration-500 ${
-                isDarkMode ? 'bg-gradient-space' : 'bg-gradient-to-r from-gray-100 to-gray-200'
-              }`}>
-                02
-              </span>
-              Philosophy
-            </h2>
-            <div className="bg-bg-secondary p-8 lg:p-12 rounded-3xl border border-border relative overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-primary">
-              <div className="max-w-5xl space-y-8">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-space-primary mb-4">
-                    Growth Through Technology
-                  </h3>
-                  <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-                    I've seen firsthand how technology can solve real problems and create meaningful impact. 
-                    Every line of code I write is an opportunity to build something that matters, every system a chance to make someone's life better.
-                  </p>
-                </div>
-                
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="text-center p-6 bg-gradient-to-b from-space-primary/5 to-transparent rounded-2xl border border-space-primary/20">
-                    <div className="text-4xl mb-4">🧠</div>
-                    <h4 className="text-xl font-bold text-space-primary mb-3">Problem Solving</h4>
-                    <p className="text-text-secondary">
-                      I approach every challenge with reason and logic, building solutions that advance human potential and solve real-world problems.
-                    </p>
-                  </div>
-                  
-                  <div className="text-center p-6 bg-gradient-to-b from-space-secondary/5 to-transparent rounded-2xl border border-space-secondary/20">
-                    <div className="text-4xl mb-4">🚀</div>
-                    <h4 className="text-xl font-bold text-space-secondary mb-3">Continuous Growth</h4>
-                    <p className="text-text-secondary">
-                      Every project teaches me something new. I'm constantly learning, improving, and pushing myself to deliver better results.
-                    </p>
-                  </div>
-                  
-                  <div className="text-center p-6 bg-gradient-to-b from-space-tertiary/5 to-transparent rounded-2xl border border-space-tertiary/20">
-                    <div className="text-4xl mb-4">⚡</div>
-                    <h4 className="text-xl font-bold text-space-tertiary mb-3">Innovation</h4>
-                    <p className="text-text-secondary">
-                      I embrace new technologies and build solutions that make a real impact, from Bitcoin mining platforms to automated financial systems.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* Portfolio Section */}
           <section className="mb-24 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4">
