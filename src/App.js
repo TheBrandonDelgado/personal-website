@@ -162,7 +162,7 @@ function App() {
               <span className={`text-sm font-semibold text-space-primary px-4 py-2 rounded-full border-2 border-space-primary shadow-glow-golden relative overflow-hidden group hover:before:left-0 before:absolute before:inset-0 before:bg-gradient-primary before:opacity-10 before:-left-full before:transition-all before:duration-500 ${
                 isDarkMode ? 'bg-gradient-space' : 'bg-gradient-to-r from-gray-100 to-gray-200'
               }`}>
-                03
+                02
               </span>
               Portfolio
             </h2>
@@ -175,7 +175,7 @@ function App() {
               <span className={`text-sm font-semibold text-space-primary px-4 py-2 rounded-full border-2 border-space-primary shadow-glow-golden relative overflow-hidden group hover:before:left-0 before:absolute before:inset-0 before:bg-gradient-primary before:opacity-10 before:-left-full before:transition-all before:duration-500 ${
                 isDarkMode ? 'bg-gradient-space' : 'bg-gradient-to-r from-gray-100 to-gray-200'
               }`}>
-                04
+                03
               </span>
               Experience
             </h2>
