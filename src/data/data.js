@@ -105,11 +105,12 @@ export const experience = [
         company: "Sazmining",
         link: "https://www.sazmining.com",
         descriptions: [
-            "Pioneered the industry's first integration of a Bitcoin Mining as a Service (BMaaS) platform with the OCEAN decentralized mining pool, enabling real-time hashrate transparency and non-custodial payouts for hundreds of users; built with TypeScript, Supabase, and React.",
-            "Served as an early hire and temporarily sole engineer at Sazmining, shaping core architecture and product strategy for a fast-growing Bitcoin mining startup, driving scalable development during a critical growth phase.",
-            "Architected a QuickBooks microservice (Node.js/Express.js) and automated precision billing with Supabase edge functions, integrating third-party APIs to streamline financial operations and ensure accurate revenue collection for the e-commerce and subscription platforms.",
-            "Optimized Redis persistence and designed scalable Supabase databases and APIs, balancing in-memory performance with data durability to support high-throughput crypto applications.",
-            "Mentored junior developers, led code reviews, and conducted engineering interviews, fostering team growth and maintaining high coding standards across a rapidly expanding startup.",
+            "Engineered the industry's first integration between a Bitcoin Mining-as-a-Service (BMaaS) platform and the OCEAN decentralized mining pool, enabling real-time hashrate transparency and non-custodial payouts for hundreds of users; built with TypeScript, Supabase, and React.",
+            "As an early hire and temporarily sole engineer, played a key role in scaling Sazmining 350% in 2025 — growing from 2 to 5 data centers — shaping core architecture and product strategy during a critical growth phase.",
+            "Built a real-time revenue tracking engine that aggregates and reconciles financial data across mining payouts—providing leadership with live revenue visibility and eliminating manual reconciliation errors.",
+            "Migrated a complex monolith into three purpose-built applications (Admin, Customer, e-commerce) using modern modular patterns, accelerating feature delivery and reducing cross-team deployment risk.",
+            "Architected a QuickBooks microservice (Node.js/Express) and automated precision billing via Supabase Edge Functions, integrating third-party APIs to streamline financial operations and ensure accurate revenue collection across subscription and e-commerce platforms.",
+            "Mentored junior developers, led code reviews, and conducted engineering interviews, raising team velocity and maintaining high code quality standards.",
         ],
         technologies: [
             "TypeScript",
@@ -147,11 +148,9 @@ export const experience = [
         company: "TrueSense Marketing",
         link: "https://www.truesense.com",
         descriptions: [
-            "Spearheaded the seamless transition of 30+ clients from One & All to TrueSense during acquisition, unlocking $10M in revenue through technical and operational support.",
-            "Designed and deployed 300+ marketing emails, 100+ donation pages, and 150+ lightboxes, driving engagement for 13 clients with high-performing assets.",
-            "Mentored junior developers, led code reviews, and delivered cross-team solutions—backed by thorough documentation—to boost scalability, efficiency, and collaboration.",
-            "Built data pipelines to analyze thousands of donations, pinpointing key campaign drivers and fueling data-driven optimizations.",
-            "Championed accessibility standards across client verticals, ensuring inclusive, compliant experiences.",
+            "Spearheaded technical integration of 30+ clients during a high-stakes acquisition from One & All, directly enabling $10M in revenue continuity through seamless platform migration.",
+            "Designed and deployed 300+ marketing emails, 100+ donation pages, and 150+ lightboxes across 13 clients; built data pipelines to analyze thousands of donations and surface campaign optimization insights.",
+            "Mentored junior developers, led cross-team code reviews, and championed accessibility standards—improving team efficiency and ensuring inclusive, compliant experiences across client verticals.",
         ],
         technologies: [
             "JavaScript",
@@ -166,10 +165,9 @@ export const experience = [
         title: "Digital Developer",
         company: "One & All",
         descriptions: [
-            "Partnered with strategists, designers, and execs to architect a mobile app, aligning tech with business goals for a standout user experience.",
-            "Ran A/B tests with VWO on donation forms, driving a 200%+ surge in client donations through data-backed optimizations.",
-            "Trained freelance developers to build campaigns, streamlining workloads and keeping momentum during peak seasons.",
-            "Oversaw engagement and donation analytics for 30+ clients via Google Tag Manager and Google Analytics, delivering actionable insights.",
+            "Partnered with strategists, designers, and executives to architect a mobile app, aligning technical decisions with business goals.",
+            "Ran A/B tests via VWO and Google Analytics, optimizing donation and conversion flows—boosting conversions by 200%.",
+            "Oversaw engagement and donation analytics for 30+ clients via Google Tag Manager and Google Analytics; trained freelance developers to maintain campaign momentum during peak seasons.",
         ],
         technologies: [
             "A/B Testing",
