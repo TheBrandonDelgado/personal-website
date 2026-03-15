@@ -1,14 +1,106 @@
-/* Essential styles that can't be handled by Tailwind */
-
-/* Import Inter font */
+/* Font imports */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
 
-/* Smooth scrolling */
+/* ===== Design Tokens (CSS Custom Properties) ===== */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-bg-hover: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover-border: rgba(251, 191, 36, 0.2);
+  --glass-hover-glow: 0 0 30px rgba(251, 191, 36, 0.15), 0 8px 32px rgba(0, 0, 0, 0.4);
+  --accent-line: rgba(251, 191, 36, 0.3);
+  --accent-line-dim: rgba(251, 191, 36, 0.1);
+  --bg-primary-rgb: 10, 10, 10;
+
+  /* Timing tokens */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 200ms;
+  --duration-medium: 500ms;
+}
+
+/* ===== Light Mode Token Overrides ===== */
+.light {
+  --glass-bg: rgba(0, 0, 0, 0.02);
+  --glass-bg-hover: rgba(0, 0, 0, 0.04);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-hover-border: rgba(245, 158, 11, 0.25);
+  --glass-hover-glow: 0 0 20px rgba(245, 158, 11, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
+  --accent-line: rgba(245, 158, 11, 0.3);
+  --accent-line-dim: rgba(245, 158, 11, 0.1);
+  --bg-primary-rgb: 255, 255, 255;
+}
+
+/* ===== Glass Panel System ===== */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  position: relative;
+  transition:
+    background var(--duration-fast) var(--ease-in-out),
+    border-color var(--duration-fast) var(--ease-in-out),
+    box-shadow var(--duration-fast) var(--ease-in-out),
+    transform var(--duration-fast) var(--ease-in-out);
+}
+
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-line-dim), transparent);
+  transition: background var(--duration-fast) var(--ease-in-out);
+  z-index: 1;
+}
+
+/* Glass panel hover — only on fine pointer devices */
+@media (hover: hover) and (pointer: fine) {
+  .glass-panel:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-hover-border);
+    box-shadow: var(--glass-hover-glow);
+  }
+
+  .glass-panel:hover::before {
+    background: linear-gradient(90deg, transparent, var(--accent-line), transparent);
+  }
+}
+
+/* Backdrop-filter fallback */
+@supports not (backdrop-filter: blur(12px)) {
+  .glass-panel {
+    background: rgba(15, 15, 15, 0.85);
+  }
+  .light .glass-panel {
+    background: rgba(248, 250, 252, 0.95);
+  }
+}
+
+/* ===== Scroll Progress Bar ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  z-index: 9999;
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* ===== Smooth scrolling ===== */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* ===== Custom scrollbar ===== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -26,65 +118,11 @@ html {
   background: linear-gradient(135deg, #fef3c7, #fbbf24, #f59e0b);
 }
 
-/* Light mode scrollbar */
 .light ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: #f8fafc;
 }
 
-/* Custom animations that require complex keyframes */
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1.2);
-  }
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Light mode overrides */
-.light {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --text-primary: #0f172a;
-  --text-secondary: #374151;
-  --text-muted: #4b5563;
-  --border-color: #e2e8f0;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Light mode specific overrides */
+/* ===== Light mode base overrides ===== */
 .light {
   background-color: #ffffff !important;
   color: #0f172a !important;
@@ -118,7 +156,44 @@ html {
   border-color: #e2e8f0 !important;
 }
 
-/* Ensure proper font rendering */
+/* ===== Gradient animation for name ===== */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ===== Pulsing glow for avatar ===== */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0ms !important;
+  }
+
+  .scroll-progress {
+    transition: none !important;
+  }
+}
+
+/* ===== Font rendering ===== */
 body {
   font-family:
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -127,26 +202,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Remove default margins and ensure box-sizing */
+/* ===== Reset ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Ensure images are responsive */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Focus styles for accessibility */
+/* ===== Accessibility ===== */
 *:focus {
   outline: 2px solid #fbbf24;
   outline-offset: 2px;
 }
 
-/* Ensure proper text selection */
 ::selection {
   background-color: rgba(251, 191, 36, 0.3);
   color: inherit;
