@@ -42,9 +42,10 @@ function App() {
       <ScrollProgress />
 
       {/* Theme Toggle */}
-      <div
+      <button
         className="fixed top-8 right-8 z-50 cursor-pointer transition-transform hover:scale-110"
         onClick={toggleTheme}
+        aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
       >
         <div
           className={`w-10 h-10 rounded-lg-token border border-[rgba(255,255,255,0.08)] flex items-center justify-center transition-all duration-300 ${
@@ -57,7 +58,7 @@ function App() {
             {isDarkMode ? "🚀" : "☀️"}
           </span>
         </div>
-      </div>
+      </button>
 
       {/* Hero Section */}
       <header className="min-h-screen flex items-center justify-center px-8 relative overflow-hidden">

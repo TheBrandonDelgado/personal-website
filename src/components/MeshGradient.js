@@ -84,6 +84,9 @@ function MeshGradient({ lightMode = false, onReady }) {
   const rafRef = useRef(null);
   const glRef = useRef(null);
   const programRef = useRef(null);
+  const uniformsRef = useRef(null);
+  const shadersRef = useRef(null);
+  const bufferRef = useRef(null);
   const startTimeRef = useRef(Date.now());
 
   const prefersReducedMotion =
@@ -105,7 +108,9 @@ function MeshGradient({ lightMode = false, onReady }) {
     const canvas = canvasRef.current;
     if (!canvas) return false;
 
-    const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
+    const gl =
+      canvas.getContext("webgl2", { powerPreference: "low-power" }) ||
+      canvas.getContext("webgl", { powerPreference: "low-power" });
     if (!gl) return false;
 
     glRef.current = gl;
@@ -114,14 +119,21 @@ function MeshGradient({ lightMode = false, onReady }) {
     gl.shaderSource(vs, VERTEX_SHADER);
     gl.compileShader(vs);
 
+    if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS)) {
+      console.warn("WebGL vertex shader compile failed:", gl.getShaderInfoLog(vs));
+      return false;
+    }
+
     const fs = gl.createShader(gl.FRAGMENT_SHADER);
     gl.shaderSource(fs, FRAGMENT_SHADER);
     gl.compileShader(fs);
 
     if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS)) {
-      console.warn("WebGL shader compile failed:", gl.getShaderInfoLog(fs));
+      console.warn("WebGL fragment shader compile failed:", gl.getShaderInfoLog(fs));
       return false;
     }
+
+    shadersRef.current = { vs, fs };
 
     const program = gl.createProgram();
     gl.attachShader(program, vs);
@@ -136,6 +148,22 @@ function MeshGradient({ lightMode = false, onReady }) {
     programRef.current = program;
     gl.useProgram(program);
 
+    // Cache uniform locations (stable after linking)
+    const uniforms = {
+      uTime: gl.getUniformLocation(program, "uTime"),
+      uResolution: gl.getUniformLocation(program, "uResolution"),
+      uMouse: gl.getUniformLocation(program, "uMouse"),
+      uBgColor: gl.getUniformLocation(program, "uBgColor"),
+      uBlobCount: gl.getUniformLocation(program, "uBlobCount"),
+      uBlobAlpha: [],
+      uBlobColor: [],
+    };
+    for (let i = 0; i < 4; i++) {
+      uniforms.uBlobAlpha.push(gl.getUniformLocation(program, `uBlobAlpha[${i}]`));
+      uniforms.uBlobColor.push(gl.getUniformLocation(program, `uBlobColor[${i}]`));
+    }
+    uniformsRef.current = uniforms;
+
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.bufferData(
@@ -143,6 +171,7 @@ function MeshGradient({ lightMode = false, onReady }) {
       new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
       gl.STATIC_DRAW
     );
+    bufferRef.current = buffer;
 
     const pos = gl.getAttribLocation(program, "position");
     gl.enableVertexAttribArray(pos);
@@ -155,7 +184,8 @@ function MeshGradient({ lightMode = false, onReady }) {
     const gl = glRef.current;
     const program = programRef.current;
     const canvas = canvasRef.current;
-    if (!gl || !program || !canvas) return;
+    const u = uniformsRef.current;
+    if (!gl || !program || !canvas || !u) return;
 
     const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio, 2);
     const width = canvas.clientWidth * dpr;
@@ -168,16 +198,16 @@ function MeshGradient({ lightMode = false, onReady }) {
 
     const time = (Date.now() - startTimeRef.current) / 1000;
 
-    gl.uniform1f(gl.getUniformLocation(program, "uTime"), time);
-    gl.uniform2f(gl.getUniformLocation(program, "uResolution"), width, height);
-    gl.uniform2f(gl.getUniformLocation(program, "uMouse"), mouseRef.current.x, mouseRef.current.y);
-    gl.uniform3f(gl.getUniformLocation(program, "uBgColor"), ...bgColor);
-    gl.uniform1i(gl.getUniformLocation(program, "uBlobCount"), blobCount);
+    gl.uniform1f(u.uTime, time);
+    gl.uniform2f(u.uResolution, width, height);
+    gl.uniform2f(u.uMouse, mouseRef.current.x, mouseRef.current.y);
+    gl.uniform3f(u.uBgColor, ...bgColor);
+    gl.uniform1i(u.uBlobCount, blobCount);
 
     for (let i = 0; i < 4; i++) {
       const color = i < blobColors.length ? blobColors[i] : [0, 0, 0, 0];
-      gl.uniform1f(gl.getUniformLocation(program, `uBlobAlpha[${i}]`), color[3]);
-      gl.uniform3f(gl.getUniformLocation(program, `uBlobColor[${i}]`), color[0], color[1], color[2]);
+      gl.uniform1f(u.uBlobAlpha[i], color[3]);
+      gl.uniform3f(u.uBlobColor[i], color[0], color[1], color[2]);
     }
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -202,6 +232,22 @@ function MeshGradient({ lightMode = false, onReady }) {
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+
+      // Clean up WebGL resources
+      const gl = glRef.current;
+      if (gl) {
+        if (programRef.current) gl.deleteProgram(programRef.current);
+        if (shadersRef.current) {
+          gl.deleteShader(shadersRef.current.vs);
+          gl.deleteShader(shadersRef.current.fs);
+        }
+        if (bufferRef.current) gl.deleteBuffer(bufferRef.current);
+      }
+      programRef.current = null;
+      shadersRef.current = null;
+      bufferRef.current = null;
+      uniformsRef.current = null;
+      glRef.current = null;
     };
   }, [initGL, render, prefersReducedMotion, onReady]);
 
