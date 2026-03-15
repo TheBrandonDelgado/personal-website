@@ -65,6 +65,7 @@
     background: var(--glass-bg-hover);
     border-color: var(--glass-hover-border);
     box-shadow: var(--glass-hover-glow);
+    transform: translateY(-2px);
   }
 
   .glass-panel:hover::before {

@@ -53,7 +53,7 @@ const MagneticLink = memo(function MagneticLink({ link }) {
   return (
     <a
       ref={ref}
-      className="flex items-center gap-3 px-5 py-2.5 rounded-md-token text-text-secondary font-medium text-sm transition-all duration-200 will-change-transform
+      className="flex items-center gap-3 px-5 py-2.5 min-h-[44px] rounded-md-token text-text-secondary font-medium text-sm transition-all duration-200 will-change-transform
         bg-[var(--glass-bg)] border border-[var(--glass-border)] backdrop-blur-sm
         hover:text-space-primary hover:border-[var(--glass-hover-border)] hover:shadow-glow-golden"
       href={link.link}

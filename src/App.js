@@ -118,14 +118,14 @@ function App() {
         className="h-24 -mt-24 relative z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, transparent, rgb(var(--bg-primary-rgb)))",
+            "linear-gradient(to bottom, rgba(251,191,36,0.06), transparent)",
         }}
       />
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-8 py-16">
         {/* About Section */}
-        <section ref={aboutRef} className="mb-32">
+        <section ref={aboutRef} className="mb-16 lg:mb-32">
           <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4 tracking-[-0.02em]">
             <span className="section-number font-mono text-sm font-semibold text-space-primary px-4 py-2 rounded-md-token border border-[rgba(251,191,36,0.2)] bg-[rgba(251,191,36,0.1)]">
               01
@@ -154,7 +154,7 @@ function App() {
         </section>
 
         {/* Portfolio Section */}
-        <section ref={portfolioRef} className="mb-32">
+        <section ref={portfolioRef} className="mb-16 lg:mb-32">
           <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4 tracking-[-0.02em]">
             <span className="section-number font-mono text-sm font-semibold text-space-primary px-4 py-2 rounded-md-token border border-[rgba(251,191,36,0.2)] bg-[rgba(251,191,36,0.1)]">
               02
@@ -165,7 +165,7 @@ function App() {
         </section>
 
         {/* Experience Section */}
-        <section ref={experienceRef} className="mb-32">
+        <section ref={experienceRef} className="mb-16 lg:mb-32">
           <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4 tracking-[-0.02em]">
             <span className="section-number font-mono text-sm font-semibold text-space-primary px-4 py-2 rounded-md-token border border-[rgba(251,191,36,0.2)] bg-[rgba(251,191,36,0.1)]">
               03

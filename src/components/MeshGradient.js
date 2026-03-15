@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useMemo } from "react";
 
 const BLOB_COLORS_DARK = [
   [0.984, 0.749, 0.141, 0.25], // #fbbf24
@@ -96,7 +96,10 @@ function MeshGradient({ lightMode = false, onReady }) {
 
   const blobCount = isMobile ? 2 : 4;
   const blobColors = lightMode ? BLOB_COLORS_LIGHT : BLOB_COLORS_DARK;
-  const bgColor = lightMode ? [0.976, 0.980, 0.984] : [0.039, 0.039, 0.039];
+  const bgColor = useMemo(
+    () => (lightMode ? [0.976, 0.980, 0.984] : [0.039, 0.039, 0.039]),
+    [lightMode]
+  );
 
   const initGL = useCallback(() => {
     const canvas = canvasRef.current;
