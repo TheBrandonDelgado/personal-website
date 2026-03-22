@@ -120,7 +120,7 @@ function App() {
         className="h-24 -mt-24 relative z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(251,191,36,0.06), transparent)",
+            "linear-gradient(to bottom, transparent, rgba(251,191,36,0.06))",
         }}
       />
 
