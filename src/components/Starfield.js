@@ -47,9 +47,9 @@ function Starfield({ onReady }) {
   ).current;
 
   const generateStars = useCallback(() => {
-    const farCount = isMobile ? 60 : 120;
-    const midCount = isMobile ? 25 : 50;
-    const nearCount = isMobile ? 8 : 16;
+    const farCount = isMobile ? 35 : 120;
+    const midCount = isMobile ? 12 : 50;
+    const nearCount = isMobile ? 4 : 16;
     const stars = [];
 
     const makeStar = (layer) => {
