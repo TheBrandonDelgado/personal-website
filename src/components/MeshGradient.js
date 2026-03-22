@@ -1,16 +1,5 @@
 import { useEffect, useRef, useCallback, useMemo } from "react";
 
-const BLOB_COLORS_DARK = [
-  [0.984, 0.749, 0.141, 0.25], // #fbbf24
-  [0.961, 0.620, 0.043, 0.20], // #f59e0b
-  [0.992, 0.878, 0.278, 0.12], // #fde047
-  [0.996, 0.953, 0.780, 0.08], // #fef3c7
-];
-
-const BLOB_COLORS_LIGHT = BLOB_COLORS_DARK.map(([r, g, b, a]) => [
-  r, g, b, a * 0.4,
-]);
-
 const VERTEX_SHADER = `
   attribute vec2 position;
   void main() {
@@ -23,11 +12,11 @@ const FRAGMENT_SHADER = `
   uniform float uTime;
   uniform vec2 uResolution;
   uniform vec2 uMouse;
-  uniform float uBlobAlpha[4];
-  uniform vec3 uBlobColor[4];
   uniform vec3 uBgColor;
   uniform int uBlobCount;
+  uniform float uAlphaScale;
 
+  // Smooth noise for organic blob distortion
   float hash(vec2 p) {
     return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
   }
@@ -35,7 +24,7 @@ const FRAGMENT_SHADER = `
   float noise(vec2 p) {
     vec2 i = floor(p);
     vec2 f = fract(p);
-    f = f * f * (3.0 - 2.0 * f);
+    f = f * f * f * (f * (f * 6.0 - 15.0) + 10.0); // quintic smoothstep
     float a = hash(i);
     float b = hash(i + vec2(1.0, 0.0));
     float c = hash(i + vec2(0.0, 1.0));
@@ -43,36 +32,78 @@ const FRAGMENT_SHADER = `
     return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
   }
 
+  // Fractal Brownian Motion for organic shape distortion
+  float fbm(vec2 p) {
+    float v = 0.0;
+    float a = 0.5;
+    vec2 shift = vec2(100.0);
+    for (int i = 0; i < 4; i++) {
+      v += a * noise(p);
+      p = p * 2.0 + shift;
+      a *= 0.5;
+    }
+    return v;
+  }
+
   void main() {
     vec2 uv = gl_FragCoord.xy / uResolution;
-    vec3 color = uBgColor;
+    float aspect = uResolution.x / uResolution.y;
+    vec2 uvAspect = vec2(uv.x * aspect, uv.y);
 
-    vec2 centers[4];
-    centers[0] = vec2(0.25, 0.55);
-    centers[1] = vec2(0.75, 0.35);
-    centers[2] = vec2(0.5, 0.7);
-    centers[3] = vec2(0.35, 0.25);
+    float t = uTime * 0.06;
 
-    for (int i = 0; i < 4; i++) {
+    // 5 blob centers — sweeping arc from top-left to bottom-right
+    // two overlap zones create rich color blending, accent blob balances negative space
+    vec2 centers[5];
+    centers[0] = vec2(0.20, 0.78) + vec2(sin(t * 0.5) * 0.08, cos(t * 0.7) * 0.06);           // anchor: top-left corner
+    centers[1] = vec2(0.40, 0.55) + vec2(cos(t * 0.6 + 1.5) * 0.12, sin(t * 0.4) * 0.10);     // mid-left: overlaps with [0]
+    centers[2] = vec2(0.62, 0.40) + vec2(sin(t * 0.4 + 0.8) * 0.10, cos(t * 0.6 + 2.0) * 0.12); // mid-right: overlaps with [3]
+    centers[3] = vec2(0.80, 0.22) + vec2(cos(t * 0.7 + 3.0) * 0.08, sin(t * 0.5 + 1.5) * 0.06); // anchor: bottom-right corner
+    centers[4] = vec2(0.85, 0.70) + vec2(sin(t * 0.3 + 4.0) * 0.06, cos(t * 0.5 + 2.5) * 0.10); // accent: right edge, balances top-right
+
+    // Mouse influence — gently push blobs
+    for (int i = 0; i < 5; i++) {
       if (i >= uBlobCount) break;
-
-      float t = uTime * 0.08 + float(i) * 1.5;
-      vec2 offset = vec2(
-        noise(vec2(t, float(i) * 10.0)) * 0.15 - 0.075,
-        noise(vec2(float(i) * 10.0, t)) * 0.15 - 0.075
-      );
-
-      vec2 mouseInfluence = (uMouse - centers[i]) * 0.05;
-      vec2 center = centers[i] + offset + mouseInfluence;
-      float dist = distance(uv, center);
-      float blob = smoothstep(0.4, 0.0, dist);
-
-      color += uBlobColor[i] * blob * uBlobAlpha[i];
+      vec2 toMouse = uMouse - centers[i];
+      centers[i] += toMouse * 0.08;
     }
 
-    // Subtle noise texture
-    float n = noise(uv * 200.0 + uTime * 0.5) * 0.03;
-    color += n;
+    // Rich golden palette — warm amber to pale gold
+    vec3 colors[5];
+    colors[0] = vec3(0.98, 0.75, 0.14);  // #fbbf24 vivid amber
+    colors[1] = vec3(0.96, 0.62, 0.04);  // #f59e0b deep gold
+    colors[2] = vec3(1.00, 0.88, 0.28);  // #fde047 bright yellow-gold
+    colors[3] = vec3(0.92, 0.58, 0.02);  // darker amber
+    colors[4] = vec3(1.00, 0.93, 0.60);  // #fef3c7 pale warm gold
+
+    float alphas[5];
+    alphas[0] = 0.50;  // anchor blob — solid presence
+    alphas[1] = 0.55;  // center-left — slightly brighter for rich overlap
+    alphas[2] = 0.50;  // center-right — pairs with [1] for blending
+    alphas[3] = 0.45;  // lower anchor — slightly softer to fade out
+    alphas[4] = 0.20;  // accent — subtle depth on the edge
+
+    vec3 color = uBgColor;
+
+    for (int i = 0; i < 5; i++) {
+      if (i >= uBlobCount) break;
+
+      vec2 centerAspect = vec2(centers[i].x * aspect, centers[i].y);
+
+      // Distort the distance field with fbm for organic blob shapes
+      float distortion = fbm(uvAspect * 3.0 + t * 0.3 + float(i) * 7.0) * 0.12;
+      float dist = distance(uvAspect, centerAspect) + distortion;
+
+      // Large, very soft falloff
+      float blob = smoothstep(0.55, 0.0, dist);
+      blob = blob * blob; // quadratic falloff for softer edges
+
+      color = mix(color, colors[i], blob * alphas[i] * uAlphaScale);
+    }
+
+    // Very subtle film grain — barely perceptible, adds analog warmth
+    float grain = (hash(uv * uResolution + uTime) - 0.5) * 0.012;
+    color += grain;
 
     gl_FragColor = vec4(color, 1.0);
   }
@@ -97,8 +128,8 @@ function MeshGradient({ lightMode = false, onReady }) {
     typeof window !== "undefined" &&
     !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  const blobCount = isMobile ? 2 : 4;
-  const blobColors = lightMode ? BLOB_COLORS_LIGHT : BLOB_COLORS_DARK;
+  const blobCount = isMobile ? 3 : 5;
+  const alphaScale = lightMode ? 0.4 : 1.0;
   const bgColor = useMemo(
     () => (lightMode ? [0.976, 0.980, 0.984] : [0.039, 0.039, 0.039]),
     [lightMode]
@@ -148,20 +179,14 @@ function MeshGradient({ lightMode = false, onReady }) {
     programRef.current = program;
     gl.useProgram(program);
 
-    // Cache uniform locations (stable after linking)
     const uniforms = {
       uTime: gl.getUniformLocation(program, "uTime"),
       uResolution: gl.getUniformLocation(program, "uResolution"),
       uMouse: gl.getUniformLocation(program, "uMouse"),
       uBgColor: gl.getUniformLocation(program, "uBgColor"),
       uBlobCount: gl.getUniformLocation(program, "uBlobCount"),
-      uBlobAlpha: [],
-      uBlobColor: [],
+      uAlphaScale: gl.getUniformLocation(program, "uAlphaScale"),
     };
-    for (let i = 0; i < 4; i++) {
-      uniforms.uBlobAlpha.push(gl.getUniformLocation(program, `uBlobAlpha[${i}]`));
-      uniforms.uBlobColor.push(gl.getUniformLocation(program, `uBlobColor[${i}]`));
-    }
     uniformsRef.current = uniforms;
 
     const buffer = gl.createBuffer();
@@ -203,15 +228,10 @@ function MeshGradient({ lightMode = false, onReady }) {
     gl.uniform2f(u.uMouse, mouseRef.current.x, mouseRef.current.y);
     gl.uniform3f(u.uBgColor, ...bgColor);
     gl.uniform1i(u.uBlobCount, blobCount);
-
-    for (let i = 0; i < 4; i++) {
-      const color = i < blobColors.length ? blobColors[i] : [0, 0, 0, 0];
-      gl.uniform1f(u.uBlobAlpha[i], color[3]);
-      gl.uniform3f(u.uBlobColor[i], color[0], color[1], color[2]);
-    }
+    gl.uniform1f(u.uAlphaScale, alphaScale);
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-  }, [bgColor, blobColors, blobCount, isMobile]);
+  }, [bgColor, blobCount, alphaScale, isMobile]);
 
   useEffect(() => {
     const success = initGL();
@@ -233,7 +253,6 @@ function MeshGradient({ lightMode = false, onReady }) {
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
 
-      // Clean up WebGL resources
       const gl = glRef.current;
       if (gl) {
         if (programRef.current) gl.deleteProgram(programRef.current);
@@ -251,7 +270,6 @@ function MeshGradient({ lightMode = false, onReady }) {
     };
   }, [initGL, render, prefersReducedMotion, onReady]);
 
-  // Mouse tracking (only on desktop)
   useEffect(() => {
     if (isMobile) return;
 
