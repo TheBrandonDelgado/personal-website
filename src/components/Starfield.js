@@ -114,7 +114,7 @@ function Starfield({ lightMode = false, onReady }) {
     if (!stars) return;
 
     const mouse = mouseRef.current;
-    const gravityRadius = 150 * dpr;
+    const gravityRadius = 250 * dpr;
 
     // Update physics
     for (const star of stars) {
@@ -131,18 +131,18 @@ function Starfield({ lightMode = false, onReady }) {
         const dist = Math.sqrt(distX * distX + distY * distY);
 
         if (dist < gravityRadius && dist > 0) {
-          const force = (1 - dist / gravityRadius) * 2 * star.gravityResponse;
+          const force = (1 - dist / gravityRadius) * 0.15 * star.gravityResponse;
           star.vx += (distX / dist) * force;
           star.vy += (distY / dist) * force;
         }
       }
 
-      const springForce = 0.05;
+      const springForce = 0.004;
       star.vx += -star.dx * springForce;
       star.vy += -star.dy * springForce;
 
-      star.vx *= 0.9;
-      star.vy *= 0.9;
+      star.vx *= 0.91;
+      star.vy *= 0.91;
 
       star.dx += star.vx;
       star.dy += star.vy;
