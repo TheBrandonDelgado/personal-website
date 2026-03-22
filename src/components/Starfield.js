@@ -24,18 +24,16 @@ const LAYER_CONFIG = {
   },
 };
 
-function Starfield({ lightMode = false, onReady }) {
+function Starfield({ onReady }) {
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
   const starsRef = useRef(null);
   const rafRef = useRef(null);
   const mouseRef = useRef({ x: -1, y: -1 });
   const startTimeRef = useRef(Date.now());
-  const lightModeRef = useRef(lightMode);
   const onReadyRef = useRef(onReady);
 
-  // Keep refs in sync with props
-  useEffect(() => { lightModeRef.current = lightMode; }, [lightMode]);
+  // Keep ref in sync with prop
   useEffect(() => { onReadyRef.current = onReady; }, [onReady]);
 
   const isMobile = useRef(
@@ -103,11 +101,8 @@ function Starfield({ lightMode = false, onReady }) {
     }
 
     const time = (Date.now() - startTimeRef.current) / 1000;
-    const lm = lightModeRef.current;
-    const opacityScale = lm ? 0.35 : 1.0;
-    const glowScale = lm ? 0.5 : 1.0;
 
-    ctx.fillStyle = lm ? "rgb(249,250,251)" : "rgb(10,10,10)";
+    ctx.fillStyle = "rgb(10,10,10)";
     ctx.fillRect(0, 0, width, height);
 
     const stars = starsRef.current;
@@ -160,13 +155,13 @@ function Starfield({ lightMode = false, onReady }) {
       const x = star.homeX * width + star.dx + star.driftOffsetX;
       const y = star.homeY * height + star.dy + star.driftOffsetY;
       const twinkle = Math.sin(time * star.twinkleSpeed + star.twinklePhase) * 0.2;
-      const opacity = Math.max(0, (star.baseOpacity + twinkle * star.baseOpacity)) * opacityScale;
+      const opacity = Math.max(0, star.baseOpacity + twinkle * star.baseOpacity);
       const r = star.radius * dpr;
       const [cr, cg, cb] = star.color;
 
       // Glow multiplier: how far the halo extends beyond the core
       const glowMult = star.layer === "near" ? 6 : star.layer === "mid" ? 4 : 2.5;
-      const outerR = r * glowMult * glowScale;
+      const outerR = r * glowMult;
 
       const grad = ctx.createRadialGradient(x, y, 0, x, y, outerR);
       // Bright white-gold core

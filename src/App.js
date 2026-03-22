@@ -4,13 +4,12 @@ import WorkExperience from "./components/workExperience";
 import Links from "./components/links";
 import Portfolio from "./components/Portfolio";
 import ScrollProgress from "./components/ScrollProgress";
-import { useState, useEffect, useCallback, lazy, Suspense } from "react";
+import { useState, useCallback, lazy, Suspense } from "react";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 const Starfield = lazy(() => import("./components/Starfield"));
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const [canvasReady, setCanvasReady] = useState(false);
 
   const aboutRef = useScrollReveal();
@@ -21,50 +20,15 @@ function App() {
     setCanvasReady(true);
   }, []);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === "dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    localStorage.setItem("theme", newTheme ? "dark" : "light");
-  };
-
   return (
-    <div
-      className={`min-h-screen font-inter transition-colors duration-300 bg-bg-primary text-text-primary ${isDarkMode ? "" : "light"}`}
-      data-theme={isDarkMode ? "dark" : "light"}
-    >
+    <div className="min-h-screen font-inter bg-bg-primary text-text-primary">
       <ScrollProgress />
-
-      {/* Theme Toggle */}
-      <button
-        className="fixed top-8 right-8 z-50 cursor-pointer transition-transform hover:scale-110"
-        onClick={toggleTheme}
-        aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-      >
-        <div
-          className={`w-10 h-10 rounded-lg-token border border-[rgba(255,255,255,0.08)] flex items-center justify-center transition-all duration-300 ${
-            isDarkMode
-              ? "bg-[rgba(255,255,255,0.04)] backdrop-blur-sm shadow-glow-golden"
-              : "bg-gradient-golden shadow-glow-golden-lg"
-          }`}
-        >
-          <span className="text-xl transition-all duration-300">
-            {isDarkMode ? "🚀" : "☀️"}
-          </span>
-        </div>
-      </button>
 
       {/* Hero Section */}
       <header className="min-h-screen flex items-center justify-center px-8 relative overflow-hidden">
         {/* Starfield Background */}
         <Suspense fallback={null}>
-          <Starfield lightMode={!isDarkMode} onReady={handleCanvasReady} />
+          <Starfield onReady={handleCanvasReady} />
         </Suspense>
 
         {/* CSS fallback gradient (hidden once canvas is ready) */}
@@ -72,13 +36,10 @@ function App() {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: isDarkMode
-                ? `radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.08) 0%, transparent 20%),
+              background: `radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.08) 0%, transparent 20%),
                    radial-gradient(circle at 60% 20%, rgba(253, 224, 71, 0.06) 0%, transparent 15%),
                    radial-gradient(circle at 80% 60%, rgba(251, 191, 36, 0.07) 0%, transparent 18%),
-                   radial-gradient(circle at 40% 75%, rgba(254, 243, 199, 0.05) 0%, transparent 12%)`
-                : `radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.04) 0%, transparent 15%),
-                   radial-gradient(circle at 70% 50%, rgba(253, 224, 71, 0.03) 0%, transparent 12%)`,
+                   radial-gradient(circle at 40% 75%, rgba(254, 243, 199, 0.05) 0%, transparent 12%)`,
               zIndex: 0,
             }}
           />

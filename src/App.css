@@ -20,18 +20,6 @@
   --duration-medium: 500ms;
 }
 
-/* ===== Light Mode Token Overrides ===== */
-.light {
-  --glass-bg: rgba(0, 0, 0, 0.02);
-  --glass-bg-hover: rgba(0, 0, 0, 0.04);
-  --glass-border: rgba(0, 0, 0, 0.06);
-  --glass-hover-border: rgba(245, 158, 11, 0.25);
-  --glass-hover-glow: 0 0 20px rgba(245, 158, 11, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
-  --accent-line: rgba(245, 158, 11, 0.3);
-  --accent-line-dim: rgba(245, 158, 11, 0.1);
-  --bg-primary-rgb: 255, 255, 255;
-}
-
 /* ===== Glass Panel System ===== */
 .glass-panel {
   background: var(--glass-bg);
@@ -78,9 +66,6 @@
   .glass-panel {
     background: rgba(15, 15, 15, 0.85);
   }
-  .light .glass-panel {
-    background: rgba(248, 250, 252, 0.95);
-  }
 }
 
 /* ===== Scroll Progress Bar ===== */
@@ -117,44 +102,6 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #fef3c7, #fbbf24, #f59e0b);
-}
-
-.light ::-webkit-scrollbar-track {
-  background: #f8fafc;
-}
-
-/* ===== Light mode base overrides ===== */
-.light {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-}
-
-.light .bg-bg-primary {
-  background-color: #ffffff !important;
-}
-
-.light .bg-bg-secondary {
-  background-color: #f8fafc !important;
-}
-
-.light .bg-bg-tertiary {
-  background-color: #f1f5f9 !important;
-}
-
-.light .text-text-primary {
-  color: #0f172a !important;
-}
-
-.light .text-text-secondary {
-  color: #374151 !important;
-}
-
-.light .text-text-muted {
-  color: #4b5563 !important;
-}
-
-.light .border-border {
-  border-color: #e2e8f0 !important;
 }
 
 /* ===== Gradient animation for name ===== */
