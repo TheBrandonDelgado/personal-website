@@ -90,9 +90,7 @@ function App() {
         {/* About Section */}
         <section ref={aboutRef} className="mb-16 lg:mb-32">
           <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4 tracking-[-0.02em]">
-            <span className="section-number font-mono text-sm font-semibold text-space-primary px-4 py-2 rounded-md-token border border-[rgba(251,191,36,0.2)] bg-[rgba(251,191,36,0.1)]">
-              01
-            </span>
+            <span className="w-10 h-px bg-gradient-to-r from-transparent via-[rgba(251,191,36,0.6)] to-transparent inline-block" />
             About Me
           </h2>
           <div className="glass-panel p-8 lg:p-12">
@@ -126,9 +124,7 @@ function App() {
         {/* Portfolio Section */}
         <section ref={portfolioRef} className="mb-16 lg:mb-32">
           <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4 tracking-[-0.02em]">
-            <span className="section-number font-mono text-sm font-semibold text-space-primary px-4 py-2 rounded-md-token border border-[rgba(251,191,36,0.2)] bg-[rgba(251,191,36,0.1)]">
-              02
-            </span>
+            <span className="w-10 h-px bg-gradient-to-r from-transparent via-[rgba(251,191,36,0.6)] to-transparent inline-block" />
             Portfolio
           </h2>
           <Portfolio />
@@ -137,9 +133,7 @@ function App() {
         {/* Experience Section */}
         <section ref={experienceRef} className="mb-16 lg:mb-32">
           <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4 tracking-[-0.02em]">
-            <span className="section-number font-mono text-sm font-semibold text-space-primary px-4 py-2 rounded-md-token border border-[rgba(251,191,36,0.2)] bg-[rgba(251,191,36,0.1)]">
-              03
-            </span>
+            <span className="w-10 h-px bg-gradient-to-r from-transparent via-[rgba(251,191,36,0.6)] to-transparent inline-block" />
             Experience
           </h2>
           <WorkExperience />

@@ -87,29 +87,6 @@ export function useScrollReveal({ stagger = false, staggerDelay = 0.15 } = {}) {
       });
     }
 
-    // Section number count-up using proxy object
-    const numberEl = el.querySelector(".section-number");
-    if (numberEl) {
-      const target = parseInt(numberEl.textContent, 10);
-      if (!isNaN(target)) {
-        const proxy = { val: 0 };
-        numberEl.textContent = "00";
-        tl.to(
-          proxy,
-          {
-            val: target,
-            duration: 0.4,
-            ease: "none",
-            snap: { val: 1 },
-            onUpdate: () => {
-              numberEl.textContent = String(Math.round(proxy.val)).padStart(2, "0");
-            },
-          },
-          "-=0.6"
-        );
-      }
-    }
-
     return () => {
       tl.kill();
       triggers.forEach((st) => {

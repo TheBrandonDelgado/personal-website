@@ -86,22 +86,13 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ===== Custom scrollbar ===== */
+/* ===== Hide vertical scrollbar ===== */
+html {
+  scrollbar-width: none; /* Firefox */
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #111111;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #fef3c7, #fbbf24, #f59e0b);
+  display: none; /* Chrome, Safari, Edge */
 }
 
 /* ===== Gradient animation for name ===== */

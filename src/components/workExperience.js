@@ -34,7 +34,7 @@ const WorkExperience = memo(function WorkExperience() {
                   <h3 className="text-2xl font-bold text-text-primary mb-2 leading-tight tracking-[-0.02em]">
                     {job.title}
                   </h3>
-                  <div>
+                  <div className="flex items-center gap-3">
                     {job.link ? (
                       <a
                         href={job.link}
@@ -53,6 +53,11 @@ const WorkExperience = memo(function WorkExperience() {
                         {job.company}
                       </span>
                     )}
+                    {job.type && (
+                      <span className="text-xs text-text-muted font-medium">
+                        · {job.type}
+                      </span>
+                    )}
                   </div>
                 </div>
                 <span className="font-mono text-xs text-space-primary bg-[rgba(251,191,36,0.1)] border border-[rgba(251,191,36,0.2)] px-3 py-1.5 rounded-sm-token font-medium whitespace-nowrap">
@@ -65,7 +70,7 @@ const WorkExperience = memo(function WorkExperience() {
                 <h3 className="text-2xl font-bold text-text-primary mb-2 leading-tight tracking-[-0.02em]">
                   {job.title}
                 </h3>
-                <div className="mb-3">
+                <div className="flex items-center gap-3 mb-3">
                   {job.link ? (
                     <a
                       href={job.link}
@@ -82,6 +87,11 @@ const WorkExperience = memo(function WorkExperience() {
                   ) : (
                     <span className="text-text-secondary font-semibold text-lg">
                       {job.company}
+                    </span>
+                  )}
+                  {job.type && (
+                    <span className="text-xs text-text-muted font-medium">
+                      · {job.type}
                     </span>
                   )}
                 </div>
