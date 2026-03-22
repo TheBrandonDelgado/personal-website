@@ -7,18 +7,18 @@ import ScrollProgress from "./components/ScrollProgress";
 import { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
-const MeshGradient = lazy(() => import("./components/MeshGradient"));
+const Starfield = lazy(() => import("./components/Starfield"));
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [webglReady, setWebglReady] = useState(false);
+  const [canvasReady, setCanvasReady] = useState(false);
 
   const aboutRef = useScrollReveal();
   const portfolioRef = useScrollReveal({ stagger: true });
   const experienceRef = useScrollReveal({ stagger: true });
 
-  const handleWebGLReady = useCallback(() => {
-    setWebglReady(true);
+  const handleCanvasReady = useCallback(() => {
+    setCanvasReady(true);
   }, []);
 
   useEffect(() => {
@@ -62,22 +62,23 @@ function App() {
 
       {/* Hero Section */}
       <header className="min-h-screen flex items-center justify-center px-8 relative overflow-hidden">
-        {/* WebGL Mesh Gradient Background */}
+        {/* Starfield Background */}
         <Suspense fallback={null}>
-          <MeshGradient lightMode={!isDarkMode} onReady={handleWebGLReady} />
+          <Starfield lightMode={!isDarkMode} onReady={handleCanvasReady} />
         </Suspense>
 
-        {/* CSS fallback gradient (hidden once WebGL is ready) */}
-        {!webglReady && (
+        {/* CSS fallback gradient (hidden once canvas is ready) */}
+        {!canvasReady && (
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background: isDarkMode
-                ? `radial-gradient(circle at 30% 40%, rgba(251, 191, 36, 0.2) 0%, transparent 60%),
-                   radial-gradient(circle at 70% 20%, rgba(253, 224, 71, 0.15) 0%, transparent 50%),
-                   radial-gradient(circle at 50% 70%, rgba(254, 243, 199, 0.1) 0%, transparent 70%)`
-                : `radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.08) 0%, transparent 50%),
-                   radial-gradient(circle at 80% 20%, rgba(253, 224, 71, 0.06) 0%, transparent 40%)`,
+                ? `radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.08) 0%, transparent 20%),
+                   radial-gradient(circle at 60% 20%, rgba(253, 224, 71, 0.06) 0%, transparent 15%),
+                   radial-gradient(circle at 80% 60%, rgba(251, 191, 36, 0.07) 0%, transparent 18%),
+                   radial-gradient(circle at 40% 75%, rgba(254, 243, 199, 0.05) 0%, transparent 12%)`
+                : `radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.04) 0%, transparent 15%),
+                   radial-gradient(circle at 70% 50%, rgba(253, 224, 71, 0.03) 0%, transparent 12%)`,
               zIndex: 0,
             }}
           />
