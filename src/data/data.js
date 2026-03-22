@@ -30,8 +30,8 @@ export const social = [
     },
     {
         name: "Email",
-        username: "TheBrandonDelgado@gmail.com",
-        link: "mailto:thebrandondelgado@gmail.com?subject=Website%20Inquiry",
+        username: "TheBrandonDelgado@icloud.com",
+        link: "mailto:thebrandondelgado@icloud.com?subject=Website%20Inquiry",
         icon: faEnvelope,
     },
 ];
