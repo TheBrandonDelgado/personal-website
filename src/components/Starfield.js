@@ -107,12 +107,14 @@ function Starfield({ lightMode = false, onReady }) {
     const gravityRadius = 150 * dpr;
 
     for (const star of stars) {
-      const driftX = Math.sin(time / star.driftPeriodX * Math.PI * 2 + star.driftPhaseX) * star.driftAmpX * dpr;
-      const driftY = Math.sin(time / star.driftPeriodY * Math.PI * 2 + star.driftPhaseY) * star.driftAmpY * dpr;
+      // Drift is a pure visual offset computed from sine waves (not accumulated)
+      star.driftOffsetX = Math.sin(time / star.driftPeriodX * Math.PI * 2 + star.driftPhaseX) * star.driftAmpX * dpr;
+      star.driftOffsetY = Math.sin(time / star.driftPeriodY * Math.PI * 2 + star.driftPhaseY) * star.driftAmpY * dpr;
 
+      // Gravity pull (dx/dy track cursor displacement only)
       if (mouse.x >= 0 && mouse.y >= 0) {
-        const starPixelX = star.homeX * width + star.dx;
-        const starPixelY = star.homeY * height + star.dy;
+        const starPixelX = star.homeX * width + star.dx + star.driftOffsetX;
+        const starPixelY = star.homeY * height + star.dy + star.driftOffsetY;
         const mousePixelX = mouse.x * width;
         const mousePixelY = mouse.y * height;
         const distX = mousePixelX - starPixelX;
@@ -126,11 +128,10 @@ function Starfield({ lightMode = false, onReady }) {
         }
       }
 
-      const targetX = driftX;
-      const targetY = driftY;
+      // Spring return toward zero (home position) — only affects cursor displacement
       const springForce = 0.05;
-      star.vx += (targetX - star.dx) * springForce;
-      star.vy += (targetY - star.dy) * springForce;
+      star.vx += -star.dx * springForce;
+      star.vy += -star.dy * springForce;
 
       star.vx *= 0.9;
       star.vy *= 0.9;
@@ -138,19 +139,20 @@ function Starfield({ lightMode = false, onReady }) {
       star.dx += star.vx;
       star.dy += star.vy;
 
-      const px = star.homeX * width + star.dx;
-      const py = star.homeY * height + star.dy;
-      if (px < 0) star.dx = -star.homeX * width;
-      if (px > width) star.dx = width - star.homeX * width;
-      if (py < 0) star.dy = -star.homeY * height;
-      if (py > height) star.dy = height - star.homeY * height;
+      // Bounds clamping
+      const px = star.homeX * width + star.dx + star.driftOffsetX;
+      const py = star.homeY * height + star.dy + star.driftOffsetY;
+      if (px < 0) star.dx = -star.homeX * width - star.driftOffsetX;
+      if (px > width) star.dx = width - star.homeX * width - star.driftOffsetX;
+      if (py < 0) star.dy = -star.homeY * height - star.driftOffsetY;
+      if (py > height) star.dy = height - star.homeY * height - star.driftOffsetY;
     }
 
     for (const star of stars) {
       if (star.glowBlur === 0) continue;
 
-      const x = star.homeX * width + star.dx;
-      const y = star.homeY * height + star.dy;
+      const x = star.homeX * width + star.dx + (star.driftOffsetX || 0);
+      const y = star.homeY * height + star.dy + (star.driftOffsetY || 0);
       const twinkle = Math.sin(time * star.twinkleSpeed + star.twinklePhase) * 0.2;
       const opacity = Math.max(0, (star.baseOpacity + twinkle * star.baseOpacity)) * opacityScale;
       const r = star.radius * dpr;
@@ -178,8 +180,8 @@ function Starfield({ lightMode = false, onReady }) {
     for (const star of stars) {
       if (star.glowBlur !== 0) continue;
 
-      const x = star.homeX * width + star.dx;
-      const y = star.homeY * height + star.dy;
+      const x = star.homeX * width + star.dx + (star.driftOffsetX || 0);
+      const y = star.homeY * height + star.dy + (star.driftOffsetY || 0);
       const twinkle = Math.sin(time * star.twinkleSpeed + star.twinklePhase) * 0.2;
       const opacity = Math.max(0, (star.baseOpacity + twinkle * star.baseOpacity)) * opacityScale;
       const r = star.radius * dpr;
@@ -218,7 +220,7 @@ function Starfield({ lightMode = false, onReady }) {
       }
       rafRef.current = requestAnimationFrame(loop);
     };
-    loop();
+    rafRef.current = requestAnimationFrame(loop);
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
