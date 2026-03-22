@@ -49,9 +49,9 @@ function Starfield({ lightMode = false, onReady }) {
   ).current;
 
   const generateStars = useCallback(() => {
-    const farCount = isMobile ? 35 : 60;
-    const midCount = isMobile ? 15 : 30;
-    const nearCount = isMobile ? 5 : 10;
+    const farCount = isMobile ? 60 : 120;
+    const midCount = isMobile ? 25 : 50;
+    const nearCount = isMobile ? 8 : 16;
     const stars = [];
 
     const makeStar = (layer) => {
@@ -155,10 +155,8 @@ function Starfield({ lightMode = false, onReady }) {
       if (py > height) star.dy = height - star.homeY * height - star.driftOffsetY;
     }
 
-    // Draw glow stars (near, then mid)
+    // Draw all stars as radial gradient orbs
     for (const star of stars) {
-      if (star.glowBlur === 0) continue;
-
       const x = star.homeX * width + star.dx + star.driftOffsetX;
       const y = star.homeY * height + star.dy + star.driftOffsetY;
       const twinkle = Math.sin(time * star.twinkleSpeed + star.twinklePhase) * 0.2;
@@ -166,40 +164,23 @@ function Starfield({ lightMode = false, onReady }) {
       const r = star.radius * dpr;
       const [cr, cg, cb] = star.color;
 
-      ctx.shadowBlur = star.glowBlur * dpr * glowScale;
-      ctx.shadowColor = `rgba(${cr},${cg},${cb},${opacity * 0.6})`;
-      ctx.fillStyle = `rgba(${cr},${cg},${cb},${opacity})`;
+      // Glow multiplier: how far the halo extends beyond the core
+      const glowMult = star.layer === "near" ? 6 : star.layer === "mid" ? 4 : 2.5;
+      const outerR = r * glowMult * glowScale;
+
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, outerR);
+      // Bright white-gold core
+      grad.addColorStop(0, `rgba(255,255,255,${opacity})`);
+      // Star color at ~20% radius
+      grad.addColorStop(0.15, `rgba(${cr},${cg},${cb},${opacity * 0.9})`);
+      // Soft glow fade
+      grad.addColorStop(0.4, `rgba(${cr},${cg},${cb},${opacity * 0.3})`);
+      // Transparent edge
+      grad.addColorStop(1, `rgba(${cr},${cg},${cb},0)`);
+
+      ctx.fillStyle = grad;
       ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fill();
-
-      if (star.layer === "near") {
-        ctx.shadowBlur = 24 * dpr * glowScale;
-        ctx.shadowColor = `rgba(${cr},${cg},${cb},${opacity * 0.3})`;
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    // Reset shadow before drawing far stars
-    ctx.shadowBlur = 0;
-    ctx.shadowColor = "transparent";
-
-    // Draw far stars (no glow)
-    for (const star of stars) {
-      if (star.glowBlur !== 0) continue;
-
-      const x = star.homeX * width + star.dx + star.driftOffsetX;
-      const y = star.homeY * height + star.dy + star.driftOffsetY;
-      const twinkle = Math.sin(time * star.twinkleSpeed + star.twinklePhase) * 0.2;
-      const opacity = Math.max(0, (star.baseOpacity + twinkle * star.baseOpacity)) * opacityScale;
-      const r = star.radius * dpr;
-      const [cr, cg, cb] = star.color;
-
-      ctx.fillStyle = `rgba(${cr},${cg},${cb},${opacity})`;
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.arc(x, y, outerR, 0, Math.PI * 2);
       ctx.fill();
     }
   }, [isMobile]);
