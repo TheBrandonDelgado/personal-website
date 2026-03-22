@@ -1,19 +1,52 @@
 import { useEffect, useRef, useCallback } from "react";
 
+const LAYER_CONFIG = {
+  far: {
+    radiusMin: 1, radiusMax: 1.5,
+    opacityMin: 0.10, opacityMax: 0.20,
+    gravityResponse: 0.1,
+    glowBlur: 0,
+    color: [251, 191, 36],
+  },
+  mid: {
+    radiusMin: 2, radiusMax: 3,
+    opacityMin: 0.25, opacityMax: 0.40,
+    gravityResponse: 0.4,
+    glowBlur: 6,
+    color: [251, 191, 36],
+  },
+  near: {
+    radiusMin: 3, radiusMax: 4,
+    opacityMin: 0.55, opacityMax: 0.75,
+    gravityResponse: 1.0,
+    glowBlur: 12,
+    color: [253, 224, 71],
+  },
+};
+
 function Starfield({ lightMode = false, onReady }) {
   const canvasRef = useRef(null);
+  const ctxRef = useRef(null);
   const starsRef = useRef(null);
   const rafRef = useRef(null);
   const mouseRef = useRef({ x: -1, y: -1 });
   const startTimeRef = useRef(Date.now());
+  const lightModeRef = useRef(lightMode);
+  const onReadyRef = useRef(onReady);
 
-  const prefersReducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Keep refs in sync with props
+  useEffect(() => { lightModeRef.current = lightMode; }, [lightMode]);
+  useEffect(() => { onReadyRef.current = onReady; }, [onReady]);
 
-  const isMobile =
+  const isMobile = useRef(
     typeof window !== "undefined" &&
-    !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ).current;
+
+  const prefersReducedMotion = useRef(
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ).current;
 
   const generateStars = useCallback(() => {
     const farCount = isMobile ? 35 : 60;
@@ -22,52 +55,30 @@ function Starfield({ lightMode = false, onReady }) {
     const stars = [];
 
     const makeStar = (layer) => {
-      const layerConfig = {
-        far: {
-          radiusMin: 1, radiusMax: 1.5,
-          opacityMin: 0.10, opacityMax: 0.20,
-          gravityResponse: 0.1,
-          glowBlur: 0,
-          color: [251, 191, 36],
-        },
-        mid: {
-          radiusMin: 2, radiusMax: 3,
-          opacityMin: 0.25, opacityMax: 0.40,
-          gravityResponse: 0.4,
-          glowBlur: 6,
-          color: [251, 191, 36],
-        },
-        near: {
-          radiusMin: 3, radiusMax: 4,
-          opacityMin: 0.55, opacityMax: 0.75,
-          gravityResponse: 1.0,
-          glowBlur: 12,
-          color: [253, 224, 71],
-        },
-      };
-      const cfg = layerConfig[layer];
-      const rand = Math.random;
+      const cfg = LAYER_CONFIG[layer];
       return {
-        homeX: rand(),
-        homeY: rand(),
+        homeX: Math.random(),
+        homeY: Math.random(),
         dx: 0,
         dy: 0,
         vx: 0,
         vy: 0,
-        radius: cfg.radiusMin + rand() * (cfg.radiusMax - cfg.radiusMin),
-        baseOpacity: cfg.opacityMin + rand() * (cfg.opacityMax - cfg.opacityMin),
+        radius: cfg.radiusMin + Math.random() * (cfg.radiusMax - cfg.radiusMin),
+        baseOpacity: cfg.opacityMin + Math.random() * (cfg.opacityMax - cfg.opacityMin),
         gravityResponse: cfg.gravityResponse,
         glowBlur: cfg.glowBlur,
         color: cfg.color,
         layer,
-        twinkleSpeed: (Math.PI * 2) / (2 + rand() * 3),
-        twinklePhase: rand() * Math.PI * 2,
-        driftAmpX: 2 + rand() * 4,
-        driftAmpY: 2 + rand() * 4,
-        driftPeriodX: 8 + rand() * 12,
-        driftPeriodY: 8 + rand() * 12,
-        driftPhaseX: rand() * Math.PI * 2,
-        driftPhaseY: rand() * Math.PI * 2,
+        twinkleSpeed: (Math.PI * 2) / (2 + Math.random() * 3),
+        twinklePhase: Math.random() * Math.PI * 2,
+        driftAmpX: 2 + Math.random() * 4,
+        driftAmpY: 2 + Math.random() * 4,
+        driftPeriodX: 8 + Math.random() * 12,
+        driftPeriodY: 8 + Math.random() * 12,
+        driftPhaseX: Math.random() * Math.PI * 2,
+        driftPhaseY: Math.random() * Math.PI * 2,
+        driftOffsetX: 0,
+        driftOffsetY: 0,
       };
     };
 
@@ -80,10 +91,8 @@ function Starfield({ lightMode = false, onReady }) {
 
   const render = useCallback(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const ctx = ctxRef.current;
+    if (!canvas || !ctx) return;
 
     const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio, 2);
     const width = canvas.clientWidth * dpr;
@@ -94,10 +103,11 @@ function Starfield({ lightMode = false, onReady }) {
     }
 
     const time = (Date.now() - startTimeRef.current) / 1000;
-    const opacityScale = lightMode ? 0.35 : 1.0;
-    const glowScale = lightMode ? 0.5 : 1.0;
+    const lm = lightModeRef.current;
+    const opacityScale = lm ? 0.35 : 1.0;
+    const glowScale = lm ? 0.5 : 1.0;
 
-    ctx.fillStyle = lightMode ? "rgb(249,250,251)" : "rgb(10,10,10)";
+    ctx.fillStyle = lm ? "rgb(249,250,251)" : "rgb(10,10,10)";
     ctx.fillRect(0, 0, width, height);
 
     const stars = starsRef.current;
@@ -106,12 +116,11 @@ function Starfield({ lightMode = false, onReady }) {
     const mouse = mouseRef.current;
     const gravityRadius = 150 * dpr;
 
+    // Update physics
     for (const star of stars) {
-      // Drift is a pure visual offset computed from sine waves (not accumulated)
       star.driftOffsetX = Math.sin(time / star.driftPeriodX * Math.PI * 2 + star.driftPhaseX) * star.driftAmpX * dpr;
       star.driftOffsetY = Math.sin(time / star.driftPeriodY * Math.PI * 2 + star.driftPhaseY) * star.driftAmpY * dpr;
 
-      // Gravity pull (dx/dy track cursor displacement only)
       if (mouse.x >= 0 && mouse.y >= 0) {
         const starPixelX = star.homeX * width + star.dx + star.driftOffsetX;
         const starPixelY = star.homeY * height + star.dy + star.driftOffsetY;
@@ -128,7 +137,6 @@ function Starfield({ lightMode = false, onReady }) {
         }
       }
 
-      // Spring return toward zero (home position) — only affects cursor displacement
       const springForce = 0.05;
       star.vx += -star.dx * springForce;
       star.vy += -star.dy * springForce;
@@ -139,7 +147,6 @@ function Starfield({ lightMode = false, onReady }) {
       star.dx += star.vx;
       star.dy += star.vy;
 
-      // Bounds clamping
       const px = star.homeX * width + star.dx + star.driftOffsetX;
       const py = star.homeY * height + star.dy + star.driftOffsetY;
       if (px < 0) star.dx = -star.homeX * width - star.driftOffsetX;
@@ -148,11 +155,12 @@ function Starfield({ lightMode = false, onReady }) {
       if (py > height) star.dy = height - star.homeY * height - star.driftOffsetY;
     }
 
+    // Draw glow stars (near, then mid)
     for (const star of stars) {
       if (star.glowBlur === 0) continue;
 
-      const x = star.homeX * width + star.dx + (star.driftOffsetX || 0);
-      const y = star.homeY * height + star.dy + (star.driftOffsetY || 0);
+      const x = star.homeX * width + star.dx + star.driftOffsetX;
+      const y = star.homeY * height + star.dy + star.driftOffsetY;
       const twinkle = Math.sin(time * star.twinkleSpeed + star.twinklePhase) * 0.2;
       const opacity = Math.max(0, (star.baseOpacity + twinkle * star.baseOpacity)) * opacityScale;
       const r = star.radius * dpr;
@@ -174,14 +182,16 @@ function Starfield({ lightMode = false, onReady }) {
       }
     }
 
+    // Reset shadow before drawing far stars
     ctx.shadowBlur = 0;
     ctx.shadowColor = "transparent";
 
+    // Draw far stars (no glow)
     for (const star of stars) {
       if (star.glowBlur !== 0) continue;
 
-      const x = star.homeX * width + star.dx + (star.driftOffsetX || 0);
-      const y = star.homeY * height + star.dy + (star.driftOffsetY || 0);
+      const x = star.homeX * width + star.dx + star.driftOffsetX;
+      const y = star.homeY * height + star.dy + star.driftOffsetY;
       const twinkle = Math.sin(time * star.twinkleSpeed + star.twinklePhase) * 0.2;
       const opacity = Math.max(0, (star.baseOpacity + twinkle * star.baseOpacity)) * opacityScale;
       const r = star.radius * dpr;
@@ -192,22 +202,21 @@ function Starfield({ lightMode = false, onReady }) {
       ctx.arc(x, y, r, 0, Math.PI * 2);
       ctx.fill();
     }
-  }, [isMobile, lightMode]);
+  }, [isMobile]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    if (!ctx) {
-      return;
-    }
+    if (!ctx) return;
+    ctxRef.current = ctx;
 
     starsRef.current = generateStars();
 
     if (prefersReducedMotion) {
       render();
-      if (onReady) onReady();
+      if (onReadyRef.current) onReadyRef.current();
       return;
     }
 
@@ -216,7 +225,7 @@ function Starfield({ lightMode = false, onReady }) {
       render();
       if (firstFrame) {
         firstFrame = false;
-        if (onReady) onReady();
+        if (onReadyRef.current) onReadyRef.current();
       }
       rafRef.current = requestAnimationFrame(loop);
     };
@@ -225,7 +234,7 @@ function Starfield({ lightMode = false, onReady }) {
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [generateStars, render, prefersReducedMotion, onReady]);
+  }, [generateStars, render, prefersReducedMotion]);
 
   useEffect(() => {
     if (isMobile) return;
