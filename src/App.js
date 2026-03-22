@@ -67,7 +67,7 @@ function App() {
               Senior Full Stack Software Engineer
             </h2>
             <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
-              Building products that people love
+              Building financial products for everyone
             </p>
             <div className="mt-4">
               <Links />
@@ -98,19 +98,26 @@ function App() {
           <div className="glass-panel p-8 lg:p-12">
             <div className="max-w-4xl space-y-6">
               <p className="text-lg leading-relaxed text-white">
-                I'm a Senior Full Stack Software Engineer who thrives on
-                creating products that users can fall in love with.
+                Full-stack engineer with 6+ years building financial systems
+                and scalable web applications from 0→1. I got my start in
+                Bitcoin-native infrastructure — including building the
+                industry's first integration between a Bitcoin
+                Mining-as-a-Service platform and the OCEAN decentralized
+                mining pool — and that work has shaped how I think about
+                financial products: they should be fast, transparent, and
+                accessible to everyone.
               </p>
               <p className="text-lg leading-relaxed text-text-secondary">
-                At Sazmining, I pioneered the industry's first Bitcoin Mining
-                as a Service platform integrated with the OCEAN decentralized
-                mining pool, delivering real-time transparency and
-                non-custodial payouts using TypeScript, Supabase, and React. I
-                design scalable systems, automate financial workflows with
-                Node.js microservices, and lead teams to elevate engineering
-                standards while mentoring others. I'm driven by a vision to
-                build products that not only solve problems but also spark joy
-                and advance human potential.
+                Deep expertise in TypeScript/React, automated billing and
+                revenue infrastructure, and breaking monoliths into
+                high-performance modular systems. I'm most energized working
+                at the intersection of crypto rails and consumer financial
+                products — building the kind of infrastructure that brings the
+                benefits of open financial systems to mainstream audiences.
+              </p>
+              <p className="text-lg leading-relaxed text-text-secondary">
+                Proven track record of owning critical financial systems
+                end-to-end at fast-scaling fintech and crypto companies.
               </p>
             </div>
           </div>
