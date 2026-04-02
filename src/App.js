@@ -67,7 +67,7 @@ function App() {
               Senior Full Stack Software Engineer
             </h2>
             <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
-              Building financial products for everyone
+            Building software for a better future
             </p>
             <div className="mt-4">
               <Links />
