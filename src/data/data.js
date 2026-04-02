@@ -107,8 +107,9 @@ export const experience = [
         link: "https://www.sazmining.com",
         descriptions: [
             "Engineered the industry's first integration between a Bitcoin Mining-as-a-Service (BMaaS) platform and the OCEAN decentralized mining pool, enabling real-time hashrate transparency and non-custodial payouts for hundreds of users; built with TypeScript, Supabase, and React.",
-            "As an early hire and temporarily sole engineer, played a key role in scaling Sazmining 350% in 2025 — growing from 2 to 5 data centers — shaping core architecture and product strategy during a critical growth phase.",
-            "Built a real-time revenue tracking engine that aggregates and reconciles financial data across mining payouts providing leadership with live revenue visibility and eliminating manual reconciliation errors.",
+            "As an early hire and temporarily sole engineer, played a key role in scaling Sazmining 350% in 2025, growing from 2 to 5 data centers, shaping core architecture and product strategy during a critical growth phase.",
+            "Architected a Redis-based queue system and cron scheduler to manage commands dispatched to Bitcoin mining rigs across multiple data centers, preventing power fluctuations through configurable per-facility throttling and idempotent processing.",
+            "Built a real-time revenue tracking engine that aggregates and reconciles financial data across mining payouts, providing leadership with live revenue visibility and eliminating manual reconciliation errors.",
             "Migrated a complex monolith into three purpose-built applications (Admin, Customer, e-commerce) using modern modular patterns, accelerating feature delivery and reducing cross-team deployment risk.",
             "Architected a QuickBooks microservice (Node.js/Express) and automated precision billing via Supabase Edge Functions, integrating third-party APIs to streamline financial operations and ensure accurate revenue collection across subscription and e-commerce platforms.",
             "Mentored junior developers, led code reviews, and conducted engineering interviews, raising team velocity and maintaining high code quality standards.",
