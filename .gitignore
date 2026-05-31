@@ -10,6 +10,10 @@
 
 # production
 /build
+/dist
+
+# typescript incremental build cache
+*.tsbuildinfo
 
 # misc
 .DS_Store

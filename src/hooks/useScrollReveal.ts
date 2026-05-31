@@ -5,17 +5,25 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const EASE_OUT = "cubic-bezier(0.22, 1, 0.36, 1)";
-const prefersReducedMotion = () =>
+const prefersReducedMotion = (): boolean =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-export function useScrollReveal({ stagger = false, staggerDelay = 0.15 } = {}) {
-  const ref = useRef(null);
+interface UseScrollRevealOptions {
+  stagger?: boolean;
+  staggerDelay?: number;
+}
+
+export function useScrollReveal<T extends HTMLElement = HTMLElement>({
+  stagger = false,
+  staggerDelay = 0.15,
+}: UseScrollRevealOptions = {}) {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    const triggers = [];
+    const triggers: ScrollTrigger[] = [];
 
     if (prefersReducedMotion()) {
       gsap.set(el, { opacity: 1, y: 0, filter: "blur(0px)" });
@@ -40,7 +48,7 @@ export function useScrollReveal({ stagger = false, staggerDelay = 0.15 } = {}) {
       },
     });
 
-    triggers.push(tl.scrollTrigger);
+    if (tl.scrollTrigger) triggers.push(tl.scrollTrigger);
 
     // Reveal the container
     tl.to(el, {

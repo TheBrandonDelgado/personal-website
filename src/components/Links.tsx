@@ -1,20 +1,23 @@
-import React, { memo, useRef, useEffect } from "react";
+import { memo, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { social } from "../data/data";
+import type { SocialLink } from "../types/content";
 import { gsap } from "gsap";
 
-const canHover = () =>
+const canHover = (): boolean =>
   typeof window !== "undefined" &&
   window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-const MagneticLink = memo(function MagneticLink({ link }) {
-  const ref = useRef(null);
+type MagneticLinkProps = { link: SocialLink };
+
+const MagneticLink = memo(function MagneticLink({ link }: MagneticLinkProps) {
+  const ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el || !canHover()) return;
 
-    const onMouseMove = (e) => {
+    const onMouseMove = (e: MouseEvent): void => {
       const rect = el.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
@@ -32,7 +35,7 @@ const MagneticLink = memo(function MagneticLink({ link }) {
       }
     };
 
-    const onMouseLeave = () => {
+    const onMouseLeave = (): void => {
       gsap.to(el, {
         x: 0,
         y: 0,

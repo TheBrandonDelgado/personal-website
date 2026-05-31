@@ -5,13 +5,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 function ScrollProgress() {
-  const barRef = useRef(null);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const bar = barRef.current;
     if (!bar) return;
 
-    const updateProgress = () => {
+    const updateProgress = (): void => {
       const scrollTop = window.scrollY;
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;

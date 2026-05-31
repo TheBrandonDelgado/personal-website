@@ -1,7 +1,7 @@
 import "./App.css";
 import avatar from "./assets/Avatar.jpg";
-import WorkExperience from "./components/workExperience";
-import Links from "./components/links";
+import WorkExperience from "./components/WorkExperience";
+import Links from "./components/Links";
 import Portfolio from "./components/Portfolio";
 import ScrollProgress from "./components/ScrollProgress";
 import { useState, useCallback, lazy, Suspense } from "react";
@@ -16,7 +16,7 @@ function App() {
   const portfolioRef = useScrollReveal({ stagger: true });
   const experienceRef = useScrollReveal({ stagger: true });
 
-  const handleCanvasReady = useCallback(() => {
+  const handleCanvasReady = useCallback((): void => {
     setCanvasReady(true);
   }, []);
 
