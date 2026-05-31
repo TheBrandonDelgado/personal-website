@@ -1,3 +1,4 @@
+import type { SocialLink, Project, ExperienceEntry } from "../types/content";
 import {
     faCloud,
     faDatabase,
@@ -34,7 +35,7 @@ export const social = [
         link: "mailto:thebrandondelgado@icloud.com?subject=Website%20Inquiry",
         icon: faEnvelope,
     },
-];
+] satisfies SocialLink[];
 
 export const portfolio = [
     {
@@ -96,7 +97,7 @@ export const portfolio = [
             },
         ],
     },
-];
+] satisfies Project[];
 
 export const experience = [
     {
@@ -233,4 +234,4 @@ export const experience = [
             "SEO",
         ],
     },
-];
+] satisfies ExperienceEntry[];

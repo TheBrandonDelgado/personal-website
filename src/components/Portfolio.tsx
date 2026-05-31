@@ -1,21 +1,24 @@
+import { memo, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { portfolio } from "../data/data";
-import { memo, useRef, useEffect } from "react";
+import type { Project } from "../types/content";
 import { gsap } from "gsap";
 
-const canHover = () =>
+const canHover = (): boolean =>
   typeof window !== "undefined" &&
   window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-const PortfolioCard = memo(function PortfolioCard({ project }) {
-  const cardRef = useRef(null);
+type PortfolioCardProps = { project: Project };
+
+const PortfolioCard = memo(function PortfolioCard({ project }: PortfolioCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = cardRef.current;
     if (!el || !canHover()) return;
 
-    const onMouseMove = (e) => {
+    const onMouseMove = (e: MouseEvent): void => {
       const rect = el.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -28,7 +31,7 @@ const PortfolioCard = memo(function PortfolioCard({ project }) {
       });
     };
 
-    const onMouseLeave = () => {
+    const onMouseLeave = (): void => {
       gsap.to(el, {
         rotateY: 0,
         rotateX: 0,

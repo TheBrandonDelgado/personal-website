@@ -1,6 +1,49 @@
 import { useEffect, useRef, useCallback } from "react";
 
-const LAYER_CONFIG = {
+type RGB = readonly [number, number, number];
+type StarLayer = "far" | "mid" | "near";
+
+interface LayerConfig {
+  radiusMin: number;
+  radiusMax: number;
+  opacityMin: number;
+  opacityMax: number;
+  gravityResponse: number;
+  glowBlur: number;
+  color: RGB;
+}
+
+interface Star {
+  homeX: number;
+  homeY: number;
+  dx: number;
+  dy: number;
+  vx: number;
+  vy: number;
+  radius: number;
+  baseOpacity: number;
+  gravityResponse: number;
+  glowBlur: number;
+  color: RGB;
+  layer: StarLayer;
+  twinkleSpeed: number;
+  twinklePhase: number;
+  driftAmpX: number;
+  driftAmpY: number;
+  driftPeriodX: number;
+  driftPeriodY: number;
+  driftPhaseX: number;
+  driftPhaseY: number;
+  driftOffsetX: number;
+  driftOffsetY: number;
+}
+
+interface MousePos {
+  x: number;
+  y: number;
+}
+
+const LAYER_CONFIG: Record<StarLayer, LayerConfig> = {
   far: {
     radiusMin: 1, radiusMax: 1.5,
     opacityMin: 0.10, opacityMax: 0.20,
@@ -24,14 +67,16 @@ const LAYER_CONFIG = {
   },
 };
 
-function Starfield({ onReady }) {
-  const canvasRef = useRef(null);
-  const ctxRef = useRef(null);
-  const starsRef = useRef(null);
-  const rafRef = useRef(null);
-  const mouseRef = useRef({ x: -1, y: -1 });
-  const startTimeRef = useRef(Date.now());
-  const onReadyRef = useRef(onReady);
+type StarfieldProps = { onReady?: () => void };
+
+function Starfield({ onReady }: StarfieldProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
+  const starsRef = useRef<Star[] | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const mouseRef = useRef<MousePos>({ x: -1, y: -1 });
+  const startTimeRef = useRef<number>(Date.now());
+  const onReadyRef = useRef<(() => void) | undefined>(onReady);
 
   // Keep ref in sync with prop
   useEffect(() => { onReadyRef.current = onReady; }, [onReady]);
@@ -46,13 +91,13 @@ function Starfield({ onReady }) {
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
   ).current;
 
-  const generateStars = useCallback(() => {
+  const generateStars = useCallback((): Star[] => {
     const farCount = isMobile ? 35 : 120;
     const midCount = isMobile ? 12 : 50;
     const nearCount = isMobile ? 4 : 16;
-    const stars = [];
+    const stars: Star[] = [];
 
-    const makeStar = (layer) => {
+    const makeStar = (layer: StarLayer): Star => {
       const cfg = LAYER_CONFIG[layer];
       return {
         homeX: Math.random(),
@@ -87,7 +132,7 @@ function Starfield({ onReady }) {
     return stars;
   }, [isMobile]);
 
-  const render = useCallback(() => {
+  const render = useCallback((): void => {
     const canvas = canvasRef.current;
     const ctx = ctxRef.current;
     if (!canvas || !ctx) return;
@@ -197,7 +242,7 @@ function Starfield({ onReady }) {
     }
 
     let firstFrame = true;
-    const loop = () => {
+    const loop = (): void => {
       render();
       if (firstFrame) {
         firstFrame = false;
@@ -215,7 +260,7 @@ function Starfield({ onReady }) {
   useEffect(() => {
     if (isMobile) return;
 
-    const onMouseMove = (e) => {
+    const onMouseMove = (e: MouseEvent): void => {
       const canvas = canvasRef.current;
       if (!canvas) return;
       const rect = canvas.getBoundingClientRect();
@@ -225,7 +270,7 @@ function Starfield({ onReady }) {
       };
     };
 
-    const onMouseLeave = () => {
+    const onMouseLeave = (): void => {
       mouseRef.current = { x: -1, y: -1 };
     };
 

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import App from './App.tsx';
 
 test('renders the hero heading', () => {
   render(<App />);
