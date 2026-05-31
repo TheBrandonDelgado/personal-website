@@ -1,0 +1,16 @@
+# Netlify build configuration, pinned in-repo so it no longer depends on
+# dashboard settings left over from the Create React App setup.
+[build]
+  command = "npm run build"
+  # Vite outputs to dist/ (Create React App used build/).
+  publish = "dist"
+
+[build.environment]
+  # Vite 7 requires Node >= 20.19 / >= 22.12. Pin an LTS that satisfies it.
+  NODE_VERSION = "22"
+
+# Single-page app: serve index.html for any path so refreshes/deep links work.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
