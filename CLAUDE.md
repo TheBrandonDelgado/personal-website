@@ -4,15 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
+This project uses **Bun** as its package manager and script runner (`bun.lock` is the committed lockfile; there is no `package-lock.json`).
+
 ```bash
-npm run dev        # Start Vite dev server (port 3000, strict) with hot reload
-npm run build      # Type-check (tsc -b) then production build (vite build -> dist/)
-npm run preview    # Preview the production build locally (port 3000)
-npm test           # Run the test suite once (vitest run)
-npm run typecheck  # Type-check only (tsc --noEmit)
+bun install        # Install dependencies (use --frozen-lockfile in CI)
+bun run dev        # Start Vite dev server (port 3000, strict) with hot reload
+bun run build      # Type-check (tsc -b) then production build (vite build -> dist/)
+bun run preview    # Preview the production build locally (port 3000)
+bun run test       # Run the test suite once (vitest run)
+bun run typecheck  # Type-check only (tsc --noEmit)
 ```
 
-No lint command. TypeScript runs in strict mode; treat `tsc --noEmit` as the gate.
+Run scripts with `bun run <script>`. Note `bun run test` runs Vitest (our `test` script); plain `bun test` would invoke Bun's own native runner instead — not what we want. No lint command. TypeScript runs in strict mode; treat `tsc --noEmit` as the gate.
 
 ## Architecture
 

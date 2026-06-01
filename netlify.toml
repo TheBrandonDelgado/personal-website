@@ -1,12 +1,18 @@
 # Netlify build configuration, pinned in-repo so it no longer depends on
 # dashboard settings left over from the Create React App setup.
 [build]
-  command = "npm run build"
+  # Install with Bun, then build. We run `bun install` explicitly rather than
+  # relying on Netlify's lockfile auto-detection: that only recognizes the
+  # binary `bun.lockb`, but Bun >= 1.2 defaults to the text `bun.lock` we commit.
+  command = "bun install --frozen-lockfile && bun run build"
   # Vite outputs to dist/ (Create React App used build/).
   publish = "dist"
 
 [build.environment]
-  # Vite 7 requires Node >= 20.19 / >= 22.12. Pin an LTS that satisfies it.
+  # Pin Bun to match local development for reproducible builds.
+  BUN_VERSION = "1.3.7"
+  # Vite 7 requires Node >= 20.19 / >= 22.12. Bun runs the build, but some Vite
+  # plugins still shell out to Node, so keep a compatible Node pinned too.
   NODE_VERSION = "22"
 
 # Single-page app: serve index.html for any path so refreshes/deep links work.
