@@ -1,5 +1,5 @@
 import "./App.css";
-import avatar from "./assets/Avatar.jpg";
+import avatar from "./assets/Avatar.webp";
 import WorkExperience from "./components/WorkExperience";
 import Links from "./components/Links";
 import Portfolio from "./components/Portfolio";

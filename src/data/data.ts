@@ -5,8 +5,8 @@ import {
     faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import saz from "../assets/Sazmining.png";
-import jan3 from "../assets/jan3.png";
+import saz from "../assets/Sazmining.webp";
+import jan3 from "../assets/jan3.webp";
 import { faReact } from "@fortawesome/free-brands-svg-icons";
 import {
     faChartLine,
