@@ -67,7 +67,7 @@ function App() {
               Senior Full Stack Software Engineer
             </h2>
             <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
-              Building software for a better future
+              Bitcoin infrastructure, financial systems, AI-assisted development
             </p>
             <div className="mt-4">
               <Links />
@@ -96,13 +96,13 @@ function App() {
           <div className="glass-panel p-8 lg:p-12">
             <div className="max-w-4xl space-y-6">
               <p className="text-lg leading-relaxed text-white">
-                Full-stack engineer with 6+ years building products from 0 to 1. I've worked across financial systems, crypto infrastructure, and consumer applications, including building the industry's first integration between a Bitcoin Mining-as-a-Service platform and the OCEAN decentralized mining pool. That kind of work shapes how I think about engineering: systems should be fast, transparent, and accessible to the people who depend on them.
+                Full-stack engineer building products from 0 to 1 across financial systems, crypto infrastructure, and consumer applications, including the industry's first integration between a Bitcoin Mining-as-a-Service platform and the OCEAN decentralized mining pool. That kind of work shapes how I think about engineering: systems should be fast, transparent, and accessible to the people who depend on them.
               </p>
               <p className="text-lg leading-relaxed text-text-secondary">
-                Deep expertise in TypeScript across the entire stack, from data model and API design to React on the frontend, with a track record of owning complex systems end-to-end at fast-scaling companies. I've shipped automated billing infrastructure, real-time financial data engines, distributed queue systems, and modular architecture migrations, all in environments where getting it wrong had real consequences. I've also completed certifications in Claude Code and LangChain, and use AI-assisted development tools as a core part of my daily engineering workflow.
+                I have deep expertise in TypeScript across the entire stack, from data model and API design to React on the frontend, and a track record of owning complex systems end-to-end. I've shipped automated billing infrastructure, real-time financial data engines, distributed queue systems, and modular architecture migrations, all in environments where getting it wrong had real consequences. I've also completed certifications in Claude Code and LangChain, and use AI-assisted development as a core part of my daily workflow.
               </p>
               <p className="text-lg leading-relaxed text-text-secondary">
-                I believe we're living through one of the most consequential periods in human history. The companies building today, in energy, transportation, AI, space, financial infrastructure, and beyond, are laying the foundation for a genuinely better world. I want to spend my career writing the software that makes that future real.
+                I believe we're living through one of the most consequential periods in human history. The companies building today in financial infrastructure, AI, energy, and beyond are laying the foundation for a genuinely better world, and I want to spend my career writing the software that makes that future real.
               </p>
             </div>
           </div>
