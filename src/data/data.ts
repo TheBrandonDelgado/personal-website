@@ -108,6 +108,7 @@ export const experience = [
         link: "https://www.sazmining.com",
         descriptions: [
             "Architected the migration of a monolith into three purpose-built applications (Admin, Customer, e-commerce), including a QuickBooks microservice and an automated billing pipeline on Supabase Edge Functions, restructuring how financial operations run across subscription and e-commerce systems.",
+            "Led a full-stack rebuild and production cutover of the customer commerce platform from Medusa v1 to Medusa v2—backend, storefront, and shared contracts in a monorepo—redesigning multi-facility catalog/pricing, cart and checkout, payment capture, QuickBooks invoicing, and inventory availability while preserving money-correct purchase flows.",
             "Built a real-time revenue engine over asynchronous payout sources using event-driven, immutable ledger patterns, eliminating manual reconciliation and giving leadership live financial visibility.",
             "Engineered the industry's first integration between a Bitcoin Mining-as-a-Service (BMaaS) platform and the OCEAN decentralized mining pool, delivering real-time hashrate transparency and non-custodial Bitcoin payouts to hundreds of users; built with TypeScript, Supabase, and React.",
             "Designed a deferred pool and wallet change system that abstracts mining-pool constraints (stranded earnings, change windows, rate limits), so users initiate changes immediately while a background poller executes when conditions allow, with clear progress visibility throughout.",
@@ -123,7 +124,7 @@ export const experience = [
             "PostgreSQL",
             "GraphQL",
             "Redis",
-            "Medusa",
+            "Medusa (v1/v2)",
             "Event-Driven Architecture",
             "Distributed Systems",
             "Claude Code",
