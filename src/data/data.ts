@@ -70,7 +70,7 @@ export const portfolio = [
     },
     {
         year: "2024 - Present",
-        title: "Sazmining",
+        title: "Sazmining User Dashboard",
         company: "Sazmining",
         image: saz,
         link: "https://app.sazmining.com",
@@ -100,6 +100,7 @@ export const portfolio = [
     },
     {
         year: "2024",
+        title: "JAN3 Website",
         company: "JAN3",
         image: jan3,
         link: "https://jan3.com",
