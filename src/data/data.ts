@@ -1,20 +1,25 @@
 import type { SocialLink, Project, ExperienceEntry } from "../types/content";
 import {
-    faCloud,
-    faDatabase,
-    faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import saz from "../assets/Sazmining.webp";
-import jan3 from "../assets/jan3.webp";
-import { faReact } from "@fortawesome/free-brands-svg-icons";
-import {
+    faBolt,
     faChartLine,
     faCode,
     faCodeBranch,
+    faDatabase,
+    faEnvelope,
+    faFileInvoice,
     faNetworkWired,
     faServer,
+    faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+    faGithub,
+    faLinkedin,
+    faNodeJs,
+    faReact,
+} from "@fortawesome/free-brands-svg-icons";
+import saz from "../assets/Sazmining.webp";
+import sazStore from "../assets/Sazmining-Store.webp";
+import jan3 from "../assets/jan3.webp";
 
 export const social = [
     {
@@ -39,20 +44,68 @@ export const social = [
 
 export const portfolio = [
     {
-        year: "2024 - Present",
-        title: "Sazmining",
-        company: "Sazmining",
-        image: saz,
-        link: "https://app.sazmining.com",
-        description: "Senior Full Stack Engineer",
+        year: "2026 - Present",
+        title: "Sazmining Store",
+        company: "Sole technical owner · Full stack · Production cutover",
+        image: sazStore,
+        link: "https://store.sazmining.com",
+        description:
+            "End-to-end Medusa v2 commerce platform for Sazmining hardware sales: multi-facility pricing and inventory, cart/checkout, Zaprite payment settlement, and QuickBooks invoicing—owned through production cutover.",
         technologies: [
+            {
+                name: "TypeScript",
+                icon: faCode,
+            },
+            {
+                name: "Medusa 2",
+                icon: faShoppingCart,
+            },
             {
                 name: "React",
                 icon: faReact,
             },
             {
+                name: "TanStack Start",
+                icon: faServer,
+            },
+            {
+                name: "Node",
+                icon: faNodeJs,
+            },
+            {
+                name: "Postgres",
+                icon: faDatabase,
+            },
+            {
+                name: "Redis",
+                icon: faNetworkWired,
+            },
+            {
+                name: "Zaprite",
+                icon: faBolt,
+            },
+            {
+                name: "QuickBooks",
+                icon: faFileInvoice,
+            },
+        ],
+    },
+    {
+        year: "2024 - Present",
+        title: "Sazmining User Dashboard",
+        company: "Sole product owner · Customer-facing · Ongoing",
+        image: saz,
+        link: "https://app.sazmining.com",
+        description:
+            "Sole owner of Sazmining’s primary customer-facing product: a React/TypeScript dashboard for managing mining service, financial status, and platform integrations—end-to-end product ownership.",
+        technologies: [
+            {
                 name: "TypeScript",
                 icon: faCode,
+            },
+            {
+                name: "React",
+                icon: faReact,
             },
             {
                 name: "Supabase",
@@ -63,17 +116,23 @@ export const portfolio = [
                 icon: faCodeBranch,
             },
             {
-                name: "Redis",
-                icon: faNetworkWired,
+                name: "Postgres",
+                icon: faDatabase,
+            },
+            {
+                name: "Full-stack product",
+                icon: faServer,
             },
         ],
     },
     {
         year: "2024",
-        company: "JAN3",
+        title: "JAN3 Website",
+        company: "Contract · Backend & data visualizations",
         image: jan3,
         link: "https://jan3.com",
-        description: "Full Stack Engineer",
+        description:
+            "NestJS/TypeScript APIs (including real-time translation) and Chart.js financial visualizations for the JAN3 and AQUA Bitcoin wallet websites.",
         technologies: [
             {
                 name: "TypeScript",
@@ -88,12 +147,12 @@ export const portfolio = [
                 icon: faChartLine,
             },
             {
-                name: "REST API",
+                name: "REST APIs",
                 icon: faNetworkWired,
             },
             {
-                name: "Ghost CMS",
-                icon: faCloud,
+                name: "Bitcoin / fintech-adjacent",
+                icon: faBolt,
             },
         ],
     },
