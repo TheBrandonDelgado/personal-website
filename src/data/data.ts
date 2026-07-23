@@ -1,20 +1,19 @@
 import type { SocialLink, Project, ExperienceEntry } from "../types/content";
 import {
-    faCloud,
-    faDatabase,
-    faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import saz from "../assets/Sazmining.webp";
-import jan3 from "../assets/jan3.webp";
-import { faReact } from "@fortawesome/free-brands-svg-icons";
-import {
     faChartLine,
+    faCloud,
     faCode,
     faCodeBranch,
+    faDatabase,
+    faEnvelope,
     faNetworkWired,
     faServer,
+    faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin, faReact } from "@fortawesome/free-brands-svg-icons";
+import saz from "../assets/Sazmining.webp";
+import sazStore from "../assets/Sazmining-Store.webp";
+import jan3 from "../assets/jan3.webp";
 
 export const social = [
     {
@@ -38,6 +37,37 @@ export const social = [
 ] satisfies SocialLink[];
 
 export const portfolio = [
+    {
+        year: "2025 - Present",
+        title: "Sazmining Store",
+        company: "Sazmining",
+        image: sazStore,
+        link: "https://store.sazmining.com",
+        description:
+            "Bitcoin mining rig e-commerce platform — multi-facility catalog, cart, checkout, and crypto payments",
+        technologies: [
+            {
+                name: "Medusa v2",
+                icon: faShoppingCart,
+            },
+            {
+                name: "React",
+                icon: faReact,
+            },
+            {
+                name: "TypeScript",
+                icon: faCode,
+            },
+            {
+                name: "TanStack Start",
+                icon: faServer,
+            },
+            {
+                name: "PostgreSQL",
+                icon: faDatabase,
+            },
+        ],
+    },
     {
         year: "2024 - Present",
         title: "Sazmining",
