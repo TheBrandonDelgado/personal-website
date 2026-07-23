@@ -67,7 +67,7 @@ function App() {
               Senior Full Stack Software Engineer
             </h2>
             <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
-              Bitcoin infrastructure, financial systems, AI-assisted development
+              End-to-end product systems · money rails · AI-first engineering
             </p>
             <div className="mt-4">
               <Links />
