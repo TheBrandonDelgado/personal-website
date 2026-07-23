@@ -38,7 +38,7 @@ export const social = [
 
 export const portfolio = [
     {
-        year: "2025 - Present",
+        year: "2026 - Present",
         title: "Sazmining Store",
         company: "Sazmining",
         image: sazStore,
