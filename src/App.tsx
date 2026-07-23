@@ -67,7 +67,7 @@ function App() {
               Senior Full Stack Software Engineer
             </h2>
             <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
-              Bitcoin infrastructure, financial systems, AI-assisted development
+              End-to-end product systems · money rails · AI-first engineering
             </p>
             <div className="mt-4">
               <Links />
@@ -96,13 +96,32 @@ function App() {
           <div className="glass-panel p-8 lg:p-12">
             <div className="max-w-4xl space-y-6">
               <p className="text-lg leading-relaxed text-white">
-                Full-stack engineer building products from 0 to 1 across financial systems, crypto infrastructure, and consumer applications, including the industry's first integration between a Bitcoin Mining-as-a-Service platform and the OCEAN decentralized mining pool. That kind of work shapes how I think about engineering: systems should be fast, transparent, and accessible to the people who depend on them.
+                I'm Brandon Delgado, a senior full-stack engineer based in
+                Austin, working remote.
               </p>
               <p className="text-lg leading-relaxed text-text-secondary">
-                I have deep expertise in TypeScript across the entire stack, from data model and API design to React on the frontend, and a track record of owning complex systems end-to-end. I've shipped automated billing infrastructure, real-time financial data engines, distributed queue systems, and modular architecture migrations, all in environments where getting it wrong had real consequences. I've also completed certifications in Claude Code and LangChain, and use AI-assisted development as a core part of my daily workflow.
+                I care most about vertically integrated products: software that
+                sits inside a real business loop—customers, operations, money,
+                and ongoing experience—not a thin tool sold sideways to every
+                industry. Correctness, reliability, and transparency aren't
+                slogans; they're how you ship systems people depend on.
               </p>
               <p className="text-lg leading-relaxed text-text-secondary">
-                I believe we're living through one of the most consequential periods in human history. The companies building today in financial infrastructure, AI, energy, and beyond are laying the foundation for a genuinely better world, and I want to spend my career writing the software that makes that future real.
+                At Sazmining, I build the product side of a Bitcoin
+                Mining-as-a-Service company: ledgers and live financial
+                visibility, multi-app architecture and billing automation, a
+                full Medusa commerce platform rebuild with multi-facility
+                pricing and inventory, rig dispatch across data centers, and
+                pool integrations that keep hashrate and payouts clear for
+                users. TypeScript end to end, React on the front, event-driven
+                and distributed systems underneath. I work AI-first—Claude Code
+                and Cursor as daily drivers, with knowledge bases and agentic
+                workflows on a real production codebase.
+              </p>
+              <p className="text-lg leading-relaxed text-text-secondary">
+                Earlier: NestJS services and financial visualization in
+                Bitcoin-adjacent product work, plus agency and freelance
+                full-stack delivery.
               </p>
             </div>
           </div>
