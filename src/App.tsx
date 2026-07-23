@@ -67,7 +67,7 @@ function App() {
               Senior Full Stack Software Engineer
             </h2>
             <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
-              End-to-end product systems · money rails · AI-first engineering
+              Customer-facing product · money rails · end-to-end systems · AI-first
             </p>
             <div className="mt-4">
               <Links />
@@ -107,16 +107,17 @@ function App() {
                 slogans; they're how you ship systems people depend on.
               </p>
               <p className="text-lg leading-relaxed text-text-secondary">
-                At Sazmining, I build the product side of a Bitcoin
-                Mining-as-a-Service company: ledgers and live financial
-                visibility, multi-app architecture and billing automation, a
-                full Medusa commerce platform rebuild with multi-facility
-                pricing and inventory, rig dispatch across data centers, and
-                pool integrations that keep hashrate and payouts clear for
-                users. TypeScript end to end, React on the front, event-driven
-                and distributed systems underneath. I work AI-first—Claude Code
-                and Cursor as daily drivers, with knowledge bases and agentic
-                workflows on a real production codebase.
+                At Sazmining, I'm the sole owner of the customer dashboard—the
+                primary product our customers use. I own that experience end to
+                end in React and TypeScript, and I build the systems behind it:
+                ledgers and live financial visibility, multi-app architecture
+                and billing automation, a full Medusa commerce platform rebuild
+                with multi-facility pricing and inventory, rig dispatch across
+                data centers, and pool integrations that keep hashrate and
+                payouts clear for users. Event-driven and distributed systems
+                underneath; AI-first day to day—Claude Code and Cursor as daily
+                drivers, with knowledge bases and agentic workflows on a real
+                production codebase.
               </p>
               <p className="text-lg leading-relaxed text-text-secondary">
                 Earlier: NestJS services and financial visualization in
