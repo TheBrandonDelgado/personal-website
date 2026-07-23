@@ -85,8 +85,8 @@ function App() {
         }}
       />
 
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-8 py-16">
+      {/* Main Content — one shared width so section titles and portfolio cards align */}
+      <main className="max-w-7xl mx-auto px-8 py-16">
         {/* About Section */}
         <section ref={aboutRef} className="mb-16 lg:mb-32">
           <h2 className="text-3xl lg:text-5xl font-bold mb-12 flex items-center gap-4 tracking-[-0.02em]">

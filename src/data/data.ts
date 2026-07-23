@@ -128,7 +128,7 @@ export const portfolio = [
     {
         year: "2024",
         title: "JAN3 Website",
-        company: "Contract · Backend & data viz",
+        company: "Contract · Backend & data visualizations",
         image: jan3,
         link: "https://jan3.com",
         description:
