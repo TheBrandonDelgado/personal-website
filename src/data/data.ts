@@ -207,31 +207,19 @@ export const experience = [
         ],
     },
     {
-        years: "2023 - 2024",
+        years: "2022 - 2024",
         title: "Web Developer II",
         company: "TrueSense Marketing",
-        type: "Full-time",
+        type: "Full-time · One & All Agency through acquisition",
         link: "https://www.truesense.com",
         descriptions: [
             "Led the technical transition of 30+ clients during an agency acquisition, supporting $10M in revenue continuity through data and systems migration.",
             "Mentored junior developers and led code reviews, improving team practices and scalability.",
+            "Partnered with strategists, designers, and executives to architect a mobile app, and owned engagement and donation analytics across 30+ client accounts.",
         ],
         technologies: [
             "JavaScript",
             "Data Pipelines",
-        ],
-    },
-    {
-        years: "2022 - 2023",
-        title: "Digital Developer",
-        company: "One & All Agency",
-        type: "Full-time",
-        descriptions: [
-            "Partnered with strategists, designers, and executives to architect a mobile app, and owned engagement and donation analytics for 30+ clients.",
-        ],
-        technologies: [
-            "JavaScript",
-            "Mobile Development",
         ],
     },
     {
