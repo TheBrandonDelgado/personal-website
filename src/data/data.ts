@@ -7,6 +7,7 @@ import {
     faDatabase,
     faEnvelope,
     faFileInvoice,
+    faFilePdf,
     faNetworkWired,
     faServer,
     faShoppingCart,
@@ -20,6 +21,16 @@ import {
 import saz from "../assets/Sazmining.webp";
 import sazStore from "../assets/Sazmining-Store.webp";
 import jan3 from "../assets/jan3.webp";
+
+/** Compact hero badges under the one-liner. Labels match stack already claimed on the site. */
+export const heroStack = [
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Postgres",
+    "Redis",
+    "NestJS / Express",
+] as const;
 
 export const social = [
     {
@@ -39,6 +50,13 @@ export const social = [
         username: "TheBrandonDelgado@icloud.com",
         link: "mailto:thebrandondelgado@icloud.com?subject=Website%20Inquiry",
         icon: faEnvelope,
+    },
+    {
+        name: "Resume",
+        username: "Brandon Delgado",
+        link: "/Brandon-Delgado-Resume.pdf",
+        icon: faFilePdf,
+        download: "Brandon-Delgado-Resume.pdf",
     },
 ] satisfies SocialLink[];
 

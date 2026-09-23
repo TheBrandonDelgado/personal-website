@@ -53,6 +53,8 @@ const MagneticLink = memo(function MagneticLink({ link }: MagneticLinkProps) {
     };
   }, []);
 
+  const isDownload = Boolean(link.download);
+
   return (
     <a
       ref={ref}
@@ -60,9 +62,10 @@ const MagneticLink = memo(function MagneticLink({ link }: MagneticLinkProps) {
         bg-[var(--glass-bg)] border border-[var(--glass-border)] backdrop-blur-sm
         hover:text-space-primary hover:border-[var(--glass-hover-border)] hover:shadow-glow-golden"
       href={link.link}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`Visit ${link.name} profile`}
+      target={isDownload ? undefined : "_blank"}
+      rel={isDownload ? undefined : "noreferrer"}
+      download={link.download}
+      aria-label={isDownload ? `Download ${link.name}` : `Visit ${link.name} profile`}
     >
       <FontAwesomeIcon
         icon={link.icon}
@@ -76,8 +79,8 @@ const MagneticLink = memo(function MagneticLink({ link }: MagneticLinkProps) {
 const Links = memo(function Links() {
   return (
     <div className="flex gap-3 flex-wrap justify-center lg:justify-start">
-      {social.map((link, index) => (
-        <MagneticLink key={index} link={link} />
+      {social.map((link) => (
+        <MagneticLink key={link.name} link={link} />
       ))}
     </div>
   );

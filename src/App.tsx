@@ -6,6 +6,7 @@ import Portfolio from "./components/Portfolio";
 import ScrollProgress from "./components/ScrollProgress";
 import { useState, useCallback, lazy, Suspense } from "react";
 import { useScrollReveal } from "./hooks/useScrollReveal";
+import { heroStack } from "./data/data";
 
 const Starfield = lazy(() => import("./components/Starfield"));
 
@@ -69,7 +70,20 @@ function App() {
             <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
               Customer-facing product · money rails · end-to-end systems · AI-first
             </p>
-            <div className="mt-4">
+            <ul
+              aria-label="Core stack"
+              className="flex flex-wrap gap-2 justify-center lg:justify-start list-none"
+            >
+              {heroStack.map((item) => (
+                <li
+                  key={item}
+                  className="font-mono text-xs text-space-primary bg-[rgba(251,191,36,0.1)] border border-[rgba(251,191,36,0.2)] backdrop-blur-sm px-3 py-1 rounded-sm-token font-medium whitespace-nowrap"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-2">
               <Links />
             </div>
           </div>
