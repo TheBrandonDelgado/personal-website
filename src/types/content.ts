@@ -12,6 +12,8 @@ export interface SocialLink {
   username: string;
   link: string;
   icon: IconDefinition;
+  /** Same-origin download filename. External profiles omit this. */
+  download?: string;
 }
 
 /** A portfolio project card. `title` is optional — JAN3 omits it and the
