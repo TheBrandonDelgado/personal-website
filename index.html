@@ -6,25 +6,28 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#08080a" />
     <meta
+      data-seo="description"
       name="description"
-      content="Brandon Delgado — Senior full-stack engineer. Customer-facing product, end-to-end TypeScript systems, AI-first. Remote · Austin."
+      content="Brandon Delgado — senior full-stack engineer in Austin. TypeScript from end to end: React, Node, Postgres, Supabase, Redis."
     />
     <meta name="author" content="Brandon Delgado" />
-    <link rel="canonical" href="https://brandon-delgado.com/" />
+    <link data-seo="canonical" rel="canonical" href="https://brandon-delgado.com/" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta data-seo="og:type" property="og:type" content="website" />
     <meta property="og:site_name" content="Brandon Delgado" />
-    <meta property="og:url" content="https://brandon-delgado.com/" />
+    <meta data-seo="og:url" property="og:url" content="https://brandon-delgado.com/" />
     <meta
+      data-seo="og:title"
       property="og:title"
       content="Brandon Delgado — Senior Full Stack Software Engineer"
     />
     <meta
+      data-seo="og:description"
       property="og:description"
-      content="Brandon Delgado — Senior full-stack engineer. Customer-facing product, end-to-end TypeScript systems, AI-first. Remote · Austin."
+      content="Brandon Delgado — senior full-stack engineer in Austin. TypeScript from end to end: React, Node, Postgres, Supabase, Redis."
     />
     <meta property="og:image" content="https://brandon-delgado.com/og.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -37,14 +40,16 @@
 
     <!-- Twitter / X. These use name=, not property=. -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://brandon-delgado.com/" />
+    <meta data-seo="twitter:url" name="twitter:url" content="https://brandon-delgado.com/" />
     <meta
+      data-seo="twitter:title"
       name="twitter:title"
       content="Brandon Delgado — Senior Full Stack Software Engineer"
     />
     <meta
+      data-seo="twitter:description"
       name="twitter:description"
-      content="Brandon Delgado — Senior full-stack engineer. Customer-facing product, end-to-end TypeScript systems, AI-first. Remote · Austin."
+      content="Brandon Delgado — senior full-stack engineer in Austin. TypeScript from end to end: React, Node, Postgres, Supabase, Redis."
     />
     <meta name="twitter:image" content="https://brandon-delgado.com/og.jpg" />
     <meta
@@ -53,12 +58,9 @@
     />
 
     <link rel="manifest" href="/manifest.json" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <title>Brandon Delgado — Senior Full Stack Software Engineer</title>
     <script type="application/ld+json">
       {
@@ -70,10 +72,11 @@
             "url": "https://brandon-delgado.com",
             "image": "https://brandon-delgado.com/avatar.jpg",
             "jobTitle": "Senior Full Stack Software Engineer",
-            "description": "Brandon Delgado — Senior full-stack engineer. Customer-facing product, end-to-end TypeScript systems, AI-first. Remote · Austin.",
+            "description": "Brandon Delgado — senior full-stack engineer in Austin. TypeScript from end to end: React, Node, Postgres, Supabase, Redis.",
             "worksFor": {
               "@type": "Organization",
               "name": "Sazmining",
+              "description": "Hardware hosting and managed infrastructure service.",
               "url": "https://www.sazmining.com"
             },
             "address": {
@@ -102,13 +105,44 @@
             "@type": "WebSite",
             "name": "Brandon Delgado",
             "url": "https://brandon-delgado.com",
-            "description": "Brandon Delgado — Senior full-stack engineer. Customer-facing product, end-to-end TypeScript systems, AI-first. Remote · Austin."
+            "description": "Brandon Delgado — senior full-stack engineer in Austin. TypeScript from end to end: React, Node, Postgres, Supabase, Redis."
           }
         ]
       }
     </script>
+    <script type="application/ld+json" id="page-jsonld">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Brandon Delgado — Senior Full Stack Software Engineer",
+        "url": "https://brandon-delgado.com/",
+        "description": "Brandon Delgado — senior full-stack engineer in Austin. TypeScript from end to end: React, Node, Postgres, Supabase, Redis.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Brandon Delgado",
+          "url": "https://brandon-delgado.com"
+        },
+        "about": {
+          "@type": "Person",
+          "name": "Brandon Delgado",
+          "url": "https://brandon-delgado.com"
+        }
+      }
+    </script>
   </head>
   <body>
+    <noscript>
+      <style>
+        .principle-word,
+        .principle-numeral,
+        .proof-copy,
+        .proof-line {
+          opacity: 1 !important;
+          transform: none !important;
+          filter: none !important;
+        }
+      </style>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import "./index.css";
+import "./App.css";
 import App from "./App.tsx";
 
 const container = document.getElementById("root");
@@ -10,7 +11,7 @@ if (!container) {
 
 const app = (
   <StrictMode>
-    <App />
+    <App initialPath={window.location.pathname} />
   </StrictMode>
 );
 

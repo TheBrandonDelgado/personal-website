@@ -19,29 +19,28 @@ Run scripts with `bun run <script>`. Note `bun run test` runs Vitest (our `test`
 
 ## Architecture
 
-**Vite + React 19 + TypeScript (strict)** single-page app. Tailwind CSS via PostCSS handles styling. The Vite entry is `src/main.tsx`, which renders `App` in `React.StrictMode` and imports `src/index.css`. The HTML shell is the root `index.html` (Vite convention), which loads `/src/main.tsx` as a module and includes the favicon, Open Graph / Twitter meta, and the Inter Google Font link.
+**Vite + React 19 + TypeScript (strict)** multi-route site. Tailwind CSS via PostCSS handles styling. The Vite entry is `src/main.tsx`, which hydrates `App` in `React.StrictMode` and imports `src/index.css`. `src/entry-server.tsx` prerenders each route into its own HTML file during `bun run build`. The HTML shell is the root `index.html`, which carries favicons, the canonical tag, Open Graph / Twitter meta, Person and WebSite JSON-LD, and preloads for the self-hosted fonts.
 
-**Content is centralized in `src/data/data.ts`** — all portfolio projects, work experience entries, and social links live there, typed against the interfaces in `src/types/content.ts` (`SocialLink`, `Project`, `ProjectTechnology`, `ExperienceEntry`). Edit `data.ts` to update portfolio/experience/social content. (The hero strings and the About paragraphs are intentionally kept inline in `App.tsx`.)
+**Content is centralized in `src/data/data.ts` and `src/data/pages.ts`.** Portfolio projects, work experience, and social links live in `data.ts`. The six principles, their proof pages, and document titles live in `pages.ts`. Edit those files rather than hard-coding new claims in components.
 
 ### Component Structure
 
-- `src/App.tsx` — root component. Lazy-loads `Starfield` inside `Suspense`; a `canvasReady` state toggles a CSS fallback radial-gradient background until the canvas paints. Uses `useScrollReveal` for the About, Portfolio, and Experience sections. Renders `ScrollProgress`, the hero (avatar, animated gradient name, subtitle, tagline, `Links` row), three About paragraphs, `Portfolio`, and `WorkExperience`. There is NO footer and NO dark-mode toggle.
-- `src/components/Links.tsx` — social link bar; each link has a GSAP magnetic-hover effect (fine-pointer only).
-- `src/components/Portfolio.tsx` — project grid cards with a GSAP 3D tilt on hover (fine-pointer only) and FontAwesome technology icons.
-- `src/components/WorkExperience.tsx` — timeline of job history (separate desktop/mobile layouts), FontAwesome external-link icon, and technology chips.
-- `src/components/Starfield.tsx` — Canvas 2D animated starfield with three depth layers (far/mid/near), gravitational cursor interaction, drift, and twinkle; handles reduced-motion and mobile; calls an `onReady` callback when the first frame paints.
-- `src/components/ScrollProgress.tsx` — GSAP ScrollTrigger-driven scroll progress bar.
-- `src/hooks/useScrollReveal.ts` — GSAP + ScrollTrigger reveal hook with optional stagger; returns a ref to attach to a section.
+- `src/App.tsx` — route shell. Home is the manifesto; every other published path renders a proof page. There is NO dark-mode toggle.
+- `src/components/HomePage.tsx` — hero, six full-screen principle scenes, and the signature close.
+- `src/components/ProofPage.tsx` — prerendered proof and earlier-work pages. Hardware dispatch includes the SVG diagram.
+- `src/components/Chrome.tsx` — fixed header, resume link, and contact row.
+- `src/hooks/useRoute.ts` — client navigations for known routes. Unknown paths keep the home document so the Netlify fallback hydrates.
 
-`Portfolio`, `Links`, and `WorkExperience` are memoized and receive their data by importing it directly from `src/data/data.ts`.
+Scroll motion is CSS only and never parks text at opacity 0. Reduced motion skips it. GSAP remains installed but is not used on the page.
 
 ### Styling Conventions
 
 - **Tailwind utility classes** for layout and responsive design.
-- **`src/App.css`** holds design tokens (CSS custom properties), the `.glass-panel` system, `.scroll-progress`, smooth scroll, hidden scrollbars, keyframes (`gradient-shift`, `pulse-glow`), the reduced-motion block, gold focus outline, and gold `::selection`. It also `@import`s the Inter and JetBrains Mono Google Fonts.
-- **`tailwind.config.js`** extends the theme with a space/golden color palette, gradient backgrounds, custom glow shadows, animations (`pulse-glow`, `gradient-shift`), Inter/JetBrains Mono font families, and radius tokens. It sets `darkMode: "class"`, but this is inert — the app never toggles a `dark` class and uses no `dark:` utilities.
+- **`src/App.css`** holds the ember horizon, grain, vignette, headline light sweep, and the reduced-motion rules.
+- **`src/index.css`** holds Tailwind and the self-hosted `@font-face` rules (Instrument Serif, Inter Tight, JetBrains Mono, Mrs Saint Delafield). Font files live in `public/fonts/`.
+- **`tailwind.config.js`** extends the theme with the manifesto palette (`stage`, `ink`, `ember`, `glow`) and the self-hosted font families. It sets `darkMode: "class"`, but this is inert — the app never toggles a `dark` class and uses no `dark:` utilities.
 - **`postcss.config.js`** runs `tailwindcss` + `autoprefixer`.
 
 ### Assets
 
-Images are in `src/assets/` and imported directly (Vite resolves them to URLs). `public/` (Avatar.ico, manifest.json, robots.txt) is served at the web root.
+`public/` is served at the web root: favicons, `og.jpg`, `avatar.jpg`, `sitemap.xml`, `robots.txt`, the resume PDF, and `fonts/`. Proof routes are also written into `dist/` by the prerender step and listed in the sitemap.

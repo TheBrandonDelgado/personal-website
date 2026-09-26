@@ -7,6 +7,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        stage: "#08080a",
+        ink: "#f1ebe1",
+        dim: "#8d877d",
+        ember: "#ff5a1f",
+        glow: "#ffb27a",
+        mist: "#cbc3b6",
+        paper: "#e2dbcf",
+        narr: "#cfc7ba",
         "space": {
           "primary": "#fbbf24",
           "secondary": "#f59e0b",
@@ -54,8 +62,11 @@ module.exports = {
         },
       },
       fontFamily: {
-        "inter": ["Inter", "sans-serif"],
-        "mono": ["'JetBrains Mono'", "monospace"],
+        sans: ['"Inter Tight"', "Inter", "Segoe UI", "sans-serif"],
+        serif: ['"Instrument Serif"', "Georgia", "serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+        script: ['"Mrs Saint Delafield"', "cursive"],
+        inter: ["Inter", "sans-serif"],
       },
       boxShadow: {
         "glow-golden": "0 0 20px rgba(251, 191, 36, 0.4)",

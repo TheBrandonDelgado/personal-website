@@ -16,6 +16,8 @@ window.matchMedia =
       dispatchEvent: () => false,
     }) as MediaQueryList);
 
+window.scrollTo = () => {};
+
 window.ResizeObserver =
   window.ResizeObserver ||
   class {
