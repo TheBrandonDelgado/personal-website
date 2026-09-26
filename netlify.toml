@@ -15,7 +15,76 @@
   # plugins still shell out to Node, so keep a compatible Node pinned too.
   NODE_VERSION = "22"
 
-# Single-page app: serve index.html for any path so refreshes/deep links work.
+# Single-page app fallback for client-side routes only.
+#
+# Netlify serves a published file before applying a redirect unless `force`
+# is true. Do not set force on the catch-all: that rewrites real files
+# (sitemap, robots, icons, og image, resume PDF, hashed assets) to HTML,
+# which is why /Avatar.jpg used to unfurl as a document.
+#
+# These explicit rules are listed first so the static paths stay files even
+# if the catch-all is later edited. They are shadowed by the files themselves
+# when those files exist in dist/.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+
+[[redirects]]
+  from = "/og.jpg"
+  to = "/og.jpg"
+  status = 200
+
+[[redirects]]
+  from = "/avatar.jpg"
+  to = "/avatar.jpg"
+  status = 200
+
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.ico"
+  status = 200
+
+[[redirects]]
+  from = "/favicon-32.png"
+  to = "/favicon-32.png"
+  status = 200
+
+[[redirects]]
+  from = "/apple-touch-icon.png"
+  to = "/apple-touch-icon.png"
+  status = 200
+
+[[redirects]]
+  from = "/icon-192.png"
+  to = "/icon-192.png"
+  status = 200
+
+[[redirects]]
+  from = "/icon-512.png"
+  to = "/icon-512.png"
+  status = 200
+
+[[redirects]]
+  from = "/manifest.json"
+  to = "/manifest.json"
+  status = 200
+
+[[redirects]]
+  from = "/Brandon-Delgado-Resume.pdf"
+  to = "/Brandon-Delgado-Resume.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -4,7 +4,7 @@ import WorkExperience from "./components/WorkExperience";
 import Links from "./components/Links";
 import Portfolio from "./components/Portfolio";
 import ScrollProgress from "./components/ScrollProgress";
-import { useState, useCallback, lazy, Suspense } from "react";
+import { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { heroStack } from "./data/data";
 
@@ -12,6 +12,9 @@ const Starfield = lazy(() => import("./components/Starfield"));
 
 function App() {
   const [canvasReady, setCanvasReady] = useState(false);
+  // Start the canvas after mount so the prerendered HTML matches the first
+  // client render. React.lazy suspends, and renderToString cannot wait on it.
+  const [showStarfield, setShowStarfield] = useState(false);
 
   const aboutRef = useScrollReveal();
   const portfolioRef = useScrollReveal({ stagger: true });
@@ -21,6 +24,10 @@ function App() {
     setCanvasReady(true);
   }, []);
 
+  useEffect(() => {
+    setShowStarfield(true);
+  }, []);
+
   return (
     <div className="min-h-screen font-inter bg-bg-primary text-text-primary">
       <ScrollProgress />
@@ -28,9 +35,11 @@ function App() {
       {/* Hero Section */}
       <header className="min-h-screen flex items-center justify-center px-8 relative overflow-hidden">
         {/* Starfield Background */}
-        <Suspense fallback={null}>
-          <Starfield onReady={handleCanvasReady} />
-        </Suspense>
+        {showStarfield && (
+          <Suspense fallback={null}>
+            <Starfield onReady={handleCanvasReady} />
+          </Suspense>
+        )}
 
         {/* CSS fallback gradient (hidden once canvas is ready) */}
         {!canvasReady && (
@@ -68,7 +77,7 @@ function App() {
               Senior Full Stack Software Engineer
             </h2>
             <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
-              Customer-facing product · money rails · end-to-end systems · AI-first
+              Customer-facing product · payments and operations · end-to-end systems · AI-first
             </p>
             <ul
               aria-label="Core stack"
@@ -126,16 +135,18 @@ function App() {
                 end in React and TypeScript, and I build the systems behind it:
                 ledgers and live financial visibility, multi-app architecture
                 and billing automation, a full Medusa commerce platform rebuild
-                with multi-facility pricing and inventory, rig dispatch across
-                data centers, and pool integrations that keep hashrate and
-                payouts clear for users. Event-driven and distributed systems
-                underneath; AI-first day to day—Claude Code and Cursor as daily
+                with multi-facility pricing and inventory, hardware dispatch
+                across data centers with per-facility throttling, and a
+                first-of-its-kind third-party payout and earnings integration
+                that gives hundreds of users real-time transparency.
+                Event-driven and distributed systems underneath; AI-first day
+                to day—Claude Code and Cursor as daily
                 drivers, with knowledge bases and agentic workflows on a real
                 production codebase.
               </p>
               <p className="text-lg leading-relaxed text-text-secondary">
-                Earlier: NestJS services and financial visualization in
-                Bitcoin-adjacent product work, plus agency and freelance
+                Earlier: NestJS services and financial visualizations for
+                fintech and wallet product websites, plus agency and freelance
                 full-stack delivery.
               </p>
             </div>
