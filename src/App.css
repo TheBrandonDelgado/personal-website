@@ -1,163 +1,239 @@
-/* Fonts load once from index.html (Inter + JetBrains Mono). */
+/* Atmosphere and motion for the manifesto stage.
+   Copy stays readable without JavaScript: nothing rests at opacity 0. */
 
-/* ===== Design Tokens (CSS Custom Properties) ===== */
-:root {
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-bg-hover: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-hover-border: rgba(251, 191, 36, 0.2);
-  --glass-hover-glow: 0 0 30px rgba(251, 191, 36, 0.15), 0 8px 32px rgba(0, 0, 0, 0.4);
-  --accent-line: rgba(251, 191, 36, 0.3);
-  --accent-line-dim: rgba(251, 191, 36, 0.1);
-  --bg-primary-rgb: 10, 10, 10;
-
-  /* Timing tokens */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast: 200ms;
-  --duration-medium: 500ms;
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  z-index: 80;
+  transform: translateY(-160%);
+  background: #f1ebe1;
+  color: #08080a;
+  padding: 10px 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-/* ===== Glass Panel System ===== */
-.glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  position: relative;
-  transition:
-    background var(--duration-fast) var(--ease-in-out),
-    border-color var(--duration-fast) var(--ease-in-out),
-    box-shadow var(--duration-fast) var(--ease-in-out),
-    transform var(--duration-fast) var(--ease-in-out);
+.skip-link:focus {
+  transform: none;
 }
 
-.glass-panel::before {
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 45%, transparent 52%, rgba(0, 0, 0, 0.72));
+}
+
+.hero {
+  --horizon: 47%;
+  min-height: 100svh;
+}
+
+.hero-glow,
+.hero-beam,
+.hero-floor,
+.hero-cred {
+  position: absolute;
+  pointer-events: none;
+}
+
+.hero-glow {
+  left: 50%;
+  top: var(--horizon);
+  width: 900px;
+  height: 700px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(255, 90, 31, 0.34), rgba(255, 90, 31, 0.1) 45%, transparent 72%);
+}
+
+.hero-beam {
+  left: 0;
+  right: 0;
+  top: var(--horizon);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 178, 122, 0.2) 12%, #ffd2ae 50%, rgba(255, 178, 122, 0.2) 88%, transparent);
+  box-shadow: 0 0 18px 2px rgba(255, 120, 60, 0.55);
+}
+
+.hero-floor {
+  left: 0;
+  right: 0;
+  top: var(--horizon);
+  bottom: 0;
+  background: linear-gradient(rgba(255, 90, 31, 0.08), transparent 60%);
+  overflow: hidden;
+}
+
+.hero-floor::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 2rem;
-  right: 2rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-line-dim), transparent);
-  transition: background var(--duration-fast) var(--ease-in-out);
-  z-index: 1;
+  inset: 0 -50%;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 200, 160, 0.11) 0 1px, transparent 1px 110px),
+    repeating-linear-gradient(0deg, rgba(255, 200, 160, 0.07) 0 1px, transparent 1px 70px);
+  transform: perspective(420px) rotateX(62deg);
+  transform-origin: top center;
 }
 
-/* Glass panel hover — only on fine pointer devices */
-@media (hover: hover) and (pointer: fine) {
-  .glass-panel:hover {
-    background: var(--glass-bg-hover);
-    border-color: var(--glass-hover-border);
-    box-shadow: var(--glass-hover-glow);
-    transform: translateY(-2px);
+.hero-cred {
+  top: calc(var(--horizon) - 26px);
+  z-index: 10;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #8d877d;
+}
+
+.sweep {
+  color: #f1ebe1;
+}
+
+.ember-type {
+  color: #ff5a1f;
+  text-shadow: 0 0 60px rgba(255, 90, 31, 0.45);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .sweep {
+    background-image: linear-gradient(100deg, #cfc6b8 30%, #fff 46%, #cfc6b8 62%);
+    background-size: 300% 100%;
+    background-position: 0 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.closing-quote p::before,
+.closing-quote p::after {
+  color: #ff5a1f;
+}
+
+.closing-quote p::before {
+  content: "“";
+}
+
+.closing-quote p::after {
+  content: "”";
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    --horizon: 64%;
+    min-height: max(100vh, 980px);
   }
 
-  .glass-panel:hover::before {
-    background: linear-gradient(90deg, transparent, var(--accent-line), transparent);
+  .hero-glow {
+    width: 1800px;
+    height: 900px;
   }
 }
 
-/* Backdrop-filter fallback */
-@supports not (backdrop-filter: blur(12px)) {
-  .glass-panel {
-    background: rgba(15, 15, 15, 0.85);
+@media (prefers-reduced-motion: no-preference) {
+  .hero-glow {
+    animation: breathe 7s ease-in-out infinite;
+  }
+
+  .sweep {
+    animation: sweep 9s ease-in-out infinite;
+  }
+
+  .principle-scene.is-armed .principle-word,
+  .principle-scene.is-armed .proof-copy {
+    transform: translateY(26px);
+  }
+
+  .principle-scene.is-in .principle-word,
+  .principle-scene.is-in .proof-copy {
+    transform: none;
+    transition: transform 1s cubic-bezier(0.2, 0.7, 0.1, 1);
+  }
+
+  .principle-scene.is-armed .principle-numeral {
+    transform: translateY(-42%);
+  }
+
+  .principle-scene.is-in .principle-numeral {
+    transform: translateY(-50%);
+    transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.1, 1);
+  }
+
+  .principle-scene .proof-line {
+    transform-origin: left center;
+  }
+
+  .principle-scene.is-armed .proof-line {
+    transform: scaleX(0);
+  }
+
+  .principle-scene.is-in .proof-line {
+    transform: scaleX(1);
+    transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) 0.35s;
+  }
+
+  .diagram-hand {
+    transform-box: view-box;
+    transform-origin: 318px 268px;
+    animation: diagram-spin 5s linear infinite;
+  }
+
+  .diagram-flow {
+    stroke-dasharray: 4 14;
+    animation: diagram-dash 2.8s linear infinite;
   }
 }
 
-/* ===== Scroll Progress Bar ===== */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #fbbf24, #f59e0b);
-  z-index: 9999;
-  transform-origin: left;
-  will-change: transform;
-}
-
-/* ===== Smooth scrolling ===== */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ===== Hide vertical scrollbar ===== */
-html {
-  scrollbar-width: none; /* Firefox */
-}
-
-::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
-}
-
-/* ===== Gradient animation for name ===== */
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
+@media (scripting: none) {
+  .principle-word,
+  .principle-numeral,
+  .proof-copy,
+  .proof-line {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
+}
+
+@keyframes breathe {
   50% {
-    background-position: 100% 50%;
+    opacity: 0.78;
+    transform: translate(-50%, -50%) scale(1.04);
   }
 }
 
-/* ===== Pulsing glow for avatar ===== */
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: translate(-50%, -50%) scale(1);
+@keyframes sweep {
+  0% {
+    background-position: 100% 0;
   }
-  50% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1.2);
+  60%,
+  100% {
+    background-position: 0 0;
   }
 }
 
-/* ===== Reduced Motion ===== */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0ms !important;
-  }
-
-  .scroll-progress {
-    transition: none !important;
+@keyframes diagram-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* ===== Font rendering ===== */
-body {
-  font-family:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* ===== Reset ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* ===== Accessibility ===== */
-*:focus {
-  outline: 2px solid #fbbf24;
-  outline-offset: 2px;
-}
-
-::selection {
-  background-color: rgba(251, 191, 36, 0.3);
-  color: inherit;
+@keyframes diagram-dash {
+  to {
+    stroke-dashoffset: -72;
+  }
 }

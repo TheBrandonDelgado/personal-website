@@ -85,6 +85,45 @@
   to = "/assets/:splat"
   status = 200
 
+# Proof and earlier-work pages are real files at /<path>/index.html.
+# These rewrites run only when pretty URLs did not already match that file,
+# so a request without a trailing slash still returns the prerendered HTML
+# instead of the home-page fallback.
+[[redirects]]
+  from = "/proof/hardware-dispatch"
+  to = "/proof/hardware-dispatch/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proof/customer-dashboard"
+  to = "/proof/customer-dashboard/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proof/revenue-ledger"
+  to = "/proof/revenue-ledger/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proof/commerce-rebuild"
+  to = "/proof/commerce-rebuild/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proof/earnings-integration"
+  to = "/proof/earnings-integration/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proof/how-i-work"
+  to = "/proof/how-i-work/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/work"
+  to = "/work/index.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
