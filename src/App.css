@@ -99,6 +99,59 @@
   color: #8d877d;
 }
 
+/* Insets stay 1.25rem / 3rem when the device reports no safe area, so
+   desktop padding matches the previous fixed header and hero. */
+.safe-x,
+.site-header,
+.page-frame {
+  padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+}
+
+.hero-title {
+  padding-top: calc(6rem + env(safe-area-inset-top, 0px));
+}
+
+.site-header {
+  height: calc(4rem + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.principle-copy {
+  padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+}
+
+/* Right edge sits on the safe area, not past it. Size tracks the live
+   desktop (72svh) unless that would be wider than the viewport. */
+.principle-numeral {
+  position: absolute;
+  top: 50%;
+  right: env(safe-area-inset-right, 0px);
+  margin-top: -0.4em;
+  padding-right: 0.08em;
+  pointer-events: none;
+  user-select: none;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: min(72vh, 46vw);
+  font-size: min(72svh, 46vw);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 90, 31, 0.28);
+  paint-order: stroke fill;
+}
+
+.proof-sentence,
+.ember-type,
+.closing-quote {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
 .sweep {
   color: #f1ebe1;
 }
@@ -142,6 +195,42 @@
     width: 1800px;
     height: 900px;
   }
+
+  .site-header,
+  .page-frame {
+    padding-left: max(3rem, env(safe-area-inset-left, 0px));
+    padding-right: max(3rem, env(safe-area-inset-right, 0px));
+  }
+
+  .site-header {
+    height: calc(72px + env(safe-area-inset-top, 0px));
+  }
+
+  .hero .safe-x {
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  .hero-title {
+    padding-top: 0;
+  }
+
+  .hero-cred.left-12 {
+    left: max(3rem, env(safe-area-inset-left, 0px));
+  }
+
+  .hero-cred.right-12 {
+    right: max(3rem, env(safe-area-inset-right, 0px));
+  }
+
+  .principle-rail {
+    left: max(3rem, env(safe-area-inset-left, 0px));
+  }
+
+  .principle-copy {
+    padding-left: max(136px, calc(env(safe-area-inset-left, 0px) + 88px));
+    padding-right: max(3rem, env(safe-area-inset-right, 0px));
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -165,11 +254,11 @@
   }
 
   .principle-scene.is-armed .principle-numeral {
-    transform: translateY(-42%);
+    transform: translateY(8%);
   }
 
   .principle-scene.is-in .principle-numeral {
-    transform: translateY(-50%);
+    transform: none;
     transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.1, 1);
   }
 
@@ -200,9 +289,14 @@
 
 @media (scripting: none) {
   .principle-word,
-  .principle-numeral,
   .proof-copy,
   .proof-line {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .principle-numeral {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;

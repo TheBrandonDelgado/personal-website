@@ -28,11 +28,11 @@ function Headline({ page }: { page: Subpage }) {
 
 export default function ProofPage({ page }: { page: Subpage }) {
   return (
-    <article className="relative mx-auto flex min-h-screen max-w-[1440px] flex-col px-5 pb-16 pt-24 lg:px-12 lg:pb-10 lg:pt-[108px]">
+    <article className="page-frame relative mx-auto flex min-h-screen max-w-[1440px] flex-col pb-16 pt-24 lg:pb-10 lg:pt-[108px]">
       <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-glow">{page.kicker}</p>
       <Headline page={page} />
       {page.serif ? (
-        <p className="mt-6 max-w-[18em] font-serif text-[clamp(26px,3vw,34px)] leading-[1.15] text-paper">
+        <p className="proof-sentence mt-6 max-w-[22em] font-serif text-[clamp(26px,3vw,34px)] italic leading-[1.2] text-paper">
           {page.serif}
         </p>
       ) : null}
@@ -78,7 +78,7 @@ export default function ProofPage({ page }: { page: Subpage }) {
 
       <div className="mt-10 flex flex-col gap-6 border-t border-white/15 pt-5 lg:mt-auto lg:flex-row lg:items-end lg:justify-between">
         {page.quote ? (
-          <blockquote className="closing-quote max-w-4xl font-serif text-[clamp(28px,4vw,44px)] italic leading-none text-ink">
+          <blockquote className="closing-quote max-w-4xl font-serif text-[clamp(28px,4vw,44px)] italic leading-[1.15] text-ink">
             <p>{page.quote}</p>
           </blockquote>
         ) : (

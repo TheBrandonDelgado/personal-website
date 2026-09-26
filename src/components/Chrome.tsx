@@ -30,7 +30,7 @@ function ResumeLink({ prominent }: { prominent?: boolean }) {
 export function SiteHeader() {
   const github = social.find((item) => item.name === "GitHub");
   return (
-    <header className="fixed inset-x-0 top-0 z-40 grid h-16 grid-cols-[1fr_auto] items-center px-5 font-mono text-[12px] uppercase tracking-[0.18em] text-dim lg:h-[72px] lg:grid-cols-[1fr_auto_1fr] lg:px-12">
+    <header className="site-header fixed inset-x-0 top-0 z-40 grid grid-cols-[1fr_auto] items-center font-mono text-[12px] uppercase tracking-[0.18em] text-dim lg:grid-cols-[1fr_auto_1fr]">
       <a href="/" className="justify-self-start font-medium text-ink">
         Brandon Delgado
       </a>
@@ -90,7 +90,7 @@ export function ContactNav() {
 
 export function Signature() {
   return (
-    <footer className="relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden px-6 py-24 text-center">
+    <footer className="safe-x relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden py-24 text-center">
       <p className="font-script text-[clamp(72px,16vw,130px)] leading-none text-ink [transform:rotate(-4deg)]">
         Brandon Delgado
       </p>
