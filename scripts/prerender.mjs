@@ -92,6 +92,9 @@ for (const page of publishedPages) {
   if (file.includes("opacity:0") || file.includes("opacity: 0")) {
     throw new Error(`Prerendered HTML for ${page.path} hides text with opacity 0`);
   }
+  if (/20\d{2}[–-]\s*(<|·)/.test(rendered.html)) {
+    throw new Error(`Open-ended year range in ${page.path}`);
+  }
   pages.push({ path: page.path, html: file, title: rendered.meta.title });
 }
 
@@ -145,6 +148,7 @@ for (const snippet of [
   "Supabase",
   "NestJS / Express",
   "/Brandon-Delgado-Resume.pdf",
+  "Sazmining 2024–present",
   "Build what works in the real world.",
   "Let reason decide, not habit.",
   "https://brandon-delgado.com/og.jpg",

@@ -67,6 +67,21 @@ test("keeps every route free of banned wording", () => {
   }
 });
 
+test("closes the current role as 2024–present", () => {
+  const home = render(<App />);
+  expect(screen.getByRole("link", { name: "Sazmining 2024–present" })).toHaveAttribute(
+    "href",
+    "/proof/customer-dashboard",
+  );
+  home.unmount();
+
+  for (const page of publishedPages) {
+    const view = render(<App initialPath={page.path} />);
+    expect(view.container.textContent ?? "", page.path).not.toMatch(/20\d{2}[–-]\s*(?=·|$)/);
+    view.unmount();
+  }
+});
+
 test("renders the hardware dispatch proof with the recorded facts", () => {
   render(<App initialPath="/proof/hardware-dispatch" />);
   expect(screen.getByRole("heading", { level: 1, name: /build what works in the real world/i })).toBeInTheDocument();

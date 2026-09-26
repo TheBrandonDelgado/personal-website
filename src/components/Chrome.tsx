@@ -96,7 +96,7 @@ export function Signature() {
       </p>
       <p className="mt-8 max-w-3xl font-mono text-[12px] uppercase leading-loose tracking-[0.14em] text-dim">
         <a className="text-ink underline-offset-4 hover:underline" href="/proof/customer-dashboard">
-          Sazmining 2024–
+          Sazmining 2024–present
         </a>
         {" · "}
         <a className="text-ink underline-offset-4 hover:underline" href="/work#jan3">
