@@ -90,16 +90,13 @@ export default function HomePage() {
 
   return (
     <div ref={rootRef}>
-      <section className="hero relative flex flex-col overflow-hidden lg:block">
-        <div className="hero-glow" aria-hidden="true" />
-        <div className="hero-floor" aria-hidden="true" />
-        <div className="hero-beam" aria-hidden="true" />
-        <p className="hero-cred left-12 hidden lg:block">{DRAFT_LABELS.principles}</p>
-        <p className="hero-cred right-12 hidden text-right lg:block">
+      <section className="hero relative flex flex-col overflow-hidden">
+        <p className="hero-cred left-12">{DRAFT_LABELS.principles}</p>
+        <p className="hero-cred right-12 text-right">
           {DRAFT_LABELS.proofs} · Scroll ↓
         </p>
 
-        <div className="relative z-10 px-5 pt-24 text-center lg:absolute lg:inset-x-0 lg:top-[15%] lg:px-0 lg:pt-0">
+        <div className="hero-title safe-x relative z-10 text-center">
           <h1 className="font-serif font-normal tracking-[-0.025em]">
             <span className="sr-only">Brandon Delgado, </span>
             <span className="mb-4 block font-mono text-[12px] uppercase tracking-[0.34em] text-glow lg:mb-6 lg:text-[13px]">
@@ -114,7 +111,7 @@ export default function HomePage() {
           </h1>
         </div>
 
-        <div className="relative z-10 mx-auto mt-8 max-w-[640px] px-5 text-left lg:absolute lg:left-1/2 lg:top-[calc(var(--horizon)+28px)] lg:mt-0 lg:w-[640px] lg:-translate-x-1/2 lg:px-0 lg:text-center">
+        <div className="hero-intro safe-x relative z-10 mx-auto mt-8 max-w-[640px] text-left lg:text-center">
           <p className="text-[15.5px] leading-relaxed text-mist lg:text-[18px]">
             {INTRO_LEAD}
             <strong className="font-semibold text-ink">{INTRO_EMPHASIS}</strong>
@@ -134,10 +131,16 @@ export default function HomePage() {
           </ul>
         </div>
 
-        <nav
-          aria-label="Principles"
-          className="relative z-10 mt-auto grid grid-cols-2 gap-x-4 px-5 pb-8 pt-8 lg:absolute lg:inset-x-12 lg:bottom-9 lg:mt-0 lg:grid-cols-6 lg:gap-x-[18px] lg:px-0 lg:pb-0 lg:pt-0"
-        >
+        <div className="hero-lower">
+          <div className="hero-stage" aria-hidden="true">
+            <div className="hero-glow" />
+            <div className="hero-floor" />
+            <div className="hero-beam" />
+          </div>
+          <nav
+            aria-label="Principles"
+            className="hero-chapters safe-x relative z-10 grid grid-cols-2 gap-x-4 pb-8 pt-8 lg:grid-cols-6 lg:gap-x-[18px]"
+          >
           {principles.map((principle, index) => (
             <a
               key={principle.numeral}
@@ -152,14 +155,15 @@ export default function HomePage() {
               {principle.statement}
             </a>
           ))}
-        </nav>
+          </nav>
+        </div>
       </section>
 
       <nav
         aria-label="Principle index"
         className={
           showRail
-            ? "fixed left-12 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-3.5 lg:flex"
+            ? "principle-rail fixed top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-3.5 lg:flex"
             : "hidden"
         }
       >
@@ -183,19 +187,16 @@ export default function HomePage() {
           <section
             key={principle.numeral}
             id={`principle-${principle.numeral}`}
-            className="principle-scene relative flex min-h-[100svh] scroll-mt-24 items-center overflow-hidden border-t border-white/[0.06] px-5 py-24 lg:px-12 lg:py-28"
+            className="principle-scene relative flex min-h-[100svh] scroll-mt-24 items-center overflow-hidden border-t border-white/[0.06] py-24 lg:py-28"
           >
             <div
               aria-hidden="true"
               className="pointer-events-none absolute right-[8%] top-1/2 h-[70vmax] w-[70vmax] -translate-y-1/2 bg-[radial-gradient(closest-side,rgba(255,90,31,0.14),transparent)]"
             />
-            <p
-              aria-hidden="true"
-              className="principle-numeral pointer-events-none absolute -right-[6vw] top-1/2 -translate-y-1/2 select-none font-serif italic leading-[0.8] text-transparent [-webkit-text-stroke:1px_rgba(255,90,31,0.28)] text-[42vh] lg:text-[72vh]"
-            >
+            <p aria-hidden="true" className="principle-numeral">
               {principle.numeral}
             </p>
-            <div className="relative z-10 w-full max-w-[980px] lg:pl-[88px]">
+            <div className="principle-copy relative z-10 w-full">
               <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-glow">
                 Principle {principle.numeral}
                 <span aria-hidden="true"> — </span>
@@ -211,7 +212,7 @@ export default function HomePage() {
                   <h3 className="font-mono text-[12px] font-medium uppercase tracking-[0.22em] text-ember">
                     The proof · {principle.proofName}
                   </h3>
-                  <p className="mt-2 font-serif text-[clamp(26px,3vw,32px)] leading-[1.15] text-paper">
+                  <p className="proof-sentence mt-2 font-serif text-[clamp(26px,3vw,32px)] italic leading-[1.2] text-paper">
                     {principle.proofLine}
                   </p>
                   <a
