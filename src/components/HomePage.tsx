@@ -90,16 +90,13 @@ export default function HomePage() {
 
   return (
     <div ref={rootRef}>
-      <section className="hero relative flex flex-col overflow-hidden lg:block">
-        <div className="hero-glow" aria-hidden="true" />
-        <div className="hero-floor" aria-hidden="true" />
-        <div className="hero-beam" aria-hidden="true" />
-        <p className="hero-cred left-12 hidden lg:block">{DRAFT_LABELS.principles}</p>
-        <p className="hero-cred right-12 hidden text-right lg:block">
+      <section className="hero relative flex flex-col overflow-hidden">
+        <p className="hero-cred left-12">{DRAFT_LABELS.principles}</p>
+        <p className="hero-cred right-12 text-right">
           {DRAFT_LABELS.proofs} · Scroll ↓
         </p>
 
-        <div className="hero-title safe-x relative z-10 text-center lg:absolute lg:inset-x-0 lg:top-[15%]">
+        <div className="hero-title safe-x relative z-10 text-center">
           <h1 className="font-serif font-normal tracking-[-0.025em]">
             <span className="sr-only">Brandon Delgado, </span>
             <span className="mb-4 block font-mono text-[12px] uppercase tracking-[0.34em] text-glow lg:mb-6 lg:text-[13px]">
@@ -114,7 +111,7 @@ export default function HomePage() {
           </h1>
         </div>
 
-        <div className="safe-x relative z-10 mx-auto mt-8 max-w-[640px] text-left lg:absolute lg:left-1/2 lg:top-[calc(var(--horizon)+28px)] lg:mt-0 lg:w-[640px] lg:-translate-x-1/2 lg:text-center">
+        <div className="hero-intro safe-x relative z-10 mx-auto mt-8 max-w-[640px] text-left lg:text-center">
           <p className="text-[15.5px] leading-relaxed text-mist lg:text-[18px]">
             {INTRO_LEAD}
             <strong className="font-semibold text-ink">{INTRO_EMPHASIS}</strong>
@@ -134,10 +131,16 @@ export default function HomePage() {
           </ul>
         </div>
 
-        <nav
-          aria-label="Principles"
-          className="safe-x relative z-10 mt-auto grid grid-cols-2 gap-x-4 pb-8 pt-8 lg:absolute lg:inset-x-12 lg:bottom-9 lg:mt-0 lg:grid-cols-6 lg:gap-x-[18px] lg:pb-0 lg:pt-0"
-        >
+        <div className="hero-lower">
+          <div className="hero-stage" aria-hidden="true">
+            <div className="hero-glow" />
+            <div className="hero-floor" />
+            <div className="hero-beam" />
+          </div>
+          <nav
+            aria-label="Principles"
+            className="hero-chapters safe-x relative z-10 grid grid-cols-2 gap-x-4 pb-8 pt-8 lg:grid-cols-6 lg:gap-x-[18px]"
+          >
           {principles.map((principle, index) => (
             <a
               key={principle.numeral}
@@ -152,7 +155,8 @@ export default function HomePage() {
               {principle.statement}
             </a>
           ))}
-        </nav>
+          </nav>
+        </div>
       </section>
 
       <nav
