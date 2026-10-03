@@ -4,14 +4,20 @@ export const SITE = "https://brandon-delgado.com";
 
 export const HOME_TITLE = "Brandon Delgado — Senior Full Stack Software Engineer";
 
+/** Short line for the home meta, Open Graph, and Twitter description tags. */
 export const HOME_DESCRIPTION =
-  "Brandon Delgado — senior full-stack engineer in Austin. TypeScript from end to end: React, Node, Postgres, Supabase, Redis.";
+  "Brandon Delgado, senior full-stack engineer: payments, checkout, and customer-facing product, built end to end.";
 
-/** Verbatim from the approved manifesto mockup. */
-export const INTRO_LEAD =
-  "I'm a senior full-stack engineer in Austin. TypeScript from end to end: React, Node, Postgres, Supabase, Redis. These are the rules I build by, and ";
+/** Long line for the hero and the JSON-LD description. */
+export const POSITIONING =
+  "I build the parts of a product where money moves and customers are watching: checkout, payments, invoicing, and the customer-facing app. I own it end to end, from data model to UI, and ship daily with AI agents under review rules I wrote.";
 
-export const INTRO_EMPHASIS = "each one points to something real that I shipped.";
+const emphasisStart = POSITIONING.indexOf("checkout, payments");
+const emphasisEnd = emphasisStart + "checkout, payments, invoicing, and the customer-facing app.".length;
+
+export const INTRO_LEAD = POSITIONING.slice(0, emphasisStart);
+export const INTRO_EMPHASIS = POSITIONING.slice(emphasisStart, emphasisEnd);
+export const INTRO_TAIL = POSITIONING.slice(emphasisEnd);
 
 /** Verbatim closing line from the approved manifesto mockup. */
 export const CLOSING_LINE = "Software that touches the physical world has to respect it.";
@@ -40,39 +46,39 @@ export interface Principle {
 export const principles = [
   {
     numeral: "i",
-    statement: "Build what works in the real world.",
-    proofName: "Dispatch",
-    proofLine:
-      "Commands to machines across multiple data centers, throttled for each facility.",
-    path: "/proof/hardware-dispatch",
-  },
-  {
-    numeral: "ii",
-    statement: "Own the whole thing.",
-    proofName: "app.sazmining.com",
-    proofLine: "Sole owner of the customer dashboard. For a time, the only engineer.",
-    path: "/proof/customer-dashboard",
-  },
-  {
-    numeral: "iii",
-    statement: "Let reason decide, not habit.",
-    proofName: "Revenue ledger",
-    proofLine: "Event-driven and immutable. Manual reconciliation, gone.",
-    path: "/proof/revenue-ledger",
-  },
-  {
-    numeral: "iv",
     statement: "Leave it better than you found it.",
     proofName: "Commerce rebuild",
     proofLine: "Rebuilt store.sazmining.com and led the production cutover.",
     path: "/proof/commerce-rebuild",
   },
   {
-    numeral: "v",
+    numeral: "ii",
     statement: "Make more possible, for more people.",
     proofName: "Earnings integration",
-    proofLine: "First of its kind. Real-time transparency for hundreds of users.",
+    proofLine: "Real-time earnings and direct payouts for hundreds of customers.",
     path: "/proof/earnings-integration",
+  },
+  {
+    numeral: "iii",
+    statement: "Own the whole thing.",
+    proofName: "app.sazmining.com",
+    proofLine: "Sole owner of the customer dashboard. For a time, the only engineer.",
+    path: "/proof/customer-dashboard",
+  },
+  {
+    numeral: "iv",
+    statement: "Let reason decide, not habit.",
+    proofName: "Revenue ledger",
+    proofLine: "Event-driven and immutable. Manual reconciliation, gone.",
+    path: "/proof/revenue-ledger",
+  },
+  {
+    numeral: "v",
+    statement: "Build what works in the real world.",
+    proofName: "Dispatch",
+    proofLine:
+      "Commands to machines across multiple data centers, throttled for each facility.",
+    path: "/proof/hardware-dispatch",
   },
   {
     numeral: "vi",
@@ -151,21 +157,107 @@ const saz = job("Sazmining");
 const dashboard = project("Sazmining User Dashboard");
 const store = project("Sazmining Store");
 
-const dispatch = principles[0];
-const customer = principles[1];
-const ledger = principles[2];
-const commerce = principles[3];
-const earnings = principles[4];
+const commerce = principles[0];
+const earnings = principles[1];
+const customer = principles[2];
+const ledger = principles[3];
+const dispatch = principles[4];
 const practice = principles[5];
 
+function proofKicker(principle: Principle): string {
+  return `Principle ${principle.numeral}  /  The proof  /  Sazmining, 2024–present`;
+}
+
 export const subpages: readonly Subpage[] = [
+  {
+    path: commerce.path,
+    title: "Commerce rebuild — Brandon Delgado",
+    description:
+      "Brandon Delgado rebuilt store.sazmining.com on Medusa v2 and led the production cutover: pricing, checkout, invoicing, and inventory.",
+    ogType: "article",
+    kicker: proofKicker(commerce),
+    headline: commerce.statement,
+    serif: commerce.proofLine,
+    blocks: [
+      {
+        heading: "The rebuild",
+        paragraphs: [
+          store.description,
+          bullet("Sazmining", "Medusa v1 to Medusa v2"),
+          bullet("Sazmining", "loyalty program"),
+          bullet("Sazmining", "bug-bounty"),
+        ],
+        links: [{ href: store.link, label: "store.sazmining.com" }],
+      },
+    ],
+    next: { href: earnings.path, label: "ii. Make more possible, for more people →" },
+  },
+  {
+    path: earnings.path,
+    title: "Earnings integration — Brandon Delgado",
+    description:
+      "An earnings and payout integration Brandon Delgado built at Sazmining, giving hundreds of customers real-time earnings and direct payouts.",
+    ogType: "article",
+    kicker: proofKicker(earnings),
+    headline: earnings.statement,
+    serif: earnings.proofLine,
+    blocks: [
+      {
+        heading: "The integration",
+        paragraphs: [bullet("Sazmining", "Real-time earnings and direct payouts")],
+      },
+      {
+        heading: "Deferred changes",
+        paragraphs: [bullet("Sazmining", "deferred change system")],
+      },
+    ],
+    next: { href: customer.path, label: "iii. Own the whole thing →" },
+  },
+  {
+    path: customer.path,
+    title: "Customer dashboard — Brandon Delgado",
+    description:
+      "Brandon Delgado is the sole owner of the Sazmining customer dashboard: hosted hardware, financial status, and platform integrations in React and TypeScript.",
+    ogType: "article",
+    kicker: proofKicker(customer),
+    headline: customer.statement,
+    serif: customer.proofLine,
+    blocks: [
+      {
+        heading: "The product",
+        paragraphs: [
+          dashboard.description,
+          bullet("Sazmining", "temporarily sole engineer"),
+        ],
+        links: [{ href: dashboard.link, label: "app.sazmining.com" }],
+      },
+    ],
+    next: { href: ledger.path, label: "iv. Let reason decide, not habit →" },
+  },
+  {
+    path: ledger.path,
+    title: "Revenue ledger — Brandon Delgado",
+    description:
+      "Brandon Delgado built a real-time revenue engine at Sazmining with event-driven, immutable ledger patterns, ending manual reconciliation.",
+    ogType: "article",
+    kicker: proofKicker(ledger),
+    headline: ledger.statement,
+    serif: ledger.proofLine,
+    blocks: [
+      {
+        heading: "The ledger",
+        paragraphs: [bullet("Sazmining", "real-time revenue engine")],
+      },
+    ],
+    next: { href: dispatch.path, label: "v. Build what works in the real world →" },
+  },
   {
     path: dispatch.path,
     title: "Hardware dispatch — Brandon Delgado",
     description:
       "How Brandon Delgado sends commands to hosted hardware across data centers: a Redis queue and scheduler, throttled for each facility.",
     ogType: "article",
-    kicker: "Principle i  /  The proof  /  Sazmining, 2024–present",
+    kicker: proofKicker(dispatch),
     headline: dispatch.statement,
     emphasis: "the real world.",
     diagram: true,
@@ -192,88 +284,8 @@ export const subpages: readonly Subpage[] = [
     ],
     links: [{ href: saz.link ?? "https://www.sazmining.com", label: "sazmining.com" }],
     quote: CLOSING_LINE,
-    next: { href: customer.path, label: "ii. Own the whole thing →" },
-    note: SAZMINING_LINE,
-  },
-  {
-    path: customer.path,
-    title: "Customer dashboard — Brandon Delgado",
-    description:
-      "Brandon Delgado is the sole owner of the Sazmining customer dashboard: hosted hardware, financial status, and platform integrations in React and TypeScript.",
-    ogType: "article",
-    kicker: "Principle ii  /  The proof  /  Sazmining, 2024–present",
-    headline: customer.statement,
-    serif: customer.proofLine,
-    blocks: [
-      {
-        heading: "The product",
-        paragraphs: [
-          dashboard.description,
-          bullet("Sazmining", "temporarily sole engineer"),
-        ],
-        links: [{ href: dashboard.link, label: "app.sazmining.com" }],
-      },
-    ],
-    next: { href: ledger.path, label: "iii. Let reason decide, not habit →" },
-  },
-  {
-    path: ledger.path,
-    title: "Revenue ledger — Brandon Delgado",
-    description:
-      "Brandon Delgado built a real-time revenue engine at Sazmining with event-driven, immutable ledger patterns, ending manual reconciliation.",
-    ogType: "article",
-    kicker: "Principle iii  /  The proof  /  Sazmining, 2024–present",
-    headline: ledger.statement,
-    serif: ledger.proofLine,
-    blocks: [
-      {
-        heading: "The ledger",
-        paragraphs: [bullet("Sazmining", "real-time revenue engine")],
-      },
-    ],
-    next: { href: commerce.path, label: "iv. Leave it better than you found it →" },
-  },
-  {
-    path: commerce.path,
-    title: "Commerce rebuild — Brandon Delgado",
-    description:
-      "Brandon Delgado rebuilt store.sazmining.com on Medusa v2 and led the production cutover: pricing, checkout, invoicing, and inventory.",
-    ogType: "article",
-    kicker: "Principle iv  /  The proof  /  Sazmining, 2024–present",
-    headline: commerce.statement,
-    serif: commerce.proofLine,
-    blocks: [
-      {
-        heading: "The rebuild",
-        paragraphs: [
-          store.description,
-          bullet("Sazmining", "Medusa v1 to Medusa v2"),
-        ],
-        links: [{ href: store.link, label: "store.sazmining.com" }],
-      },
-    ],
-    next: { href: earnings.path, label: "v. Make more possible, for more people →" },
-  },
-  {
-    path: earnings.path,
-    title: "Earnings integration — Brandon Delgado",
-    description:
-      "A first-of-its-kind payout and earnings integration Brandon Delgado built at Sazmining, with real-time transparency for hundreds of users.",
-    ogType: "article",
-    kicker: "Principle v  /  The proof  /  Sazmining, 2024–present",
-    headline: earnings.statement,
-    serif: earnings.proofLine,
-    blocks: [
-      {
-        heading: "The integration",
-        paragraphs: [bullet("Sazmining", "first-of-its-kind")],
-      },
-      {
-        heading: "Deferred changes",
-        paragraphs: [bullet("Sazmining", "deferred change system")],
-      },
-    ],
     next: { href: practice.path, label: "vi. Use every tool that makes you better →" },
+    note: SAZMINING_LINE,
   },
   {
     path: practice.path,
@@ -281,13 +293,16 @@ export const subpages: readonly Subpage[] = [
     description:
       "Brandon Delgado works AI-first with Claude Code and Cursor, and built a knowledge base for a complex production codebase.",
     ogType: "article",
-    kicker: "Principle vi  /  The proof  /  Sazmining, 2024–present",
+    kicker: proofKicker(practice),
     headline: practice.statement,
     serif: practice.proofLine,
     blocks: [
       {
         heading: "The practice",
-        paragraphs: [bullet("Sazmining", "AI-first engineering knowledge base")],
+        paragraphs: [
+          bullet("Sazmining", "AI-first engineering knowledge base"),
+          bullet("Sazmining", "review rules I wrote"),
+        ],
       },
     ],
     next: { href: "/work", label: "Earlier work →" },

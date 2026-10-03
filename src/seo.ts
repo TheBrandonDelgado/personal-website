@@ -1,4 +1,4 @@
-import { canonicalFor, pageByPath, SITE, type PublishedPage } from "./data/pages";
+import { canonicalFor, pageByPath, POSITIONING, SITE, type PublishedPage } from "./data/pages";
 
 export interface PageMeta {
   path: string;
@@ -25,7 +25,7 @@ export function webPageJson(meta: PageMeta): Record<string, unknown> {
     "@type": "WebPage",
     name: meta.title,
     url: meta.canonical,
-    description: meta.description,
+    description: meta.path === "/" ? POSITIONING : meta.description,
     isPartOf: {
       "@type": "WebSite",
       name: "Brandon Delgado",

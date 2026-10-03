@@ -1,5 +1,5 @@
 import { social } from "../data/data";
-import { SAZMINING_LINE } from "../data/pages";
+import { principles, SAZMINING_LINE } from "../data/pages";
 
 function ResumeLink({ prominent }: { prominent?: boolean }) {
   const resume = social.find((item) => item.download);
@@ -40,7 +40,7 @@ export function SiteHeader() {
           Principles
         </a>
         <a
-          href="/proof/hardware-dispatch"
+          href={principles[0].path}
           className="hidden min-h-12 items-center text-ink lg:inline-flex"
         >
           Proof
@@ -115,6 +115,16 @@ export function Signature() {
         TypeScript · React · Node.js · Postgres · Supabase · Redis · NestJS
       </p>
       <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-mist">{SAZMINING_LINE}</p>
+      <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-mist">
+        I also run{" "}
+        <a
+          href="https://shipmindsystems.com"
+          className="text-ink underline decoration-white/40 underline-offset-4 hover:decoration-ink"
+        >
+          Shipmind Systems
+        </a>
+        , a studio building fast websites for small businesses.
+      </p>
       <ContactNav />
     </footer>
   );

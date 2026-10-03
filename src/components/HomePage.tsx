@@ -4,6 +4,7 @@ import {
   DRAFT_LABELS,
   INTRO_EMPHASIS,
   INTRO_LEAD,
+  INTRO_TAIL,
   principles,
 } from "../data/pages";
 import { Signature } from "./Chrome";
@@ -115,6 +116,7 @@ export default function HomePage() {
           <p className="text-[15.5px] leading-relaxed text-mist lg:text-[18px]">
             {INTRO_LEAD}
             <strong className="font-semibold text-ink">{INTRO_EMPHASIS}</strong>
+            {INTRO_TAIL}
           </p>
           <ul
             aria-label="Core stack"

@@ -42,7 +42,7 @@ export const portfolio = [
     company: "Sole technical owner · Full stack · Production cutover",
     link: "https://store.sazmining.com",
     description:
-      "End-to-end Medusa v2 commerce platform for Sazmining hardware sales: multi-facility pricing and inventory, cart/checkout, Zaprite payment settlement, and QuickBooks invoicing—owned through production cutover.",
+      "End-to-end Medusa v2 commerce platform for Sazmining hardware sales: multi-facility pricing and inventory, cart/checkout, payment-provider integrations (hosted checkout, webhooks), and QuickBooks invoicing—owned through production cutover.",
     technologies: [
       "TypeScript",
       "Medusa 2",
@@ -51,7 +51,7 @@ export const portfolio = [
       "Node",
       "Postgres",
       "Redis",
-      "Zaprite",
+      "Payments",
       "QuickBooks",
     ],
   },
@@ -66,7 +66,7 @@ export const portfolio = [
       "TypeScript",
       "React",
       "Supabase",
-      "GraphQL",
+      "REST / PostgREST",
       "Postgres",
       "Full-stack product",
     ],
@@ -77,8 +77,8 @@ export const portfolio = [
     company: "Contract · Backend & data visualizations",
     link: "https://jan3.com",
     description:
-      "NestJS/TypeScript APIs (including real-time translation) and Chart.js financial visualizations for the JAN3 and AQUA wallet websites.",
-    technologies: ["TypeScript", "NestJS", "Chart.js", "REST APIs", "Fintech / wallets"],
+      "NestJS/TypeScript APIs (including real-time translation) and Chart.js financial visualizations for the JAN3 and AQUA fintech product websites.",
+    technologies: ["TypeScript", "NestJS", "Chart.js", "REST APIs", "Fintech"],
   },
 ] satisfies Project[];
 
@@ -93,9 +93,12 @@ export const experience = [
       "Architected the migration of a monolith into three purpose-built applications (Admin, Customer, e-commerce), including a QuickBooks microservice and an automated billing pipeline on Supabase Edge Functions, restructuring how financial operations run across subscription and e-commerce systems.",
       "Led a full-stack rebuild and production cutover of the customer commerce platform from Medusa v1 to Medusa v2—backend, storefront, and shared contracts in a monorepo—redesigning multi-facility catalog/pricing, cart and checkout, payment capture, QuickBooks invoicing, and inventory availability while preserving correct purchase flows.",
       "Built a real-time revenue engine over asynchronous payout sources using event-driven, immutable ledger patterns, eliminating manual reconciliation and giving leadership live financial visibility.",
-      "Engineered a first-of-its-kind third-party payout and earnings integration, giving hundreds of users real-time transparency; built with TypeScript, Supabase, and React.",
-      "Designed a deferred change system that abstracts third-party constraints (stranded earnings, change windows, rate limits), so users initiate changes immediately while a background poller executes when conditions allow, with clear progress visibility throughout.",
+      "Engineered a third-party payout and earnings integration. Real-time earnings and direct payouts for hundreds of customers. Built with TypeScript, Supabase, and React.",
+      "Designed a deferred change system that abstracts third-party constraints (unsettled earnings, change windows, rate limits), so users initiate changes immediately while a background poller executes when conditions allow, with clear progress visibility throughout.",
+      "I launched a customer-facing loyalty program on Oct 1, 2026. It shipped behind feature flags, with a launch runbook and a scheduled go-live, and I built it to the designer's approved screens.",
+      "I closed checkout pricing and data-exposure issues found through a bug-bounty program, and made invoicing idempotent so a re-run can't double-bill.",
       "Built an AI-first engineering knowledge base mapping the stack, architectural decisions, and second-order change consequences, enabling AI-assisted development to operate effectively across a complex production codebase.",
+      "I ship with Claude Code and Cursor agents under review rules I wrote: every agent-opened PR needs a review bot, a local smoke test, and an explainer before merge. I keep an engineering knowledge base re-checked against production.",
       "Joined as an early hire and served as temporarily sole engineer while the company scaled 350% in 2025, growing from 2 to 5 data centers; shaped core architecture and product strategy through a critical growth phase.",
     ],
     technologies: [
@@ -105,7 +108,7 @@ export const experience = [
       "React",
       "Supabase",
       "PostgreSQL",
-      "GraphQL",
+      "REST / PostgREST",
       "Redis",
       "Medusa (v1/v2)",
       "Event-Driven Architecture",
@@ -120,7 +123,7 @@ export const experience = [
     type: "Contract",
     link: "https://jan3.com",
     descriptions: [
-      "Developed backend API endpoints in a NestJS and TypeScript service, including custom modules such as real-time content translation, powering data flows for JAN3 and the AQUA wallet.",
+      "Developed backend API endpoints in a NestJS and TypeScript service, including custom modules such as real-time content translation, powering data flows for the JAN3 and AQUA fintech product websites.",
       "Built dynamic financial data visualizations with Chart.js and JSON APIs, turning complex financial datasets into clear, actionable insights for stakeholders.",
     ],
     technologies: ["TypeScript", "NestJS", "Chart.js", "REST API"],
