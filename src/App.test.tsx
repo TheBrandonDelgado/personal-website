@@ -2,7 +2,17 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { render, screen } from "@testing-library/react";
 import App from "./App.tsx";
-import { principles, publishedPages, CLOSING_LINE, INTRO_EMPHASIS, SAZMINING_LINE } from "./data/pages.ts";
+import {
+  principles,
+  publishedPages,
+  CLOSING_LINE,
+  HOME_DESCRIPTION,
+  INTRO_EMPHASIS,
+  INTRO_LEAD,
+  INTRO_TAIL,
+  POSITIONING,
+  SAZMINING_LINE,
+} from "./data/pages.ts";
 
 const banned = [
   /\bmining\b/i,
@@ -14,6 +24,18 @@ const banned = [
   /money rails/i,
   /\bcrypto/i,
   /open to work/i,
+  /first-of-its-kind/i,
+  /first of its kind/i,
+  /\bwallet\b/i,
+  new RegExp("Za" + "prite", "i"),
+  /graphql/i,
+  /\bstranded\b/i,
+  /heimdall/i,
+  /langchain/i,
+  /\bfinancing\b/i,
+  /\bdrizzle\b/i,
+  /\bdjango\b/i,
+  /next\.js/i,
 ];
 
 test("renders one h1 with Brandon's name and role", () => {
@@ -41,6 +63,25 @@ test("renders hero stack chips and a resume download", () => {
   expect(resume).toHaveAttribute("href", "/Brandon-Delgado-Resume.pdf");
   expect(resume).toHaveAttribute("download", "Brandon-Delgado-Resume.pdf");
   expect(resume).not.toHaveAttribute("target");
+});
+
+test("leads with checkout and earnings, and states the payments positioning", () => {
+  expect(INTRO_LEAD + INTRO_EMPHASIS + INTRO_TAIL).toBe(POSITIONING);
+  render(<App />);
+  expect(screen.getByText(INTRO_LEAD, { exact: false })).toBeInTheDocument();
+  expect(principles.map((principle) => principle.path)).toEqual([
+    "/proof/commerce-rebuild",
+    "/proof/earnings-integration",
+    "/proof/customer-dashboard",
+    "/proof/revenue-ledger",
+    "/proof/hardware-dispatch",
+    "/proof/how-i-work",
+  ]);
+  expect(screen.getByRole("link", { name: "Shipmind Systems" })).toHaveAttribute(
+    "href",
+    "https://shipmindsystems.com",
+  );
+  expect(screen.getByRole("link", { name: "Shipmind Systems" })).not.toHaveAttribute("rel");
 });
 
 test("renders the six principles as h2s with h3 proofs", () => {
@@ -102,6 +143,10 @@ test("publishes every route in the sitemap and keeps share metadata", () => {
   }
 
   const html = readFileSync(resolve(process.cwd(), "index.html"), "utf8");
+  expect(html).toContain(`content="${HOME_DESCRIPTION}"`);
+  expect(html).toContain(`"description": "${POSITIONING}"`);
+  expect(html).toContain('"Payments"');
+  expect(html).toContain('"Checkout"');
   expect(html).toContain('"@type": "Person"');
   expect(html).toContain('"@type": "WebSite"');
   expect(html).toContain('rel="canonical"');
