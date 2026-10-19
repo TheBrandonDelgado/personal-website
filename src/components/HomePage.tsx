@@ -1,12 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { heroStack } from "../data/data";
-import {
-  DRAFT_LABELS,
-  INTRO_EMPHASIS,
-  INTRO_LEAD,
-  INTRO_TAIL,
-  principles,
-} from "../data/pages";
+import { INTRO_EMPHASIS, INTRO_LEAD, INTRO_TAIL, principles } from "../data/pages";
 import { Signature } from "./Chrome";
 
 function Words({ text }: { text: string }) {
@@ -92,11 +86,6 @@ export default function HomePage() {
   return (
     <div ref={rootRef}>
       <section className="hero relative flex flex-col overflow-hidden">
-        <p className="hero-cred left-12">{DRAFT_LABELS.principles}</p>
-        <p className="hero-cred right-12 text-right">
-          {DRAFT_LABELS.proofs} · Scroll ↓
-        </p>
-
         <div className="hero-title safe-x relative z-10 text-center">
           <h1 className="font-serif font-normal tracking-[-0.025em]">
             <span className="sr-only">Brandon Delgado, </span>
@@ -133,31 +122,12 @@ export default function HomePage() {
           </ul>
         </div>
 
-        <div className="hero-lower">
-          <div className="hero-stage" aria-hidden="true">
+        <div className="hero-lower" aria-hidden="true">
+          <div className="hero-stage">
             <div className="hero-glow" />
             <div className="hero-floor" />
             <div className="hero-beam" />
           </div>
-          <nav
-            aria-label="Principles"
-            className="hero-chapters safe-x relative z-10 grid grid-cols-2 gap-x-4 pb-8 pt-8 lg:grid-cols-6 lg:gap-x-[18px]"
-          >
-          {principles.map((principle, index) => (
-            <a
-              key={principle.numeral}
-              href={`#principle-${principle.numeral}`}
-              className={`flex min-h-12 items-baseline gap-2 border-t py-2 text-[13px] leading-snug lg:block lg:pt-3 ${
-                index === 0 ? "border-ember text-ink" : "border-white/20 text-dim hover:border-ember hover:text-ink"
-              }`}
-            >
-              <i className="min-w-6 font-serif text-[18px] font-normal not-italic text-ember lg:mb-1 lg:block lg:text-[22px]">
-                {principle.numeral}.
-              </i>
-              {principle.statement}
-            </a>
-          ))}
-          </nav>
         </div>
       </section>
 
@@ -185,7 +155,7 @@ export default function HomePage() {
       </nav>
 
       <div id="principles">
-        {principles.map((principle, index) => (
+        {principles.map((principle) => (
           <section
             key={principle.numeral}
             id={`principle-${principle.numeral}`}
@@ -201,9 +171,6 @@ export default function HomePage() {
             <div className="principle-copy relative z-10 w-full">
               <p className="font-mono text-[12px] uppercase tracking-[0.3em] text-glow">
                 Principle {principle.numeral}
-                <span aria-hidden="true"> — </span>
-                <span className="sr-only">, </span>
-                {index + 1} of 6
               </p>
               <h2 className="mt-5 max-w-[16ch] text-[clamp(44px,7vw,108px)] font-extrabold leading-[0.92] tracking-[-0.035em] text-ink">
                 <Words text={principle.statement} />

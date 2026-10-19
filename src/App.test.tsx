@@ -125,7 +125,8 @@ test("closes the current role as 2024–present", () => {
 
 test("renders the hardware dispatch proof with the recorded facts", () => {
   render(<App initialPath="/proof/hardware-dispatch" />);
-  expect(screen.getByRole("heading", { level: 1, name: /build what works in the real world/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 1, name: /commands to machines across multiple data centers/i })).toBeInTheDocument();
+  expect(screen.getByText(/build what works in the real world/i)).toBeInTheDocument();
   expect(screen.getByRole("heading", { level: 2, name: /the problem/i })).toBeInTheDocument();
   expect(screen.getByRole("heading", { level: 2, name: /the decision/i })).toBeInTheDocument();
   expect(screen.getByRole("heading", { level: 2, name: /the conditions/i })).toBeInTheDocument();

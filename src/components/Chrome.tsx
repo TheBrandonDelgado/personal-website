@@ -30,11 +30,10 @@ function ResumeLink({ prominent }: { prominent?: boolean }) {
 export function SiteHeader() {
   const github = social.find((item) => item.name === "GitHub");
   return (
-    <header className="site-header fixed inset-x-0 top-0 z-40 grid grid-cols-[1fr_auto] items-center font-mono text-[12px] uppercase tracking-[0.18em] text-dim lg:grid-cols-[1fr_auto_1fr]">
+    <header className="site-header fixed inset-x-0 top-0 z-40 grid grid-cols-[1fr_auto] items-center font-mono text-[12px] uppercase tracking-[0.18em] text-dim">
       <a href="/" className="justify-self-start font-medium text-ink">
         Brandon Delgado
       </a>
-      <span className="hidden text-center lg:block">What I hold to</span>
       <nav aria-label="Primary" className="flex items-center justify-end gap-6 lg:gap-8">
         <a href="/#principles" className="hidden min-h-12 items-center text-ink lg:inline-flex">
           Principles
@@ -91,7 +90,7 @@ export function ContactNav() {
 export function Signature() {
   return (
     <footer className="safe-x relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden py-24 text-center">
-      <p className="font-script text-[clamp(72px,16vw,130px)] leading-none text-ink [transform:rotate(-4deg)]">
+      <p className="font-serif text-[clamp(48px,8vw,84px)] font-normal leading-none tracking-[-0.03em] text-ink">
         Brandon Delgado
       </p>
       <p className="mt-8 max-w-3xl font-mono text-[12px] uppercase leading-loose tracking-[0.14em] text-dim">
@@ -110,9 +109,6 @@ export function Signature() {
         <a className="text-ink underline-offset-4 hover:underline" href="/work#freelance">
           Freelance 2020–22
         </a>
-      </p>
-      <p className="mt-3 font-mono text-[12px] uppercase tracking-[0.16em] text-dim">
-        TypeScript · React · Node.js · Postgres · Supabase · Redis · NestJS
       </p>
       <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-mist">{SAZMINING_LINE}</p>
       <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-mist">

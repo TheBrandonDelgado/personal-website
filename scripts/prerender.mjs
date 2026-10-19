@@ -166,7 +166,7 @@ for (const snippet of [
   "Shipmind Systems",
   "payments, checkout, and customer-facing product",
   "checkout, payments, invoicing, and the customer-facing app",
-  "Leave it better than you found it.",
+  "Rebuilt store.sazmining.com and led the production cutover.",
   "Real-time earnings and direct payouts for hundreds of customers.",
   "https://brandon-delgado.com/og.jpg",
   '"@type": "Person"',
