@@ -124,7 +124,7 @@ export const experience = [
     link: "https://jan3.com",
     descriptions: [
       "Developed backend API endpoints in a NestJS and TypeScript service, including custom modules such as real-time content translation, powering data flows for the JAN3 and AQUA fintech product websites.",
-      "Built dynamic financial data visualizations with Chart.js and JSON APIs, turning complex financial datasets into clear, actionable insights for stakeholders.",
+      "Built dynamic financial data visualizations with Chart.js and JSON APIs.",
     ],
     technologies: ["TypeScript", "NestJS", "Chart.js", "REST API"],
   },

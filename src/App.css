@@ -54,7 +54,7 @@
   justify-content: flex-end;
   flex: 1 0 auto;
   margin-top: 2.25rem;
-  /* Clearance so the beam sits above the chapter links, not through them. */
+  /* Clearance so the beam sits under the intro, not through it. */
   padding-top: 2.25rem;
 }
 
@@ -67,8 +67,7 @@
 
 .hero-glow,
 .hero-beam,
-.hero-floor,
-.hero-cred {
+.hero-floor {
   position: absolute;
   pointer-events: none;
 }
@@ -111,17 +110,6 @@
   transform-origin: top center;
 }
 
-.hero-cred {
-  display: none;
-  top: calc(var(--horizon) - 26px);
-  z-index: 10;
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 12px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #8d877d;
-}
-
 /* Insets stay 1.25rem / 3rem when the device reports no safe area, so
    desktop padding matches the previous fixed header and hero. */
 .safe-x,
@@ -133,10 +121,6 @@
 
 .hero-title {
   padding-top: 0;
-}
-
-.hero-chapters {
-  margin-top: auto;
 }
 
 .site-header {
@@ -185,18 +169,6 @@
 
 .ember-type {
   color: #ff5a1f;
-  text-shadow: 0 0 60px rgba(255, 90, 31, 0.45);
-}
-
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .sweep {
-    background-image: linear-gradient(100deg, #cfc6b8 30%, #fff 46%, #cfc6b8 62%);
-    background-size: 300% 100%;
-    background-position: 0 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
 }
 
 .closing-quote p::before,
@@ -278,10 +250,6 @@
     height: 900px;
   }
 
-  .hero-cred {
-    display: block;
-  }
-
   .hero-title {
     position: absolute;
     top: 15%;
@@ -299,16 +267,6 @@
     margin-top: 0;
     transform: translateX(-50%);
     text-align: center;
-  }
-
-  .hero-chapters {
-    position: absolute;
-    left: max(3rem, env(safe-area-inset-left, 0px));
-    right: max(3rem, env(safe-area-inset-right, 0px));
-    bottom: 2.25rem;
-    margin-top: 0;
-    padding-top: 0;
-    padding-bottom: 0;
   }
 
   .hero .safe-x {
@@ -329,14 +287,6 @@
     height: calc(72px + env(safe-area-inset-top, 0px));
   }
 
-  .hero-cred.left-12 {
-    left: max(3rem, env(safe-area-inset-left, 0px));
-  }
-
-  .hero-cred.right-12 {
-    right: max(3rem, env(safe-area-inset-right, 0px));
-  }
-
   .principle-rail {
     left: max(3rem, env(safe-area-inset-left, 0px));
   }
@@ -348,14 +298,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero-glow {
-    animation: breathe 7s ease-in-out infinite;
-  }
-
-  .sweep {
-    animation: sweep 9s ease-in-out infinite;
-  }
-
   .principle-scene.is-armed .principle-word,
   .principle-scene.is-armed .proof-copy {
     transform: translateY(26px);
@@ -414,23 +356,6 @@
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
-  }
-}
-
-@keyframes breathe {
-  50% {
-    opacity: 0.78;
-    transform: translate(-50%, -50%) scale(1.04);
-  }
-}
-
-@keyframes sweep {
-  0% {
-    background-position: 100% 0;
-  }
-  60%,
-  100% {
-    background-position: 0 0;
   }
 }
 

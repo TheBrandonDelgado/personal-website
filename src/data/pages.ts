@@ -22,15 +22,6 @@ export const INTRO_TAIL = POSITIONING.slice(emphasisEnd);
 /** Verbatim closing line from the approved manifesto mockup. */
 export const CLOSING_LINE = "Software that touches the physical world has to respect it.";
 
-/**
- * Draft labels from the mockup. They are on the page so the design matches,
- * and they are called out for approval in the pull request.
- */
-export const DRAFT_LABELS = {
-  principles: "Six principles",
-  proofs: "Six proofs",
-} as const;
-
 /** Required company framing. Not a stand-in for a product metric. */
 export const SAZMINING_LINE =
   "Sazmining is a hardware hosting and managed infrastructure service.";
@@ -109,8 +100,7 @@ export interface Subpage {
   ogType: "article";
   kicker: string;
   headline: string;
-  /** Trailing phrase rendered in ember, matched inside `headline`. */
-  emphasis?: string;
+  /** When set, this is the page's h1: the work, not the principle. */
   serif?: string;
   blocks: readonly PageBlock[];
   links?: readonly PageLink[];
@@ -165,7 +155,7 @@ const dispatch = principles[4];
 const practice = principles[5];
 
 function proofKicker(principle: Principle): string {
-  return `Principle ${principle.numeral}  /  The proof  /  Sazmining, 2024–present`;
+  return `${principle.numeral}  ·  ${principle.statement}  ·  Sazmining, 2024–present`;
 }
 
 export const subpages: readonly Subpage[] = [
@@ -259,7 +249,7 @@ export const subpages: readonly Subpage[] = [
     ogType: "article",
     kicker: proofKicker(dispatch),
     headline: dispatch.statement,
-    emphasis: "the real world.",
+    serif: dispatch.proofLine,
     diagram: true,
     blocks: [
       {

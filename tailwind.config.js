@@ -65,7 +65,6 @@ module.exports = {
         sans: ['"Inter Tight"', "Inter", "Segoe UI", "sans-serif"],
         serif: ['"Instrument Serif"', "Georgia", "serif"],
         mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
-        script: ['"Mrs Saint Delafield"', "cursive"],
         inter: ["Inter", "sans-serif"],
       },
       boxShadow: {

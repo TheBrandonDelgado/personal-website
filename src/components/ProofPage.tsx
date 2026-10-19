@@ -3,25 +3,9 @@ import { TextLink } from "./Chrome";
 import DispatchDiagram from "./DispatchDiagram";
 
 function Headline({ page }: { page: Subpage }) {
-  if (!page.emphasis) {
-    return (
-      <h1 className="mt-4 max-w-[920px] text-[clamp(46px,7vw,92px)] font-extrabold leading-[0.92] tracking-[-0.035em] text-ink">
-        {page.headline}
-      </h1>
-    );
-  }
-  const index = page.headline.lastIndexOf(page.emphasis);
-  if (index < 0) {
-    return (
-      <h1 className="mt-4 max-w-[920px] text-[clamp(46px,7vw,92px)] font-extrabold leading-[0.92] tracking-[-0.035em] text-ink">
-        {page.headline}
-      </h1>
-    );
-  }
   return (
-    <h1 className="mt-4 max-w-[920px] text-[clamp(46px,7vw,92px)] font-extrabold leading-[0.9] tracking-[-0.035em] text-ink">
-      {page.headline.slice(0, index)}
-      <span className="text-ember">{page.headline.slice(index)}</span>
+    <h1 className="mt-8 max-w-[920px] break-words text-[clamp(32px,9vw,80px)] font-extrabold leading-[0.98] tracking-[-0.035em] text-ink">
+      {page.serif ?? page.headline}
     </h1>
   );
 }
@@ -31,11 +15,6 @@ export default function ProofPage({ page }: { page: Subpage }) {
     <article className="page-frame relative mx-auto flex min-h-screen max-w-[1440px] flex-col pb-16 pt-24 lg:pb-10 lg:pt-[108px]">
       <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-glow">{page.kicker}</p>
       <Headline page={page} />
-      {page.serif ? (
-        <p className="proof-sentence mt-6 max-w-[22em] font-serif text-[clamp(26px,3vw,34px)] italic leading-[1.2] text-paper">
-          {page.serif}
-        </p>
-      ) : null}
 
       <div
         className={
