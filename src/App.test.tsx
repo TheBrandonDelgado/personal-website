@@ -32,7 +32,6 @@ const banned = [
   /\bstranded\b/i,
   /heimdall/i,
   /langchain/i,
-  /\bfinancing\b/i,
   /\bdrizzle\b/i,
   /\bdjango\b/i,
   /next\.js/i,
@@ -121,6 +120,15 @@ test("closes the current role as 2024–present", () => {
     expect(view.container.textContent ?? "", page.path).not.toMatch(/20\d{2}[–-]\s*(?=·|$)/);
     view.unmount();
   }
+});
+
+test("states the approved checkout financing line on the commerce proof", () => {
+  render(<App initialPath="/proof/commerce-rebuild" />);
+  expect(
+    screen.getByText(
+      "In September 2026 I shipped 0% financing at checkout, so customers can spread the cost of hardware over time.",
+    ),
+  ).toBeInTheDocument();
 });
 
 test("renders the hardware dispatch proof with the recorded facts", () => {
