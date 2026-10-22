@@ -174,6 +174,7 @@ export const subpages: readonly Subpage[] = [
         paragraphs: [
           store.description,
           bullet("Sazmining", "Medusa v1 to Medusa v2"),
+          "In September 2026 I shipped 0% financing at checkout, so customers can spread the cost of hardware over time.",
           bullet("Sazmining", "loyalty program"),
           bullet("Sazmining", "bug-bounty"),
         ],

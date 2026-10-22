@@ -77,7 +77,6 @@ const banned = [
   /\bstranded\b/i,
   /heimdall/i,
   /langchain/i,
-  /\bfinancing\b/i,
   /\bdrizzle\b/i,
   /\bdjango\b/i,
   /next\.js/i,
@@ -175,6 +174,15 @@ for (const snippet of [
   if (!home.includes(snippet)) {
     throw new Error(`Home HTML is missing ${snippet}`);
   }
+}
+
+const commerce = readFileSync(resolve(root, "dist/proof/commerce-rebuild/index.html"), "utf8");
+if (
+  !commerce.includes(
+    "In September 2026 I shipped 0% financing at checkout, so customers can spread the cost of hardware over time.",
+  )
+) {
+  throw new Error("Commerce HTML is missing the approved financing line");
 }
 
 const dispatch = readFileSync(resolve(root, "dist/proof/hardware-dispatch/index.html"), "utf8");
