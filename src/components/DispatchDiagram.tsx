@@ -21,7 +21,7 @@ export default function DispatchDiagram() {
       <title id="dispatch-title">Dispatch across five facilities</title>
       <desc id="dispatch-desc">
         Commands leave a Redis queue, pass through a scheduler, and arrive at five
-        facilities, throttled at each one.
+        facilities, paced on a one-minute interval.
       </desc>
       <defs>
         <radialGradient id="scheduler-glow" cx="50%" cy="50%" r="50%">
@@ -70,7 +70,7 @@ export default function DispatchDiagram() {
       </text>
 
       <text x={560} y={36} fill="#ffb27a" fontFamily="JetBrains Mono, monospace" fontSize={12} letterSpacing={2}>
-        03 · THROTTLE, EACH FACILITY
+        03 · PACED, ONE MINUTE
       </text>
 
       {FACILITY_Y.map((y, index) => {
