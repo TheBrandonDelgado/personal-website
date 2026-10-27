@@ -80,6 +80,15 @@ const banned = [
   /\bdrizzle\b/i,
   /\bdjango\b/i,
   /next\.js/i,
+  /throttl/i,
+  /immutable/i,
+  /event-driven/i,
+  /temporarily sole/i,
+  /three purpose-built/i,
+  /owned through production/i,
+  /for each facility/i,
+  /only engineer/i,
+  /idempotent processing/i,
 ];
 
 const pages = [];
@@ -165,7 +174,7 @@ for (const snippet of [
   "Shipmind Systems",
   "payments, checkout, and customer-facing product",
   "checkout, payments, invoicing, and the customer-facing app",
-  "Rebuilt store.sazmining.com and led the production cutover.",
+  "Led store.sazmining.com from initial scaffolding to production.",
   "Real-time earnings and direct payouts for hundreds of customers.",
   "https://brandon-delgado.com/og.jpg",
   '"@type": "Person"',

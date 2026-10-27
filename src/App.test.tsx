@@ -35,6 +35,15 @@ const banned = [
   /\bdrizzle\b/i,
   /\bdjango\b/i,
   /next\.js/i,
+  /throttl/i,
+  /immutable/i,
+  /event-driven/i,
+  /temporarily sole/i,
+  /three purpose-built/i,
+  /owned through production/i,
+  /for each facility/i,
+  /only engineer/i,
+  /idempotent processing/i,
 ];
 
 test("renders one h1 with Brandon's name and role", () => {
@@ -133,7 +142,7 @@ test("states the approved checkout financing line on the commerce proof", () => 
 
 test("renders the hardware dispatch proof with the recorded facts", () => {
   render(<App initialPath="/proof/hardware-dispatch" />);
-  expect(screen.getByRole("heading", { level: 1, name: /commands to machines across multiple data centers/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 1, name: /redis queue, paced once a minute/i })).toBeInTheDocument();
   expect(screen.getByText(/build what works in the real world/i)).toBeInTheDocument();
   expect(screen.getByRole("heading", { level: 2, name: /the problem/i })).toBeInTheDocument();
   expect(screen.getByRole("heading", { level: 2, name: /the decision/i })).toBeInTheDocument();

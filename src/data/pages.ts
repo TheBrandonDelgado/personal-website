@@ -39,7 +39,7 @@ export const principles = [
     numeral: "i",
     statement: "Leave it better than you found it.",
     proofName: "Commerce rebuild",
-    proofLine: "Rebuilt store.sazmining.com and led the production cutover.",
+    proofLine: "Led store.sazmining.com from initial scaffolding to production.",
     path: "/proof/commerce-rebuild",
   },
   {
@@ -53,22 +53,21 @@ export const principles = [
     numeral: "iii",
     statement: "Own the whole thing.",
     proofName: "app.sazmining.com",
-    proofLine: "Sole owner of the customer dashboard. For a time, the only engineer.",
+    proofLine: "Sole owner of the customer dashboard. Sole engineer into 2025.",
     path: "/proof/customer-dashboard",
   },
   {
     numeral: "iv",
     statement: "Let reason decide, not habit.",
     proofName: "Revenue ledger",
-    proofLine: "Event-driven and immutable. Manual reconciliation, gone.",
+    proofLine: "Polled on a schedule, insert-only. Manual reconciliation, gone.",
     path: "/proof/revenue-ledger",
   },
   {
     numeral: "v",
     statement: "Build what works in the real world.",
     proofName: "Dispatch",
-    proofLine:
-      "Commands to machines across multiple data centers, throttled for each facility.",
+    proofLine: "Redis queue, paced once a minute across data centers.",
     path: "/proof/hardware-dispatch",
   },
   {
@@ -163,7 +162,7 @@ export const subpages: readonly Subpage[] = [
     path: commerce.path,
     title: "Commerce rebuild — Brandon Delgado",
     description:
-      "Brandon Delgado rebuilt store.sazmining.com on Medusa v2 and led the production cutover: pricing, checkout, invoicing, and inventory.",
+      "Brandon Delgado led the rebuild of store.sazmining.com on Medusa v2 from initial scaffolding to production: pricing, checkout, invoicing, and inventory.",
     ogType: "article",
     kicker: proofKicker(commerce),
     headline: commerce.statement,
@@ -218,7 +217,7 @@ export const subpages: readonly Subpage[] = [
         heading: "The product",
         paragraphs: [
           dashboard.description,
-          bullet("Sazmining", "temporarily sole engineer"),
+          bullet("Sazmining", "sole engineer into 2025"),
         ],
         links: [{ href: dashboard.link, label: "app.sazmining.com" }],
       },
@@ -229,7 +228,7 @@ export const subpages: readonly Subpage[] = [
     path: ledger.path,
     title: "Revenue ledger — Brandon Delgado",
     description:
-      "Brandon Delgado built a real-time revenue engine at Sazmining with event-driven, immutable ledger patterns, ending manual reconciliation.",
+      "Brandon Delgado wrote the revenue ledger at Sazmining. It polls two payout providers on a schedule into insert-only records and ends manual reconciliation.",
     ogType: "article",
     kicker: proofKicker(ledger),
     headline: ledger.statement,
@@ -237,7 +236,7 @@ export const subpages: readonly Subpage[] = [
     blocks: [
       {
         heading: "The ledger",
-        paragraphs: [bullet("Sazmining", "real-time revenue engine")],
+        paragraphs: [bullet("Sazmining", "insert-only")],
       },
     ],
     next: { href: dispatch.path, label: "v. Build what works in the real world →" },
@@ -246,7 +245,7 @@ export const subpages: readonly Subpage[] = [
     path: dispatch.path,
     title: "Hardware dispatch — Brandon Delgado",
     description:
-      "How Brandon Delgado sends commands to hosted hardware across data centers: a Redis queue and scheduler, throttled for each facility.",
+      "How Brandon Delgado sends hardware configuration commands across data centers: a Redis queue and cron scheduler, paced on a one-minute interval.",
     ogType: "article",
     kicker: proofKicker(dispatch),
     headline: dispatch.statement,
@@ -262,14 +261,14 @@ export const subpages: readonly Subpage[] = [
       {
         heading: "The decision",
         paragraphs: [
-          "Treat power as a real constraint. A Redis queue plus a scheduler sends commands to machines everywhere, throttled for each facility so the load stays even.",
+          "Treat power as a real constraint. The original Redis queue and cron scheduler paces configuration commands across data centers on a one-minute interval. Its Postgres-based successor followed, fed by the deferred change queue.",
         ],
       },
       {
         heading: "The conditions",
         paragraphs: [
-          "The company grew 350% in 2025, from 2 to 5 data centers. For a time I was the only engineer, while also splitting the monolith into Admin, Customer and commerce apps plus a QuickBooks service.",
-          bullet("Sazmining", "Architected the migration of a monolith"),
+          "I was the sole engineer into 2025, then led the core platform, authoring over 80% of backend code, as the company scaled 350% from 2 to 5 data centers.",
+          bullet("Sazmining", "Created the Admin app"),
         ],
       },
     ],

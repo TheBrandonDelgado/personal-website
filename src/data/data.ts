@@ -39,10 +39,10 @@ export const portfolio = [
   {
     year: "2026 - Present",
     title: "Sazmining Store",
-    company: "Sole technical owner · Full stack · Production cutover",
+    company: "Led from scaffolding · Full stack · Production cutover",
     link: "https://store.sazmining.com",
     description:
-      "End-to-end Medusa v2 commerce platform for Sazmining hardware sales: multi-facility pricing and inventory, cart/checkout, payment-provider integrations (hosted checkout, webhooks), and QuickBooks invoicing—owned through production cutover.",
+      "End-to-end Medusa v2 commerce platform for Sazmining hardware sales: multi-facility pricing and inventory, cart/checkout, payment-provider integrations (hosted checkout, webhooks), and QuickBooks invoicing—led from initial scaffolding to production.",
     technologies: [
       "TypeScript",
       "Medusa 2",
@@ -90,16 +90,16 @@ export const experience = [
     type: "Full-time",
     link: "https://www.sazmining.com",
     descriptions: [
-      "Architected the migration of a monolith into three purpose-built applications (Admin, Customer, e-commerce), including a QuickBooks microservice and an automated billing pipeline on Supabase Edge Functions, restructuring how financial operations run across subscription and e-commerce systems.",
-      "Led a full-stack rebuild and production cutover of the customer commerce platform from Medusa v1 to Medusa v2—backend, storefront, and shared contracts in a monorepo—redesigning multi-facility catalog/pricing, cart and checkout, payment capture, QuickBooks invoicing, and inventory availability while preserving correct purchase flows.",
-      "Built a real-time revenue engine over asynchronous payout sources using event-driven, immutable ledger patterns, eliminating manual reconciliation and giving leadership live financial visibility.",
+      "Created the Admin app and a QuickBooks service, and became the sole backend engineer on the shared Supabase platform behind them, including an automated service-fee billing pipeline on Supabase Edge Functions.",
+      "Led a full-stack rebuild and production cutover of the customer commerce platform from Medusa v1 to Medusa v2, taking it from initial scaffolding to production—backend, storefront, and shared contracts in a monorepo—redesigning multi-facility catalog/pricing, cart and checkout, payment capture, QuickBooks invoicing, and inventory availability while preserving correct purchase flows.",
+      "Wrote the revenue ledger that polls two payout providers on a schedule into insert-only records, eliminating manual reconciliation and giving leadership up-to-date financial visibility.",
       "Engineered a third-party payout and earnings integration. Real-time earnings and direct payouts for hundreds of customers. Built with TypeScript, Supabase, and React.",
       "Designed a deferred change system that abstracts third-party constraints (unsettled earnings, change windows, rate limits), so users initiate changes immediately while a background poller executes when conditions allow, with clear progress visibility throughout.",
       "I launched a customer-facing loyalty program on Oct 1, 2026. It shipped behind feature flags, with a launch runbook and a scheduled go-live, and I built it to the designer's approved screens.",
       "I closed checkout pricing and data-exposure issues found through a bug-bounty program, and made invoicing idempotent so a re-run can't double-bill.",
       "Built an AI-first engineering knowledge base mapping the stack, architectural decisions, and second-order change consequences, enabling AI-assisted development to operate effectively across a complex production codebase.",
       "I ship with Claude Code and Cursor agents under review rules I wrote: every agent-opened PR needs a review bot, a local smoke test, and an explainer before merge. I keep an engineering knowledge base re-checked against production.",
-      "Joined as an early hire and served as temporarily sole engineer while the company scaled 350% in 2025, growing from 2 to 5 data centers; shaped core architecture and product strategy through a critical growth phase.",
+      "Joined as an early hire and was the company's sole engineer into 2025, then led the core platform, authoring over 80% of backend code, as the company scaled 350% from 2 to 5 data centers.",
     ],
     technologies: [
       "Node.js",
