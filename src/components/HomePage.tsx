@@ -1,7 +1,36 @@
 import { useEffect, useRef, useState } from "react";
 import { heroStack } from "../data/data";
-import { INTRO_EMPHASIS, INTRO_LEAD, INTRO_TAIL, principles } from "../data/pages";
+import {
+  FINANCING_LINE,
+  FINANCING_PATH,
+  INTRO_EMPHASIS,
+  INTRO_LEAD,
+  INTRO_TAIL,
+  principles,
+} from "../data/pages";
 import { Signature } from "./Chrome";
+
+function ProofCard({ name, line, href }: { name: string; line: string; href: string }) {
+  return (
+    <div className="proof-copy mt-10 grid max-w-[760px] grid-cols-[64px_1fr] gap-x-5 lg:grid-cols-[80px_1fr] lg:gap-x-6">
+      <div className="proof-line mt-3 h-px w-16 bg-ember shadow-[0_0_12px_#ff5a1f] lg:w-20" />
+      <div>
+        <h3 className="font-mono text-[12px] font-medium uppercase tracking-[0.22em] text-ember">
+          The proof · {name}
+        </h3>
+        <p className="proof-sentence mt-2 font-serif text-[clamp(26px,3vw,32px)] italic leading-[1.2] text-paper">
+          {line}
+        </p>
+        <a
+          href={href}
+          className="mt-4 inline-flex min-h-11 items-center font-mono text-[12px] uppercase tracking-[0.18em] text-ink"
+        >
+          Read the full proof →
+        </a>
+      </div>
+    </div>
+  );
+}
 
 function Words({ text }: { text: string }) {
   const words = text.split(" ");
@@ -175,23 +204,14 @@ export default function HomePage() {
               <h2 className="mt-5 max-w-[16ch] text-[clamp(44px,7vw,108px)] font-extrabold leading-[0.92] tracking-[-0.035em] text-ink">
                 <Words text={principle.statement} />
               </h2>
-              <div className="proof-copy mt-10 grid max-w-[760px] grid-cols-[64px_1fr] gap-x-5 lg:grid-cols-[80px_1fr] lg:gap-x-6">
-                <div className="proof-line mt-3 h-px w-16 bg-ember shadow-[0_0_12px_#ff5a1f] lg:w-20" />
-                <div>
-                  <h3 className="font-mono text-[12px] font-medium uppercase tracking-[0.22em] text-ember">
-                    The proof · {principle.proofName}
-                  </h3>
-                  <p className="proof-sentence mt-2 font-serif text-[clamp(26px,3vw,32px)] italic leading-[1.2] text-paper">
-                    {principle.proofLine}
-                  </p>
-                  <a
-                    href={principle.path}
-                    className="mt-4 inline-flex min-h-11 items-center font-mono text-[12px] uppercase tracking-[0.18em] text-ink"
-                  >
-                    Read the full proof →
-                  </a>
-                </div>
-              </div>
+              <ProofCard name={principle.proofName} line={principle.proofLine} href={principle.path} />
+              {principle.path === "/proof/commerce-rebuild" ? (
+                <ProofCard
+                  name="Installment financing"
+                  line={FINANCING_LINE}
+                  href={FINANCING_PATH}
+                />
+              ) : null}
             </div>
           </section>
         ))}

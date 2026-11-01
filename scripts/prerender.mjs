@@ -89,6 +89,7 @@ const banned = [
   /for each facility/i,
   /only engineer/i,
   /idempotent processing/i,
+  /kentucky/i,
 ];
 
 const pages = [];
@@ -154,6 +155,7 @@ const required = [
   "dist/manifest.json",
   "dist/Brandon-Delgado-Resume.pdf",
   "dist/proof/hardware-dispatch/index.html",
+  "dist/proof/installment-financing/index.html",
 ];
 
 for (const rel of required) {
@@ -175,6 +177,8 @@ for (const snippet of [
   "payments, checkout, and customer-facing product",
   "checkout, payments, invoicing, and the customer-facing app",
   "Led store.sazmining.com from initial scaffolding to production.",
+  "0% financing at checkout. One listing, one stock pool.",
+  'href="/proof/installment-financing"',
   "Real-time earnings and direct payouts for hundreds of customers.",
   "https://brandon-delgado.com/og.jpg",
   '"@type": "Person"',
@@ -192,6 +196,29 @@ if (
   )
 ) {
   throw new Error("Commerce HTML is missing the approved financing line");
+}
+if (!commerce.includes('href="/proof/installment-financing"')) {
+  throw new Error("Commerce HTML is missing the installment financing link");
+}
+
+const financing = readFileSync(resolve(root, "dist/proof/installment-financing/index.html"), "utf8");
+for (const snippet of [
+  "<title>Installment financing at checkout — Brandon Delgado</title>",
+  'rel="canonical" href="https://brandon-delgado.com/proof/installment-financing"',
+  "In September 2026 I shipped 0% financing at checkout, so customers can spread the cost of hardware over time.",
+  "from a single stock pool.",
+  "five staged steps without breaking the live store.",
+  "plans on the catalog and a financed price.",
+  "The quote builder picks the plan.",
+  "finance or pay-in-full choice.",
+  "merged the duplicate listings and retired them.",
+  "The financing total label is clearer.",
+  "account standing in the billing service.",
+  "payment-canceled decision that flags the order for manual review and emails accounts receivable.",
+]) {
+  if (!financing.includes(snippet)) {
+    throw new Error(`Financing HTML is missing ${snippet}`);
+  }
 }
 
 const dispatch = readFileSync(resolve(root, "dist/proof/hardware-dispatch/index.html"), "utf8");

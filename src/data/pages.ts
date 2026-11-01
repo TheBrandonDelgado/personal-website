@@ -153,6 +153,10 @@ const ledger = principles[3];
 const dispatch = principles[4];
 const practice = principles[5];
 
+export const FINANCING_PATH = "/proof/installment-financing";
+
+export const FINANCING_LINE = "0% financing at checkout. One listing, one stock pool.";
+
 function proofKicker(principle: Principle): string {
   return `${principle.numeral}  ·  ${principle.statement}  ·  Sazmining, 2024–present`;
 }
@@ -177,9 +181,46 @@ export const subpages: readonly Subpage[] = [
           bullet("Sazmining", "loyalty program"),
           bullet("Sazmining", "bug-bounty"),
         ],
-        links: [{ href: store.link, label: "store.sazmining.com" }],
+        links: [
+          { href: FINANCING_PATH, label: "Installment financing at checkout" },
+          { href: store.link, label: "store.sazmining.com" },
+        ],
       },
     ],
+    next: { href: FINANCING_PATH, label: "Installment financing at checkout →" },
+  },
+  {
+    path: FINANCING_PATH,
+    title: "Installment financing at checkout — Brandon Delgado",
+    description:
+      "How Brandon Delgado shipped 0% financing at Sazmining checkout, then sold paid-in-full and financing from one listing and one stock pool.",
+    ogType: "article",
+    kicker: "Checkout  ·  Sazmining, September 2026",
+    headline: "Installment financing at checkout.",
+    serif: FINANCING_LINE,
+    blocks: [
+      {
+        heading: "The problem",
+        paragraphs: [
+          "Financed and paid-in-full were duplicate listings. A bank payment canceled after checkout left orders stuck, with stock held and no alert.",
+        ],
+      },
+      {
+        heading: "The decision",
+        paragraphs: [
+          "In September 2026 I shipped 0% financing at checkout, so customers can spread the cost of hardware over time. One listing sells on both plans, paid in full or 0% financing, from a single stock pool.",
+          "I migrated in five staged steps without breaking the live store. Shared contracts gained plans on the catalog and a financed price. The quote builder picks the plan. One product card offers a finance or pay-in-full choice. A deploy-time migration merged the duplicate listings and retired them. The financing total label is clearer.",
+        ],
+      },
+      {
+        heading: "The result",
+        paragraphs: [
+          "Each financed unit has an installment schedule, with due-date rules and resale and payoff handling. Installments count toward the customer's account standing in the billing service.",
+          "I added a payment-canceled decision that flags the order for manual review and emails accounts receivable.",
+        ],
+      },
+    ],
+    links: [{ href: store.link, label: "store.sazmining.com" }],
     next: { href: earnings.path, label: "ii. Make more possible, for more people →" },
   },
   {

@@ -6,6 +6,8 @@ import {
   principles,
   publishedPages,
   CLOSING_LINE,
+  FINANCING_LINE,
+  FINANCING_PATH,
   HOME_DESCRIPTION,
   INTRO_EMPHASIS,
   INTRO_LEAD,
@@ -44,6 +46,7 @@ const banned = [
   /for each facility/i,
   /only engineer/i,
   /idempotent processing/i,
+  /kentucky/i,
 ];
 
 test("renders one h1 with Brandon's name and role", () => {
@@ -138,6 +141,45 @@ test("states the approved checkout financing line on the commerce proof", () => 
       "In September 2026 I shipped 0% financing at checkout, so customers can spread the cost of hardware over time.",
     ),
   ).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "Installment financing at checkout" })).toHaveAttribute(
+    "href",
+    FINANCING_PATH,
+  );
+});
+
+test("links installment financing from home and publishes the proof", () => {
+  render(<App />);
+  expect(screen.getByRole("heading", { level: 3, name: "The proof · Installment financing" })).toBeInTheDocument();
+  expect(screen.getByText(FINANCING_LINE)).toBeInTheDocument();
+  const homeLinks = screen.getAllByRole("link", { name: "Read the full proof →" });
+  expect(homeLinks.some((link) => link.getAttribute("href") === FINANCING_PATH)).toBe(true);
+});
+
+test("renders the installment financing proof with only the recorded facts", () => {
+  render(<App initialPath={FINANCING_PATH} />);
+  expect(screen.getByRole("heading", { level: 1, name: FINANCING_LINE })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 2, name: /the problem/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 2, name: /the decision/i })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { level: 2, name: /the result/i })).toBeInTheDocument();
+  expect(
+    screen.getByText(
+      "In September 2026 I shipped 0% financing at checkout, so customers can spread the cost of hardware over time. One listing sells on both plans, paid in full or 0% financing, from a single stock pool.",
+    ),
+  ).toBeInTheDocument();
+  expect(screen.getByText(/five staged steps without breaking the live store/i)).toBeInTheDocument();
+  expect(screen.getByText(/plans on the catalog and a financed price/i)).toBeInTheDocument();
+  expect(screen.getByText(/quote builder picks the plan/i)).toBeInTheDocument();
+  expect(screen.getByText(/finance or pay-in-full choice/i)).toBeInTheDocument();
+  expect(screen.getByText(/merged the duplicate listings and retired them/i)).toBeInTheDocument();
+  expect(screen.getByText(/financing total label is clearer/i)).toBeInTheDocument();
+  expect(
+    screen.getByText(/installments count toward the customer's account standing in the billing service/i),
+  ).toBeInTheDocument();
+  expect(screen.getByText(/payment-canceled decision/i)).toBeInTheDocument();
+  expect(screen.getByText(/emails accounts receivable/i)).toBeInTheDocument();
+  const text = document.body.textContent ?? "";
+  expect(text).not.toMatch(/monthly invoice/i);
+  expect(text).not.toMatch(/kentucky/i);
 });
 
 test("renders the hardware dispatch proof with the recorded facts", () => {

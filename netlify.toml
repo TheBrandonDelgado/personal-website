@@ -110,6 +110,11 @@
   status = 200
 
 [[redirects]]
+  from = "/proof/installment-financing"
+  to = "/proof/installment-financing/index.html"
+  status = 200
+
+[[redirects]]
   from = "/proof/earnings-integration"
   to = "/proof/earnings-integration/index.html"
   status = 200
