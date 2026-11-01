@@ -171,7 +171,8 @@ test("renders the installment financing proof with only the recorded facts", () 
   expect(screen.getByText(/quote builder picks the plan/i)).toBeInTheDocument();
   expect(screen.getByText(/finance or pay-in-full choice/i)).toBeInTheDocument();
   expect(screen.getByText(/merged the duplicate listings and retired them/i)).toBeInTheDocument();
-  expect(screen.getByText(/financing total label is clearer/i)).toBeInTheDocument();
+  expect(screen.getByText("Checkout · Sazmining, September–October 2026")).toBeInTheDocument();
+  expect(screen.queryByText(/financing total label is clearer/i)).not.toBeInTheDocument();
   expect(
     screen.getByText(/installments count toward the customer's account standing in the billing service/i),
   ).toBeInTheDocument();

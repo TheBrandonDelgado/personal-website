@@ -195,7 +195,7 @@ export const subpages: readonly Subpage[] = [
     description:
       "How Brandon Delgado shipped 0% financing at Sazmining checkout, then sold paid-in-full and financing from one listing and one stock pool.",
     ogType: "article",
-    kicker: "Checkout  ·  Sazmining, September 2026",
+    kicker: "Checkout · Sazmining, September–October 2026",
     headline: "Installment financing at checkout.",
     serif: FINANCING_LINE,
     blocks: [
@@ -209,7 +209,7 @@ export const subpages: readonly Subpage[] = [
         heading: "The decision",
         paragraphs: [
           "In September 2026 I shipped 0% financing at checkout, so customers can spread the cost of hardware over time. One listing sells on both plans, paid in full or 0% financing, from a single stock pool.",
-          "I migrated in five staged steps without breaking the live store. Shared contracts gained plans on the catalog and a financed price. The quote builder picks the plan. One product card offers a finance or pay-in-full choice. A deploy-time migration merged the duplicate listings and retired them. The financing total label is clearer.",
+          "I migrated in five staged steps without breaking the live store. Shared contracts gained plans on the catalog and a financed price. The quote builder picks the plan. One product card offers a finance or pay-in-full choice. A deploy-time migration merged the duplicate listings and retired them.",
         ],
       },
       {

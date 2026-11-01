@@ -212,7 +212,7 @@ for (const snippet of [
   "The quote builder picks the plan.",
   "finance or pay-in-full choice.",
   "merged the duplicate listings and retired them.",
-  "The financing total label is clearer.",
+  "Checkout · Sazmining, September–October 2026",
   "account standing in the billing service.",
   "payment-canceled decision that flags the order for manual review and emails accounts receivable.",
 ]) {
